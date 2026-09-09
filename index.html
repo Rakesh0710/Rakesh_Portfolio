@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Rakesh Reddy Yeduru — Website Operations Manager &amp; Full-Stack Engineer</title>
+<meta name="description" content="Website Operations Manager and full-stack engineer. Five years owning enterprise websites end to end — CMS publishing and governance, React and Next.js, technical SEO, Core Web Vitals, CDN and DNS, analytics and production releases." />
+<meta name="theme-color" content="#000000" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Rakesh Reddy Yeduru — Website Operations Manager &amp; Full-Stack Engineer" />
+<meta property="og:description" content="I build web platforms — and keep them running. Five years across Unity, the University of Dayton and LTIMindtree." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<!-- ════════════════════════════ NAV ════════════════════════════ -->
+<nav class="nav" id="nav" aria-label="Primary">
+  <div class="nav__in">
+    <a class="nav__id" href="#top" aria-label="Rakesh Reddy Yeduru, back to top">
+      <span class="nav__mark" aria-hidden="true">RY</span>
+      <span class="nav__name">Rakesh Reddy Yeduru</span>
+    </a>
+
+    <ul class="nav__links">
+      <li><a href="#live"    data-nav="live">Work</a></li>
+      <li><a href="#work"    data-nav="work">Experience</a></li>
+      <li><a href="#project" data-nav="project">Project</a></li>
+      <li><a href="#stack"   data-nav="stack">Stack</a></li>
+    </ul>
+
+    <a class="nav__cta" href="#contact">Get in touch</a>
+
+    <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+  </div>
+</nav>
+
+<div class="sheet" id="sheet" hidden>
+  <a href="#live">Work</a>
+  <a href="#work">Experience</a>
+  <a href="#project">Project</a>
+  <a href="#stack">Stack</a>
+  <a href="#contact">Get in touch</a>
+</div>
+
+<!-- ════════════════════════════ HERO ═══════════════════════════ -->
+<header class="hero" id="top">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="hero__in shell">
+
+    <p class="hero__badge" data-lift="1">
+      <i aria-hidden="true"></i>Open to Website Operations &amp; Full-Stack roles
+    </p>
+
+    <p class="hero__kicker" data-lift="2">Rakesh Reddy Yeduru</p>
+
+    <h1 class="hero__h1">
+      <span class="hline" data-split>I build web platforms</span>
+      <span class="hline hline--2" data-split>and keep them running.</span>
+    </h1>
+
+    <p class="hero__role" data-lift="3">
+      Website Operations Manager <span aria-hidden="true">·</span> Full-Stack Engineer
+    </p>
+
+    <p class="hero__lede" data-lift="4">
+      Five years across <b>Unity</b>, the <b>University of Dayton</b> and <b>LTIMindtree</b> — owning enterprise
+      websites end to end. I run publishing, governance and releases on one side, and build the
+      <b>React</b>/<b>Next.js</b> front ends, APIs and infrastructure on the other.
+    </p>
+
+    <div class="hero__acts" data-lift="5">
+      <a class="btn btn--fill" href="#live">See live work</a>
+      <a class="btn btn--link" href="#contact">Get in touch<span aria-hidden="true">&nbsp;›</span></a>
+    </div>
+
+    <p class="hero__proof" data-lift="6">
+      <span class="hero__proof-k">Shipped &amp; live</span>
+      <a href="https://unity.com" target="_blank" rel="noopener">unity.com</a>
+      <a href="https://unity.com/made-with-unity" target="_blank" rel="noopener">made-with-unity</a>
+      <a href="https://udayton.edu/magazine/2025/09/big-time.php" target="_blank" rel="noopener">udayton.edu/magazine</a>
+      <a href="https://rksmotors.netlify.app" target="_blank" rel="noopener">CNR Car Zone</a>
+    </p>
+  </div>
+
+  <!-- code window -->
+  <div class="ide-hold" data-lift="7">
+    <div class="ide" id="ide">
+      <div class="ide__bar">
+        <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="ide__tabs" aria-hidden="true">
+          <span class="tab is-on">release.ts</span>
+          <span class="tab">vitals.config.ts</span>
+          <span class="tab">redirects.json</span>
+        </span>
+      </div>
+      <div class="ide__body">
+        <pre class="ide__code" aria-label="Illustrative TypeScript snippet describing how a release ships"><code><span class="ln" style="--l:0"><b class="c-key">export const</b> <b class="c-var">rakesh</b> = {</span>
+<span class="ln" style="--l:1">  builds:   [<b class="c-str">'React'</b>, <b class="c-str">'Next.js'</b>, <b class="c-str">'TypeScript'</b>, <b class="c-str">'Java'</b>],</span>
+<span class="ln" style="--l:2">  operates: [<b class="c-str">'Sanity'</b>, <b class="c-str">'AEM'</b>, <b class="c-str">'Cloudflare'</b>, <b class="c-str">'GA4'</b>],</span>
+<span class="ln" style="--l:3">&nbsp;</span>
+<span class="ln" style="--l:4">  <b class="c-key">async</b> <b class="c-fn">ship</b>(site: <b class="c-typ">Site</b>) {</span>
+<span class="ln" style="--l:5">    <b class="c-key">await</b> <b class="c-fn">requirements</b>(site);</span>
+<span class="ln" style="--l:6">    <b class="c-key">await</b> <b class="c-fn">build</b>(site);</span>
+<span class="ln" style="--l:7">    <b class="c-key">await</b> <b class="c-fn">qa</b>(site);      <span class="c-com">// a11y · CWV · cross-browser</span></span>
+<span class="ln" style="--l:8">    <b class="c-key">return</b> <b class="c-fn">release</b>(site); <span class="c-com">// 175+ and counting</span></span>
+<span class="ln" style="--l:9">  },</span>
+<span class="ln" style="--l:10">};<span class="caret" aria-hidden="true"></span></span></code></pre>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══════════════════════ SCRUB STATEMENT ═════════════════════ -->
+<section class="sec sec--dark say">
+  <div class="shell">
+    <p class="eyebrow eyebrow--dark rv">What I actually do</p>
+    <p class="say__text" data-scrub>
+      A website is never finished. Someone has to build it, publish it, keep it fast,
+      keep it findable and keep it online. That is the job I own.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════ METRICS ══════════════════════════ -->
+<section class="sec sec--dark sec--tight nums">
+  <div class="shell">
+    <div class="nums__grid">
+      <div class="num rv">
+        <span class="num__v" data-count="5" data-suffix="+">0</span>
+        <span class="num__l">years managing and building enterprise websites</span>
+      </div>
+      <div class="num rv">
+        <span class="num__v" data-count="175" data-suffix="+">0</span>
+        <span class="num__l">digital initiatives delivered end to end</span>
+      </div>
+      <div class="num rv">
+        <span class="num__v" data-count="100" data-suffix="+">0</span>
+        <span class="num__l">pages audited for CTAs, linking, navigation and usability</span>
+      </div>
+      <div class="num rv">
+        <span class="num__v" data-count="7">0</span>
+        <span class="num__l">CMS platforms published on, from Sanity to AEM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ LIVE WORK ════════════════════════════ -->
+<section class="sec live" id="live">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow">Shipped &amp; live</p>
+      <h2>Pages you can<br>open right now.</h2>
+      <p class="head__note">
+        Public production pages I worked on. Contributions are scoped — these were team builds,
+        and the description says what I did.
+      </p>
+    </div>
+
+    <div class="live__grid">
+
+      <a class="lw rv" href="https://unity.com" target="_blank" rel="noopener">
+        <span class="prev prev--unity" aria-hidden="true">
+          <span class="prev__chrome"><i></i><i></i><i></i><em>unity.com</em></span>
+          <span class="prev__stage">
+            <b class="prev__word">Unity</b>
+            <span class="prev__sub">Global landing experience</span>
+          </span>
+        </span>
+        <span class="lw__body">
+          <span class="lw__org">Unity Technologies</span>
+          <span class="lw__url">unity.com</span>
+          <span class="lw__desc">
+            The global landing experience. Worked on component-based publishing in Sanity CMS,
+            Next.js server-side rendering, redirect management and Core Web Vitals.
+          </span>
+          <span class="lw__tags"><i>Sanity CMS</i><i>Next.js</i><i>SSR</i><i>Core Web Vitals</i></span>
+          <span class="lw__go">Visit<b aria-hidden="true">&nbsp;›</b></span>
+        </span>
+      </a>
+
+      <a class="lw rv" href="https://unity.com/made-with-unity" target="_blank" rel="noopener">
+        <span class="prev prev--made" aria-hidden="true">
+          <span class="prev__chrome"><i></i><i></i><i></i><em>unity.com/made-with-unity</em></span>
+          <span class="prev__stage">
+            <b class="prev__word">Made with Unity</b>
+            <span class="prev__sub">Games showcase hub</span>
+          </span>
+        </span>
+        <span class="lw__body">
+          <span class="lw__org">Unity Technologies</span>
+          <span class="lw__url">unity.com/made-with-unity</span>
+          <span class="lw__desc">
+            The showcase hub for games built on Unity. Worked on campaign launches, reusable
+            component patterns, GA4 and Amplitude event tracking, and cross-browser release QA.
+          </span>
+          <span class="lw__tags"><i>Campaign launch</i><i>Components</i><i>GA4</i><i>Release QA</i></span>
+          <span class="lw__go">Visit<b aria-hidden="true">&nbsp;›</b></span>
+        </span>
+      </a>
+
+      <a class="lw rv" href="https://udayton.edu/magazine/2025/09/htike-global-goals.php" target="_blank" rel="noopener">
+        <span class="prev prev--ud" aria-hidden="true">
+          <span class="prev__chrome"><i></i><i></i><i></i><em>udayton.edu/magazine</em></span>
+          <span class="prev__stage">
+            <b class="prev__word">Global Goals</b>
+            <span class="prev__sub">UD Magazine · long-form feature</span>
+          </span>
+        </span>
+        <span class="lw__body">
+          <span class="lw__org">University of Dayton Magazine</span>
+          <span class="lw__url">Global Goals feature</span>
+          <span class="lw__desc">
+            A long-form feature story. Worked on the responsive article build — CMS templates,
+            reusable components, accessibility QA, structured data and internal linking.
+          </span>
+          <span class="lw__tags"><i>CMS templates</i><i>Responsive</i><i>Accessibility</i><i>Schema</i></span>
+          <span class="lw__go">Visit<b aria-hidden="true">&nbsp;›</b></span>
+        </span>
+      </a>
+
+      <a class="lw rv" href="https://udayton.edu/magazine/2025/09/big-time.php" target="_blank" rel="noopener">
+        <span class="prev prev--ud2" aria-hidden="true">
+          <span class="prev__chrome"><i></i><i></i><i></i><em>udayton.edu/magazine</em></span>
+          <span class="prev__stage">
+            <b class="prev__word">Big Time</b>
+            <span class="prev__sub">UD Magazine · photo-led feature</span>
+          </span>
+        </span>
+        <span class="lw__body">
+          <span class="lw__org">University of Dayton Magazine</span>
+          <span class="lw__url">Big Time feature</span>
+          <span class="lw__desc">
+            A photo-led feature build. Worked on CMS publishing, image and page-speed optimisation,
+            and pre-launch cross-browser and responsive validation.
+          </span>
+          <span class="lw__tags"><i>CMS publishing</i><i>Page speed</i><i>Cross-browser</i><i>QA</i></span>
+          <span class="lw__go">Visit<b aria-hidden="true">&nbsp;›</b></span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ TWO PILLARS ════════════════════════ -->
+<section class="sec sec--gray pillars">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow">Two halves of one job</p>
+      <h2>Build it. Then<br>keep it healthy.</h2>
+    </div>
+
+    <div class="pillar-grid">
+
+      <article class="pillar rv" data-tilt>
+        <span class="pillar__n" aria-hidden="true">01</span>
+        <h3>Build</h3>
+        <p>
+          Responsive front ends in React, Next.js and TypeScript, wired to headless CMS content,
+          GraphQL and REST APIs. Reusable components and shared design-system patterns, validated
+          in Storybook — plus Java and Node.js service work behind them.
+        </p>
+        <ul class="pillar__list">
+          <li>Component-based &amp; microfrontend architecture</li>
+          <li>Server-side rendering for SEO and page speed</li>
+          <li>GraphQL, REST, JSON and dynamic content integration</li>
+          <li>MySQL, SQL and data pipelines feeding the front end</li>
+        </ul>
+      </article>
+
+      <article class="pillar rv" data-tilt>
+        <span class="pillar__n" aria-hidden="true">02</span>
+        <h3>Manage &amp; operate</h3>
+        <p>
+          I own the site after launch — the publishing calendar, the release process, the governance
+          standards and the stakeholders waiting on all three. Plus redirect strategy through
+          migrations, and the DNS, SSL and CDN call when production breaks at 2am.
+        </p>
+        <ul class="pillar__list">
+          <li>Publishing workflows, governance standards &amp; release management</li>
+          <li>Intake, prioritisation and stakeholder + vendor coordination</li>
+          <li>Technical SEO — crawl, indexing, schema, site architecture</li>
+          <li>Cloudflare CDN, caching, DNS, SSL/TLS, Apache &amp; Nginx</li>
+          <li>GA4, GTM and Amplitude measurement after launch</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <ol class="flow rv" aria-label="Delivery lifecycle">
+      <li><span>Requirements</span></li>
+      <li><span>Build</span></li>
+      <li><span>Publish</span></li>
+      <li><span>QA</span></li>
+      <li><span>Release</span></li>
+      <li><span>Monitor</span></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ WORK ════════════════════════════ -->
+<section class="sec work" id="work">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow">Experience</p>
+      <h2>Five years.<br>Three organisations.</h2>
+    </div>
+
+    <div class="roles">
+
+      <article class="role rv">
+        <div class="role__meta">
+          <span class="role__chip">Now</span>
+          <h3>Unity Technologies</h3>
+          <p class="role__title">Web Operations Specialist</p>
+          <p class="role__title role__title--alt">Full-Stack Web Engineer &amp; Developer Tooling</p>
+          <p class="role__when">Nov 2025 — Jul 2026</p>
+          <div class="role__tags">
+            <span>Sanity CMS</span><span>Next.js</span><span>React</span><span>TypeScript</span>
+            <span>GA4</span><span>Amplitude</span><span>Storybook</span><span>Core Web Vitals</span>
+          </div>
+        </div>
+        <div class="role__body">
+          <p class="role__scope">
+            Hands-on web operations lead for customer-facing properties at a global game-technology
+            company — CMS publishing, frontend development, QA, redirects, analytics, SEO,
+            performance and production releases.
+          </p>
+          <ul class="pts">
+            <li><b>Managed customer-facing web properties</b> supporting global product, pricing, campaign, event and digital experiences.</li>
+            <li><b>Shipped updates and campaign launches</b> using Sanity CMS and component-based publishing workflows.</li>
+            <li><b>Built responsive experiences</b> in React, Next.js, TypeScript, JavaScript, HTML and CSS, on shared design-system patterns.</li>
+            <li><b>Supported server-side rendering</b> and performance-focused frontend implementation in Next.js.</li>
+            <li><b>Managed redirects and URL changes</b> across migrations, campaign launches, content restructuring and production updates.</li>
+            <li><b>Audited 100+ pages</b> for CTA consistency, linking, navigation, usability and implementation quality.</li>
+            <li><b>Applied technical SEO</b> — crawlability, indexing, metadata, internal linking, structured content and site architecture.</li>
+            <li><b>Supported AEO/GEO and AI discoverability</b> through semantic structure, crawl accessibility and machine-readable content.</li>
+            <li><b>Monitored Core Web Vitals</b>, page speed, accessibility, responsive behaviour and cross-browser reliability.</li>
+            <li><b>Troubleshot production</b> across DNS, HTTPS, SSL certificates, redirects, caching and web-delivery dependencies.</li>
+            <li><b>Validated components in Storybook and Chromatic</b>, and documented workflows and QA results in Jira and Confluence.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role rv">
+        <div class="role__meta">
+          <span class="role__chip role__chip--past">2023 — 2025</span>
+          <h3>University of Dayton</h3>
+          <p class="role__title">Web Content &amp; Digital Experience Analyst</p>
+          <p class="role__title role__title--alt">Full-Stack Web Developer</p>
+          <p class="role__when">Nov 2023 — Aug 2025</p>
+          <div class="role__tags">
+            <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span>
+            <span>SQL</span><span>GA4</span><span>Search Console</span><span>Accessibility</span>
+          </div>
+        </div>
+        <div class="role__body">
+          <p class="role__scope">
+            Large institutional websites and 175+ digital initiatives — coordinating updates, content
+            launches, QA, analytics and SEO across marketing, communications, design, development and
+            faculty teams.
+          </p>
+          <ul class="pts">
+            <li><b>Managed 175+ digital initiatives</b> across institutional websites, balancing development, support, QA and release deadlines.</li>
+            <li><b>Built responsive pages</b> with HTML, CSS, JavaScript, CMS templates and reusable components.</li>
+            <li><b>Published with governance</b> — creating, updating, reviewing and launching content against quality standards.</li>
+            <li><b>Used GA4 and Google Analytics</b> to monitor traffic, engagement, content performance and campaign results.</li>
+            <li><b>Used Search Console</b> to monitor crawl health, indexing, search visibility and page-level SEO.</li>
+            <li><b>Implemented technical SEO</b> — metadata, internal linking, redirects, structured data, schema and site architecture.</li>
+            <li><b>Resolved site-health issues</b> — broken links, navigation errors, responsive defects and browser compatibility problems.</li>
+            <li><b>Applied Core Web Vitals, accessibility</b> and page-performance best practice before every launch.</li>
+            <li><b>Worked with technical teams on DNS, HTTPS, SSL</b>, hosting and redirect dependencies.</li>
+            <li><b>Provided CMS guidance and troubleshooting</b> to internal users, and maintained governance documentation.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="role rv">
+        <div class="role__meta">
+          <span class="role__chip role__chip--past">2020 — 2023</span>
+          <h3>LTIMindtree</h3>
+          <p class="role__title">Digital Communications &amp; Web Strategy Lead</p>
+          <p class="role__title role__title--alt">Full-Stack Software Developer</p>
+          <p class="role__when">Jan 2020 — May 2023</p>
+          <div class="role__tags">
+            <span>React</span><span>Next.js</span><span>GraphQL</span><span>AEM</span>
+            <span>Sitecore</span><span>Cloudflare</span><span>AWS</span><span>Docker</span>
+          </div>
+        </div>
+        <div class="role__body">
+          <p class="role__scope">
+            Enterprise websites, web applications and internet-facing platforms for a global technology
+            and consulting firm. This is where the stack got wide — seven CMS platforms, microfrontends,
+            CDN and infrastructure ownership.
+          </p>
+          <ul class="pts">
+            <li><b>Developed and supported enterprise websites</b>, web applications and internet-facing digital platforms.</li>
+            <li><b>Worked across WordPress, Drupal, Sitecore, AEM, Contentful</b> and headless CMS environments.</li>
+            <li><b>Built responsive applications</b> in React, Next.js, TypeScript, JavaScript, HTML5 and CSS3, with reusable component libraries.</li>
+            <li><b>Worked in microfrontend architecture</b> supporting modular apps and independent feature delivery.</li>
+            <li><b>Integrated GraphQL and REST APIs</b> for dynamic content, application functionality and backend services.</li>
+            <li><b>Configured Cloudflare CDN</b> — caching strategies, DNS configuration and global delivery performance.</li>
+            <li><b>Managed DNS, domains, HTTPS, SSL, redirects and hosting</b>, and configured Apache and Nginx including reverse proxies.</li>
+            <li><b>Diagnosed production issues</b> across browser, API, application, server, authentication, DNS and network layers.</li>
+            <li><b>Ran CI/CD</b> with GitHub Actions, Jenkins, AWS CodePipeline, Git and Docker.</li>
+            <li><b>Worked with AWS</b> — EC2, S3, Lambda, RDS and DynamoDB — supporting applications and web infrastructure.</li>
+            <li><b>Owned redirect strategy</b> through migrations, content changes and restructuring, alongside MySQL and data-pipeline work.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ PROJECT — STICKY ══════════════════════ -->
+<section class="showcase" id="project" data-show>
+  <div class="showcase__stick">
+    <div class="shell showcase__grid">
+
+      <div class="showcase__copy">
+        <p class="eyebrow eyebrow--dark">Built and run solo · In production</p>
+        <h2 class="showcase__h2">CNR Car Zone</h2>
+        <p class="showcase__lede">
+          A mobile-first operations platform for a real pre-owned vehicle business. Every car tracked
+          from the first phone call — sourcing, inspection, negotiation, purchase, payments, photos,
+          documents — through to ready-for-sale, with a full audit trail.
+        </p>
+
+        <div class="slides">
+          <div class="slide is-on" data-slide="0">
+            <span class="slide__k">Shipped</span>
+            <h3>The operations dashboard</h3>
+            <p>Every pending job at a glance — new opportunities, inspections, negotiations, purchased vehicles, outstanding documents and cars ready for sale. Global search covers cars, sellers, numbers and documents.</p>
+          </div>
+          <div class="slide" data-slide="1">
+            <span class="slide__k">Shipped</span>
+            <h3>Opportunity to inventory</h3>
+            <p>Auto-numbered opportunities, mechanic inspection, dated negotiation offers, then one-way conversion into inventory with a unique stock number. Call or WhatsApp the seller straight from the record.</p>
+          </div>
+          <div class="slide" data-slide="2">
+            <span class="slide__k">Shipped</span>
+            <h3>Documents &amp; evidence</h3>
+            <p>An 18-item document checklist with verification rules and a 22-category photo pipeline. Documents hold multiple captioned images — backwards-compatible with every record already in the system.</p>
+          </div>
+          <div class="slide" data-slide="3">
+            <span class="slide__k">Shipped</span>
+            <h3>Exports &amp; audit trail</h3>
+            <p>CSV exports for opportunities, inventory, sellers, payments and document status — with sensitive seller ID and bank details deliberately excluded — plus a complete activity history.</p>
+          </div>
+        </div>
+
+        <div class="showcase__rail" aria-hidden="true">
+          <i data-rail="0" class="is-on"></i><i data-rail="1"></i><i data-rail="2"></i><i data-rail="3"></i>
+        </div>
+
+        <div class="showcase__foot">
+          <dl class="facts">
+            <div><dt>Role</dt><dd>Sole engineer, designer &amp; product owner</dd></div>
+            <div><dt>Stack</dt><dd>Next.js 15 · Supabase · Postgres</dd></div>
+            <div><dt>Next</dt><dd>Sales flow &amp; profit reporting</dd></div>
+          </dl>
+          <a class="btn btn--fill" href="https://rksmotors.netlify.app" target="_blank" rel="noopener">Open the live app</a>
+        </div>
+      </div>
+
+      <!-- phone -->
+      <div class="device">
+        <div class="phone">
+          <div class="phone__notch" aria-hidden="true"></div>
+          <div class="phone__screen" aria-hidden="true">
+
+            <div class="app__top">
+              <span class="app__mark">CNR</span>
+              <span class="app__name">CNR Car Zone</span>
+              <span class="app__ctx" data-ctx>Home</span>
+            </div>
+
+            <div class="app__body">
+
+              <div class="scr is-on" data-scr="0">
+                <div class="search">Search cars, sellers, numbers…</div>
+                <div class="stats">
+                  <div class="st"><i class="ic ic--b"></i><b>0</b><span>New opportunities</span></div>
+                  <div class="st"><i class="ic ic--y"></i><b>0</b><span>Inspections pending</span></div>
+                  <div class="st"><i class="ic ic--y"></i><b>0</b><span>Under negotiation</span></div>
+                  <div class="st"><i class="ic ic--g"></i><b>5</b><span>Purchased vehicles</span></div>
+                  <div class="st"><i class="ic ic--r"></i><b>5</b><span>Pending documents</span></div>
+                  <div class="st"><i class="ic ic--g"></i><b>0</b><span>Ready for sale</span></div>
+                </div>
+              </div>
+
+              <div class="scr" data-scr="1">
+                <div class="veh">
+                  <b>Mahindra Bolero Power plus BS6(O)</b>
+                  <span>OPP-0009 · TS29TB8636</span>
+                </div>
+                <div class="acts">
+                  <span class="act act--navy">Call</span>
+                  <span class="act act--green">WhatsApp</span>
+                </div>
+                <div class="banner">
+                  <b>In inventory</b>
+                  <span>HYD-2026-0005 — tap to open</span>
+                </div>
+                <div class="listrows">
+                  <div class="lr"><b>Inspection</b><span>Not started</span></div>
+                  <div class="lr"><b>Negotiation</b><span>Record offers</span></div>
+                </div>
+                <div class="kv">
+                  <div><span>Make</span><b>Mahindra Bolero</b></div>
+                  <div><span>Year</span><b>2020</b></div>
+                  <div><span>Registration</span><b>TS29TB8636</b></div>
+                </div>
+              </div>
+
+              <div class="scr" data-scr="2">
+                <div class="sec-h">Document checklist <em>14 / 18</em></div>
+                <div class="checks">
+                  <div class="ck is-ok"><i></i>RC book</div>
+                  <div class="ck is-ok"><i></i>Insurance</div>
+                  <div class="ck is-ok"><i></i>Owner ID</div>
+                  <div class="ck is-ok"><i></i>Form 29</div>
+                  <div class="ck"><i></i>Form 30</div>
+                  <div class="ck"><i></i>NOC</div>
+                </div>
+                <div class="sec-h">Photos <em>22 categories</em></div>
+                <div class="shots"><span></span><span></span><span></span><span></span></div>
+              </div>
+
+              <div class="scr" data-scr="3">
+                <div class="sec-h">Export (CSV)</div>
+                <div class="dls">
+                  <div class="dl"><b>Opportunities</b><span>Download</span></div>
+                  <div class="dl"><b>Purchased inventory</b><span>Download</span></div>
+                  <div class="dl"><b>Seller information</b><span>Download</span></div>
+                  <div class="dl"><b>Purchase &amp; payments</b><span>Download</span></div>
+                  <div class="dl"><b>Document status</b><span>Download</span></div>
+                </div>
+                <div class="note">Sensitive seller ID and bank details are not included.</div>
+              </div>
+
+            </div>
+
+            <div class="app__nav">
+              <span class="is-on"><i></i>Home</span>
+              <span><i></i>Opportunities</span>
+              <span><i></i>Inventory</span>
+              <span><i></i>Pending</span>
+              <span><i></i>More</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ STACK ═══════════════════════════ -->
+<section class="sec sec--gray stack" id="stack">
+  <div class="shell">
+    <div class="head rv">
+      <p class="eyebrow">The toolkit</p>
+      <h2>Everything I build<br>and run with.</h2>
+    </div>
+
+    <div class="cards">
+
+      <article class="card rv" data-tilt>
+        <h3>Web operations</h3>
+        <ul><li>Website management</li><li>Governance</li><li>Production publishing</li><li>Release management</li><li>Site health</li><li>Troubleshooting</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>CMS</h3>
+        <ul><li>Sanity</li><li>WordPress</li><li>HubSpot CMS</li><li>Drupal</li><li>Contentful</li><li>AEM</li><li>Sitecore</li><li>Headless</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Front end</h3>
+        <ul><li>React</li><li>Next.js</li><li>TypeScript</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Reusable components</li><li>SSR</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Architecture</h3>
+        <ul><li>Microfrontend</li><li>Component-based</li><li>Headless web</li><li>Server-side rendering</li><li>Design systems</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>APIs &amp; data</h3>
+        <ul><li>GraphQL</li><li>REST APIs</li><li>JSON</li><li>Java</li><li>Node.js</li><li>MySQL</li><li>SQL</li><li>Data pipelines</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Technical SEO</h3>
+        <ul><li>Search Console</li><li>Crawl management</li><li>Indexing</li><li>Schema markup</li><li>Structured data</li><li>Redirect strategy</li><li>Site architecture</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Analytics</h3>
+        <ul><li>GA4</li><li>Google Tag Manager</li><li>Amplitude</li><li>Looker</li><li>Event tracking</li><li>Conversion tracking</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Web infrastructure</h3>
+        <ul><li>Cloudflare</li><li>CDN configuration</li><li>Caching</li><li>DNS</li><li>SSL/TLS</li><li>Apache</li><li>Nginx</li><li>AWS</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Performance</h3>
+        <ul><li>Core Web Vitals</li><li>Page speed</li><li>CDN optimisation</li><li>Responsive performance</li><li>Cross-browser testing</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>AI search</h3>
+        <ul><li>AEO</li><li>GEO</li><li>AI discoverability</li><li>AI crawler accessibility</li><li>LLM-friendly structure</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Delivery</h3>
+        <ul><li>Git &amp; GitHub</li><li>CI/CD</li><li>GitHub Actions</li><li>Jenkins</li><li>Docker</li><li>Jira</li><li>Confluence</li><li>QA</li></ul>
+      </article>
+
+      <article class="card rv" data-tilt>
+        <h3>Collaboration</h3>
+        <ul><li>Stakeholder management</li><li>Vendor coordination</li><li>Marketing &amp; SEO</li><li>Design &amp; product</li><li>Engineering</li><li>Analytics &amp; IT</li></ul>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════ EDUCATION ═════════════════════════ -->
+<section class="sec sec--tight">
+  <div class="shell">
+    <div class="edu rv">
+      <div>
+        <p class="eyebrow">Education</p>
+        <h3>Master of Science, Computer Science</h3>
+        <p>University of Dayton · Dayton, Ohio</p>
+      </div>
+      <p class="edu__note">
+        The grounding behind the operations work — I can read the code, scope the ticket
+        and QA the build myself.
+      </p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════ CONTACT ══════════════════════════ -->
+<footer class="contact" id="contact">
+  <div class="hero__glow contact__glow" aria-hidden="true"></div>
+  <div class="shell">
+    <h2 class="contact__h2 rv">Let's build<br>something.</h2>
+    <p class="contact__lede rv">
+      Available for Website Operations, web management and full-stack engineering roles across the
+      United States. Email is fastest — I answer the same day.
+    </p>
+
+    <div class="chan rv">
+      <a class="chan__item" href="mailto:rakeshreddy202000@gmail.com">
+        <span class="chan__k">Email</span>
+        <span class="chan__v">rakeshreddy202000@gmail.com</span>
+        <span class="chan__go" aria-hidden="true">›</span>
+      </a>
+      <a class="chan__item" href="tel:+19408438351">
+        <span class="chan__k">Phone</span>
+        <span class="chan__v">+1 (940) 843-8351</span>
+        <span class="chan__go" aria-hidden="true">›</span>
+      </a>
+      <a class="chan__item" href="https://www.linkedin.com/in/rakeshyeduru/" target="_blank" rel="noopener">
+        <span class="chan__k">LinkedIn</span>
+        <span class="chan__v">/in/rakeshyeduru</span>
+        <span class="chan__go" aria-hidden="true">›</span>
+      </a>
+      <a class="chan__item" href="https://rksmotors.netlify.app" target="_blank" rel="noopener">
+        <span class="chan__k">Live project</span>
+        <span class="chan__v">CNR Car Zone</span>
+        <span class="chan__go" aria-hidden="true">›</span>
+      </a>
+    </div>
+
+    <div class="foot">
+      <span>Rakesh Reddy Yeduru — Website Operations Manager &amp; Full-Stack Engineer</span>
+      <span>United States · Open to relocation</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
