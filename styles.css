@@ -750,6 +750,10 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .facts div{ display:flex; gap:12px; align-items:baseline; }
 .facts dt{ font-size:.78rem; color:var(--on-dark-3); min-width:44px; }
 .facts dd{ margin:0; font-size:.85rem; font-weight:500; color:var(--on-dark); }
+.showcase__private{
+  max-width:38ch; font-size:.8rem; line-height:1.5; color:var(--on-dark-3);
+  border-left:2px solid var(--hair-dark); padding-left:13px;
+}
 
 /* ── phone, matched to the real CNR Car Zone app ── */
 .device{ display:flex; justify-content:center; perspective:1400px; }
@@ -787,6 +791,23 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .app__ctx{ margin-left:auto; font-size:.68rem; font-weight:500; opacity:.9; }
 
 .app__body{ position:relative; flex:1; overflow:hidden; }
+
+/* Real-screenshot gallery. .shots is already taken by the document thumbnails
+   inside the CSS mockup, hence .cnrshots / .cnrshot. */
+.cnrshots{ position:absolute; inset:0; z-index:2; }
+.cnrshots[hidden]{ display:none; }
+.cnrshot{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:top center;
+  opacity:0; transform:scale(1.015);
+  transition:opacity .5s var(--ease), transform .5s var(--ease-out);
+}
+.cnrshot.is-on{ opacity:1; transform:none; }
+/* in gallery mode the screenshot carries the app's own header and tab bar */
+.phone.has-shots .app__top,
+.phone.has-shots .app__body,
+.phone.has-shots .app__nav{ visibility:hidden; }
 
 .scr{
   position:absolute; inset:0; padding:11px;

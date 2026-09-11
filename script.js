@@ -229,6 +229,8 @@
 
     var slides  = sec.querySelectorAll(".slide");
     var screens = sec.querySelectorAll(".scr");
+    var shots   = sec.querySelectorAll("[data-shot]");
+    var shotBox = sec.querySelector("[data-shots]");
     var rails   = sec.querySelectorAll("[data-rail]");
     var phone   = sec.querySelector(".phone");
     var ctx     = sec.querySelector("[data-ctx]");
@@ -259,6 +261,7 @@
     function unpin() {
       slides.forEach(function (s) { s.classList.add("is-on"); });
       screens.forEach(function (s, i) { s.classList.toggle("is-on", i === 0); });
+      shots.forEach(function (s, i) { s.classList.toggle("is-on", i === 0); });
       if (phone) phone.style.transform = "";
       chrome(0);
       current = -1;
@@ -269,6 +272,7 @@
       current = i;
       slides.forEach(function (s, n) { s.classList.toggle("is-on", n === i); });
       screens.forEach(function (s, n) { s.classList.toggle("is-on", n === i); });
+      shots.forEach(function (s, n) { s.classList.toggle("is-on", n === i); });
       rails.forEach(function (s, n) { s.classList.toggle("is-on", n === i); });
       chrome(i);
     }
@@ -293,6 +297,26 @@
           "rotateY(" + lerp(-9, 7, p).toFixed(2) + "deg) rotateX(" + lerp(4, -2, p).toFixed(2) + "deg)";
       }
     });
+
+    /* Probe the first screenshot. Only if it loads do we swap the CSS
+       recreation for the real images, so a missing file degrades to the
+       mockup instead of an empty phone. */
+    (function probeShots() {
+      if (!shotBox || !shots.length) return;
+      var first = shots[0], src = first.getAttribute("data-src");
+      if (!src) return;
+      var test = new Image();
+      test.onload = function () {
+        shots.forEach(function (img) { img.src = img.getAttribute("data-src"); });
+        shotBox.hidden = false;
+        var ph = sec.querySelector(".phone");
+        if (ph) ph.classList.add("has-shots");
+        shots.forEach(function (s, i) {
+          s.classList.toggle("is-on", i === (current < 0 ? 0 : current));
+        });
+      };
+      test.src = src;
+    })();
 
     if (reduce || !canPin()) unpin(); else show(0);
   })();

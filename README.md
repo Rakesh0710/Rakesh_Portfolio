@@ -167,6 +167,29 @@ stagger. Colour classes: `c-key` `c-typ` `c-var` `c-str` `c-fn` `c-com`.
 **Change the metrics** — search `data-count`. `data-count` is the target, `data-suffix` is appended
 when it finishes.
 
+### Adding the CNR Car Zone screenshots
+
+The app sits behind a login, so there is no live link. The phone in the CNR section shows a CSS
+recreation by default; drop real screenshots in and it upgrades itself automatically.
+
+Create a `cnr/` folder beside `index.html` and save exactly these four names:
+
+```
+cnr/1-dashboard.png     -> the home dashboard with the stat tiles
+cnr/2-opportunity.png   -> an opportunity / vehicle record
+cnr/3-documents.png     -> the document checklist
+cnr/4-exports.png       -> Data & backup, the CSV export list
+```
+
+`script.js` probes `cnr/1-dashboard.png`. If it loads, all four are swapped in and the app's own
+header and tab bar are hidden (the screenshot already contains them). If it is missing, the CSS
+mockup stays and nothing looks broken, so a half-finished set never ships a blank phone.
+
+**Scrub the data first.** These go on a public page. Registration numbers, seller names, phone
+numbers and payment figures are a real person's information. Either seed the staging environment
+with fake records and screenshot that, or blur those fields before saving. Portrait phone
+screenshots around 1200x2600 work best; keep each under ~300 KB.
+
 **Add a project phase** — add a matching `.slide`, `.scr` and rail `<i>`, then add an entry to the
 `CHROME` array in `script.js` §6 (it sets the phone's header label and which tab bar item lights up).
 JS counts the slides automatically. Past four panels, raise `height:420vh` on `.showcase` or each one
