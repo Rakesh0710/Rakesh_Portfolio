@@ -40,9 +40,30 @@ Live Server**. Every Cmd+S refreshes the browser.
 4. **Live work** — the four public URLs you shipped ← *the most valuable section on the page*
 5. **Build / Operate** — the two halves of the job
 6. **Experience** — three roles, both job titles each
-7. **CNR Car Zone** — pinned phone walkthrough
-8. **Stack** — twelve skill cards
-9. **Education**, **Contact**
+7. **NFL Season Hub** — interactive demo window (replay / league / live app)
+8. **CNR Car Zone** — pinned phone walkthrough
+9. **Stack** — twelve skill cards
+10. **Education**, **Contact**
+
+### The NFL Season Hub demo
+
+Three tabs inside one browser-chrome window:
+
+- **Game replay** — a canvas animation of the real win-probability curve for the 2022 week 15
+  Vikings/Colts game, with play/pause, a scrubber and key-play beads. Mirrors the real project's
+  technique: a fractional cursor advanced by elapsed time, repainting the canvas directly, with
+  DOM text updated only when the whole play index changes.
+- **League** — the top ten teams by projected wins, in their own colours.
+- **Live app** — a facade that only injects the `<iframe>` when the visitor clicks, so the
+  deployed React app never loads on a first visit.
+
+**The data is real.** It was fetched once from the deployed app's own public JSON
+(`/data/game/2022_15_IND_MIN.json` and `/data/teams-index.json`), trimmed, and inlined into
+`index.html` as a `<script type="application/json">` block (7 KB raw, 2.3 KB gzipped). To refresh
+or swap the game, re-fetch and regenerate that block; nothing else changes.
+
+Team colours are lifted toward WCAG contrast against the dark card at runtime, the same idea the
+real project uses, so Minnesota's `#4F2683` stays purple but becomes legible.
 
 ---
 
@@ -97,6 +118,17 @@ bad=[(k,{a:b for a,b in v.items() if len(b)>1}) for k,v in p.items() if any(len(
 print(bad or "no collisions")
 PY
 ```
+
+### Gradient text and animated letters cannot be combined
+
+`.hline--2` (the second headline line) used `background-clip:text` with a CSS gradient. It rendered
+**completely invisible**: each per-letter span animates, which puts it in its own compositing
+layer, and the parent's text clip cannot reach into it. The line took up space and painted nothing.
+Verified by rendering with each property disabled in turn: opacity, transform and filter all
+trigger it individually.
+
+`script.js` now tints each glyph along the same colour ramp, so no clipping is involved. **If you
+reintroduce a CSS gradient on any element whose children animate, it will disappear again.**
 
 ### The 960px breakpoint must match in both files
 
