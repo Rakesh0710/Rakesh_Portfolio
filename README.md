@@ -3,8 +3,8 @@
 A single-page portfolio, designed in the spirit of apple.com. No build step, no npm, no framework.
 Three files, open and edit.
 
-Positioned for **both** tracks you're applying to: Web Operations Specialist *and* full-stack
-engineer. Each role in the Experience section carries both titles.
+Positioned as a **frontend engineer** first, with website operations as the second track.
+Each role in the Experience section leads with a frontend title, with the résumé title beneath.
 
 ---
 
