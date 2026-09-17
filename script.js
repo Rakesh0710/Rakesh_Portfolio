@@ -140,7 +140,7 @@
      4 · REVEALS — staggered, with count-ups
      ═══════════════════════════════════════════════════════════════ */
   (function () {
-    [".nums__grid", ".pillar-grid", ".cards", ".live__grid"].forEach(function (sel) {
+    [".nums__grid", ".pillar-grid", ".skgrid", ".live__grid"].forEach(function (sel) {
       document.querySelectorAll(sel).forEach(function (group) {
         var i = 1;
         group.querySelectorAll(":scope > .rv").forEach(function (child) {
@@ -405,6 +405,56 @@
     function start() { if (!running) { running = true; requestAnimationFrame(paint); } }
 
     start();
+  })();
+
+
+  /* ═══════════════════════════════════════════════════════════════
+     8b · TOOLKIT — discipline filter
+     Non-matching cards dim in place rather than unmounting, so the grid
+     never reflows mid-filter and every tool stays readable/scannable.
+     ═══════════════════════════════════════════════════════════════ */
+  (function () {
+    var wrap = document.querySelector(".skfilter");
+    var cards = document.querySelectorAll(".skcard");
+    if (!wrap || !cards.length) return;
+
+    var buttons = wrap.querySelectorAll("[data-skf]");
+    var status  = document.querySelector("[data-sk-status]");
+    var countEl = document.querySelector("[data-sk-count]");
+
+    /* real tool count, so the copy can never drift from the markup */
+    if (countEl) countEl.textContent = document.querySelectorAll(".skchip").length;
+
+    function apply(group, announce) {
+      var shown = 0;
+      cards.forEach(function (c) {
+        var hit = group === "all" || c.getAttribute("data-skg") === group;
+        c.classList.toggle("is-dim", !hit);
+        if (hit) shown++;
+      });
+      buttons.forEach(function (b) {
+        var on = b.getAttribute("data-skf") === group;
+        b.classList.toggle("is-on", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      if (status) {
+        var tools = 0;
+        cards.forEach(function (c) {
+          if (!c.classList.contains("is-dim")) tools += c.querySelectorAll(".skchip").length;
+        });
+        status.textContent = announce
+          ? "Showing " + shown + (shown === 1 ? " area" : " areas") + ", " + tools + " tools."
+          : "";
+      }
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        apply(b.getAttribute("data-skf"), true);
+      });
+    });
+
+    apply("all", false);
   })();
 
 

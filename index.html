@@ -717,68 +717,185 @@
     <div class="head rv">
       <p class="eyebrow">The toolkit</p>
       <h2>Everything I build<br>and run with.</h2>
+      <p class="head__note">
+        Twelve areas, <span data-sk-count>80</span> tools. A filled dot marks what I reach for most.
+        Filter to the half of the job you are hiring for.
+      </p>
     </div>
 
-    <div class="cards">
+    <div class="skfilter rv" role="group" aria-label="Filter the toolkit by discipline">
+      <button type="button" class="skfilter__b is-on" data-skf="all" aria-pressed="true">Everything</button>
+      <button type="button" class="skfilter__b" data-skf="build" aria-pressed="false">Frontend &amp; build</button>
+      <button type="button" class="skfilter__b" data-skf="operate" aria-pressed="false">Operations &amp; content</button>
+      <button type="button" class="skfilter__b" data-skf="platform" aria-pressed="false">Platform &amp; delivery</button>
+    </div>
 
-      <article class="card rv" data-tilt>
-        <h3>Web operations</h3>
-        <ul><li>Website management</li><li>Governance</li><li>Production publishing</li><li>Release management</li><li>Site health</li><li>Troubleshooting</li></ul>
-      </article>
+    <p class="skstatus" data-sk-status role="status" aria-live="polite"></p>
 
-      <article class="card rv" data-tilt>
-        <h3>CMS</h3>
-        <ul><li>Sanity</li><li>WordPress</li><li>HubSpot CMS</li><li>Drupal</li><li>Contentful</li><li>AEM</li><li>Sitecore</li><li>Headless</li></ul>
-      </article>
+    <div class="skgrid">
 
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="build" data-tilt>
+        <span class="skcard__n" aria-hidden="true">01</span>
         <h3>Front end</h3>
-        <ul><li>React</li><li>Next.js</li><li>TypeScript</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Reusable components</li><li>SSR</li></ul>
+        <ul>
+          <li class="skchip is-core">React</li>
+          <li class="skchip is-core">Next.js</li>
+          <li class="skchip is-core">TypeScript</li>
+          <li class="skchip">JavaScript</li>
+          <li class="skchip">HTML5</li>
+          <li class="skchip">CSS3</li>
+          <li class="skchip">Reusable components</li>
+          <li class="skchip">SSR</li>
+        </ul>
       </article>
 
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="build" data-tilt>
+        <span class="skcard__n" aria-hidden="true">02</span>
         <h3>Architecture</h3>
-        <ul><li>Microfrontend</li><li>Component-based</li><li>Headless web</li><li>Server-side rendering</li><li>Design systems</li></ul>
+        <ul>
+          <li class="skchip">Microfrontend</li>
+          <li class="skchip is-core">Component-based</li>
+          <li class="skchip">Headless web</li>
+          <li class="skchip">Server-side rendering</li>
+          <li class="skchip is-core">Design systems</li>
+        </ul>
       </article>
 
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="build" data-tilt>
+        <span class="skcard__n" aria-hidden="true">03</span>
         <h3>APIs &amp; data</h3>
-        <ul><li>GraphQL</li><li>REST APIs</li><li>JSON</li><li>Java</li><li>Node.js</li><li>MySQL</li><li>SQL</li><li>Data pipelines</li></ul>
+        <ul>
+          <li class="skchip is-core">GraphQL</li>
+          <li class="skchip is-core">REST APIs</li>
+          <li class="skchip">JSON</li>
+          <li class="skchip">Java</li>
+          <li class="skchip">Node.js</li>
+          <li class="skchip">MySQL</li>
+          <li class="skchip">SQL</li>
+          <li class="skchip">Data pipelines</li>
+        </ul>
       </article>
 
-      <article class="card rv" data-tilt>
-        <h3>Technical SEO</h3>
-        <ul><li>Search Console</li><li>Crawl management</li><li>Indexing</li><li>Schema markup</li><li>Structured data</li><li>Redirect strategy</li><li>Site architecture</li></ul>
-      </article>
-
-      <article class="card rv" data-tilt>
-        <h3>Analytics</h3>
-        <ul><li>GA4</li><li>Google Tag Manager</li><li>Amplitude</li><li>Looker</li><li>Event tracking</li><li>Conversion tracking</li></ul>
-      </article>
-
-      <article class="card rv" data-tilt>
-        <h3>Web infrastructure</h3>
-        <ul><li>Cloudflare</li><li>CDN configuration</li><li>Caching</li><li>DNS</li><li>SSL/TLS</li><li>Apache</li><li>Nginx</li><li>AWS</li></ul>
-      </article>
-
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="build" data-tilt>
+        <span class="skcard__n" aria-hidden="true">04</span>
         <h3>Performance</h3>
-        <ul><li>Core Web Vitals</li><li>Page speed</li><li>CDN optimisation</li><li>Responsive performance</li><li>Cross-browser testing</li></ul>
+        <ul>
+          <li class="skchip is-core">Core Web Vitals</li>
+          <li class="skchip is-core">Page speed</li>
+          <li class="skchip">CDN optimisation</li>
+          <li class="skchip">Responsive performance</li>
+          <li class="skchip">Cross-browser testing</li>
+        </ul>
       </article>
 
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="operate" data-tilt>
+        <span class="skcard__n" aria-hidden="true">05</span>
+        <h3>Web operations</h3>
+        <ul>
+          <li class="skchip is-core">Website management</li>
+          <li class="skchip">Governance</li>
+          <li class="skchip is-core">Production publishing</li>
+          <li class="skchip is-core">Release management</li>
+          <li class="skchip">Site health</li>
+          <li class="skchip">Troubleshooting</li>
+        </ul>
+      </article>
+
+      <article class="skcard rv" data-skg="operate" data-tilt>
+        <span class="skcard__n" aria-hidden="true">06</span>
+        <h3>CMS</h3>
+        <ul>
+          <li class="skchip is-core">Sanity</li>
+          <li class="skchip">WordPress</li>
+          <li class="skchip">HubSpot CMS</li>
+          <li class="skchip">Drupal</li>
+          <li class="skchip">Contentful</li>
+          <li class="skchip is-core">AEM</li>
+          <li class="skchip">Sitecore</li>
+          <li class="skchip">Headless</li>
+        </ul>
+      </article>
+
+      <article class="skcard rv" data-skg="operate" data-tilt>
+        <span class="skcard__n" aria-hidden="true">07</span>
+        <h3>Technical SEO</h3>
+        <ul>
+          <li class="skchip is-core">Search Console</li>
+          <li class="skchip">Crawl management</li>
+          <li class="skchip">Indexing</li>
+          <li class="skchip is-core">Schema markup</li>
+          <li class="skchip">Structured data</li>
+          <li class="skchip is-core">Redirect strategy</li>
+          <li class="skchip">Site architecture</li>
+        </ul>
+      </article>
+
+      <article class="skcard rv" data-skg="operate" data-tilt>
+        <span class="skcard__n" aria-hidden="true">08</span>
+        <h3>Analytics</h3>
+        <ul>
+          <li class="skchip is-core">GA4</li>
+          <li class="skchip is-core">Google Tag Manager</li>
+          <li class="skchip">Amplitude</li>
+          <li class="skchip">Looker</li>
+          <li class="skchip">Event tracking</li>
+          <li class="skchip">Conversion tracking</li>
+        </ul>
+      </article>
+
+      <article class="skcard rv" data-skg="operate" data-tilt>
+        <span class="skcard__n" aria-hidden="true">09</span>
         <h3>AI search</h3>
-        <ul><li>AEO</li><li>GEO</li><li>AI discoverability</li><li>AI crawler accessibility</li><li>LLM-friendly structure</li></ul>
+        <ul>
+          <li class="skchip">AEO</li>
+          <li class="skchip">GEO</li>
+          <li class="skchip">AI discoverability</li>
+          <li class="skchip">AI crawler accessibility</li>
+          <li class="skchip">LLM-friendly structure</li>
+        </ul>
       </article>
 
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="platform" data-tilt>
+        <span class="skcard__n" aria-hidden="true">10</span>
+        <h3>Web infrastructure</h3>
+        <ul>
+          <li class="skchip is-core">Cloudflare</li>
+          <li class="skchip">CDN configuration</li>
+          <li class="skchip">Caching</li>
+          <li class="skchip is-core">DNS</li>
+          <li class="skchip">SSL/TLS</li>
+          <li class="skchip">Apache</li>
+          <li class="skchip">Nginx</li>
+          <li class="skchip">AWS</li>
+        </ul>
+      </article>
+
+      <article class="skcard rv" data-skg="platform" data-tilt>
+        <span class="skcard__n" aria-hidden="true">11</span>
         <h3>Delivery</h3>
-        <ul><li>Git &amp; GitHub</li><li>CI/CD</li><li>GitHub Actions</li><li>Jenkins</li><li>Docker</li><li>Jira</li><li>Confluence</li><li>QA</li></ul>
+        <ul>
+          <li class="skchip is-core">Git &amp; GitHub</li>
+          <li class="skchip is-core">CI/CD</li>
+          <li class="skchip">GitHub Actions</li>
+          <li class="skchip">Jenkins</li>
+          <li class="skchip">Docker</li>
+          <li class="skchip">Jira</li>
+          <li class="skchip">Confluence</li>
+          <li class="skchip">QA</li>
+        </ul>
       </article>
 
-      <article class="card rv" data-tilt>
+      <article class="skcard rv" data-skg="platform" data-tilt>
+        <span class="skcard__n" aria-hidden="true">12</span>
         <h3>Collaboration</h3>
-        <ul><li>Stakeholder management</li><li>Vendor coordination</li><li>Marketing &amp; SEO</li><li>Design &amp; product</li><li>Engineering</li><li>Analytics &amp; IT</li></ul>
+        <ul>
+          <li class="skchip is-core">Stakeholder management</li>
+          <li class="skchip">Vendor coordination</li>
+          <li class="skchip">Marketing &amp; SEO</li>
+          <li class="skchip">Design &amp; product</li>
+          <li class="skchip">Engineering</li>
+          <li class="skchip">Analytics &amp; IT</li>
+        </ul>
       </article>
 
     </div>

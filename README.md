@@ -42,7 +42,7 @@ Live Server**. Every Cmd+S refreshes the browser.
 6. **Experience** — three roles, both job titles each
 7. **NFL Season Hub** — interactive demo window (replay / league / live app)
 8. **CNR Car Zone** — pinned phone walkthrough
-9. **Stack** — twelve skill cards
+9. **Stack** — twelve skill cards with a discipline filter
 10. **Education**, **Contact**
 
 ### The NFL Season Hub demo
@@ -163,6 +163,20 @@ Lowercase, no punctuation. They render in blue as they light up.
 **Change the hero code window** — `index.html`, search `ide__code`. Each line is one
 `<span class="ln" style="--l:N">`; keep `--l` sequential — it drives the line number *and* the typing
 stagger. Colour classes: `c-key` `c-typ` `c-var` `c-str` `c-fn` `c-com`.
+
+### The toolkit filter
+
+Twelve `.skcard` blocks, each tagged `data-skg="build|operate|platform"`. The filter buttons carry
+a matching `data-skf`. Non-matching cards get `.is-dim` rather than being hidden, so the grid never
+reflows mid-filter and every tool stays readable.
+
+- **Adding a card:** copy an `<article class="skcard rv">`, give it a `data-skg`, and renumber the
+  `.skcard__n`. The tool count in the intro and the "Showing N areas" line are both counted from the
+  DOM at runtime, so they can never drift from the markup.
+- **Marking a core tool:** add `is-core` to a `.skchip`. That draws the filled dot and darkens the
+  label. These are an editorial judgement about what you lead with — change them freely.
+- **Group colour:** set in `styles.css` via `.skcard[data-skg="..."]{ --sk: ... }`. All three clear
+  4.5:1 on the card background; check any replacement before using it.
 
 **Change the metrics** — search `data-count`. `data-count` is the target, `data-suffix` is appended
 when it finishes.
