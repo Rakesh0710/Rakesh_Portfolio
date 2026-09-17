@@ -663,6 +663,15 @@
     elN.textContent = i + 1;
     elDesc.textContent = keyAt[i] || "Kickoff. Minnesota receive.";
     if (!dragging) elSeek.value = i;
+
+    /* A range input announces its raw value ("150"), which means nothing here.
+       Give the whole game state instead, the way the real project does. */
+    elSeek.setAttribute(
+      "aria-valuetext",
+      "Play " + (i + 1) + " of " + (LAST + 1) + ", " +
+      elClock.textContent + ", IND " + D.as[i] + ", MIN " + D.hs[i] + ", " +
+      "Minnesota " + Math.round(D.wp[i] / 10) + " percent to win"
+    );
   }
 
   /* ── transport ── */

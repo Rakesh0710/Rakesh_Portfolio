@@ -130,6 +130,23 @@ trigger it individually.
 `script.js` now tints each glyph along the same colour ramp, so no clipping is involved. **If you
 reintroduce a CSS gradient on any element whose children animate, it will disappear again.**
 
+### Text colour tokens are set to a measured contrast floor
+
+`--ink-3`, `--on-dark-3` and `--blue` are not arbitrary. They were raised until every piece of
+small text on the page cleared WCAG AA (4.5:1) against the background it is actually composited on:
+
+| Token | Value | Clears |
+|---|---|---|
+| `--ink-3` | `#707075` | 4.9:1 on white, 4.5:1 on the gray section |
+| `--on-dark-3` | `#88888d` | 6.0:1 on black, 4.6:1 on the lightest dark card |
+| `--blue` | `#006ddf` | 4.9:1 on white, and white-on-blue 4.9:1 for buttons |
+
+Apple's own `#86868b` and `#0071e3` sit at 3.3:1 and 4.3:1 for small text, which fails. **If you
+lighten these back toward Apple's values, re-measure.** Parse the colour by painting it on a canvas
+and reading the pixel back rather than by regex; Tailwind-style `oklch()` and any `rgba()` will
+otherwise be read wrong, and semi-transparent layers must be composited over their ancestors or a
+3% white overlay reads as pure white.
+
 ### The 960px breakpoint must match in both files
 
 `script.js` checks `window.innerWidth > 960`; `styles.css` switches at `max-width:960px`. Below it

@@ -9,17 +9,17 @@
 
   --ink:#1d1d1f;
   --ink-2:#6e6e73;
-  --ink-3:#86868b;
+  --ink-3:#707075;        /* 4.9:1 on white, 4.5:1 on gray */
   --on-dark:#f5f5f7;
   --on-dark-2:#a1a1a6;
-  --on-dark-3:#6e6e73;
+  --on-dark-3:#88888d;    /* 6.0:1 on black, 4.6:1 on the lightest dark card */
 
   --hair:#d2d2d7;
   --hair-2:#e8e8ed;
   --hair-dark:rgba(255,255,255,.14);
   --hair-dark-2:rgba(255,255,255,.08);
 
-  --blue:#0071e3;
+  --blue:#006ddf;         /* 4.9:1 on white; white-on-blue 4.9:1 */
   --blue-hi:#0077ed;
   --blue-dark:#2997ff;
   --green:#30d158;
