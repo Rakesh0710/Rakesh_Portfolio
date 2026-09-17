@@ -1060,6 +1060,19 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 }
 .chan__item:hover .chan__go{ transform:translateX(4px); color:var(--blue-dark); }
 
+/* the phone tile holds two numbers, so it is a div with its own links
+   rather than one big anchor (anchors cannot nest) */
+.chan__item--multi{ display:flex; flex-direction:column; align-items:flex-start; }
+.chan__item--multi:hover{ background:#0e0e11; }   /* no whole-tile affordance */
+.chan__tel{
+  display:inline-block; margin-top:4px;
+  font-size:1rem; font-weight:500; color:var(--on-dark);
+  text-decoration:none;
+  transition:color .3s var(--ease);
+}
+.chan__tel:first-of-type{ margin-top:0; }
+.chan__tel:hover{ color:var(--blue-dark); }
+
 .foot{
   margin-top:clamp(44px,6vw,76px); padding-top:24px;
   border-top:1px solid var(--hair-dark-2);
