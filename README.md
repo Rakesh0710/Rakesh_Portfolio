@@ -181,6 +181,25 @@ Lowercase, no punctuation. They render in blue as they light up.
 `<span class="ln" style="--l:N">`; keep `--l` sequential — it drives the line number *and* the typing
 stagger. Colour classes: `c-key` `c-typ` `c-var` `c-str` `c-fn` `c-com`.
 
+### Toolkit icons
+
+Every chip carries an icon from an inline SVG sprite at the top of `<body>` (67 symbols, ~51 KB
+raw / ~22 KB gzipped). 31 are real brand marks from [Simple Icons](https://simpleicons.org)
+(CC0); the other 36 are generic glyphs authored for this page, drawn as solid shapes so they sit
+at the same visual weight as the brand marks.
+
+- **Referencing:** `<svg class="skchip__i"><use href="#i-react"/></svg>`. Symbol ids are `i-<slug>`.
+- **Icon colour:** a chip with a brand icon sets `--bc` inline to that brand's colour, already
+  darkened to clear 3:1 on the chip background. Chips without one inherit the card's `--sk` accent.
+- **Adding a brand:** grab the path from
+  `https://cdn.jsdelivr.net/npm/simple-icons@13/icons/<slug>.svg`, add a `<symbol>`, and compute the
+  lifted colour the same way (see §5 for why you must measure rather than eyeball it).
+
+> ⚠️ **Do not "optimise" the sprite by rounding path coordinates.** Rounding to 1 decimal looks
+> harmless at a 24-unit viewBox but silently destroyed React, Java, Node.js, MySQL, WordPress,
+> Search Console and GA4 — they rendered as thin slivers. It saved 8 KB gzipped and cost seven
+> logos. Full precision is deliberate.
+
 ### The toolkit filter
 
 Twelve `.skcard` blocks, each tagged `data-skg="build|operate|platform"`. The filter buttons carry
