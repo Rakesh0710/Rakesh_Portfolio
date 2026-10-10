@@ -227,6 +227,19 @@ Only October, November and December have themes. The other nine months fall thro
 which is the original blue. Four good themes beat twelve mediocre ones; add more by extending the
 `SEASONS`, `CODE` and `SPEC` maps in §8c and the two token blocks in `styles.css`.
 
+**The code window fades twice, on purpose.** `.hero::after` lays a transparent-to-black gradient
+over the last ~26vh, and `.ide` *also* carries its own `mask-image` fading its bottom 45%. The
+overlay alone is not enough: `.ide` has `backdrop-filter` plus a `preserve-3d` 3D transform, which
+Safari promotes to its own compositing layer and can paint above a sibling overlay no matter what
+`z-index` says. A mask is part of the element's own rendering, so it cannot be out-ordered.
+
+- The **mask** dissolves the window, and must reach `transparent` before ~92%, because the window
+  renders ~27px taller than the hero and `overflow:hidden` clips it there. Reach transparent later
+  than that and a faint hard edge reappears at the clip line.
+- The **overlay** dissolves everything around the window: the grid, the glow and the particles.
+
+Removing either one brings back a visible seam, in at least one browser.
+
 **The hero fades into the next section on purpose.** The code window is taller than the hero, so
 `overflow:hidden` used to slice it off on a hard horizontal line. `.hero::after` lays a
 transparent-to-black gradient over the last ~26vh, dissolving the window, grid, glow and particles

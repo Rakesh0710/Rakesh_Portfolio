@@ -428,6 +428,15 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   overflow:hidden;
   transform-style:preserve-3d;
   will-change:transform;
+  /* The window fades itself out at the bottom. .hero::after also lays a
+     gradient over this area, but this element has backdrop-filter AND a
+     preserve-3d transform, so Safari promotes it to its own compositing
+     layer and can paint it above that overlay whatever the z-index says.
+     A mask is part of the element's own rendering, so it cannot be
+     out-ordered. Both are kept: the mask handles the window, the overlay
+     handles the grid, glow and particles around it. */
+  -webkit-mask-image:linear-gradient(to bottom, #000 55%, transparent 90%);
+          mask-image:linear-gradient(to bottom, #000 55%, transparent 90%);
 }
 .ide__bar{
   display:flex; align-items:center; gap:16px;
