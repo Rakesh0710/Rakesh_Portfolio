@@ -945,127 +945,65 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 .skcard{
   --sk:var(--blue);
-  --card:var(--white);
   position:relative; overflow:hidden;
-  background:var(--card); border:1px solid var(--hair-2); border-radius:20px;
+  /* colour and image set separately so the solid ground always survives,
+     including where color-mix is unsupported */
+  background-color:#0b0b0e;
+  background-image:linear-gradient(165deg,
+             color-mix(in srgb, var(--sk) 20%, transparent) 0%, transparent 72%);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:20px;
   padding:clamp(20px,2.4vw,26px);
-  transition:background .4s var(--ease), border-color .4s var(--ease),
-             box-shadow .45s var(--ease), transform .5s var(--ease-out),
-             opacity .45s var(--ease), filter .45s var(--ease);
-  will-change:transform;
+  box-shadow:0 14px 40px rgba(0,0,0,.14);
+  transition:opacity .45s var(--ease), filter .45s var(--ease);
+}
+/* accent rule across the top of every card */
+.skcard::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:3px;
+  background:var(--sk);
 }
 
-/* accent wash, far stronger than the old one and now on a dark ground */
-.skcard::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(420px circle at var(--mx,50%) var(--my,0%),
-      color-mix(in srgb, var(--sk) 42%, transparent), transparent 70%),
-    linear-gradient(160deg, color-mix(in srgb, var(--sk) 16%, transparent), transparent 55%);
-  opacity:0; transition:opacity .4s var(--ease);
-}
-/* accent rule across the top */
-.skcard::before{
-  content:""; position:absolute; left:0; right:0; top:0; height:3px; z-index:2;
-  background:var(--sk); transform:scaleX(0); transform-origin:left;
-  transition:transform .55s var(--ease-out);
-}
 .skcard__top{
-  position:relative; z-index:1;
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:14px;
 }
 .skcard__ico{
   width:40px; height:40px; border-radius:12px;
   display:grid; place-items:center; flex:none;
-  background:var(--gray);
-  background:color-mix(in srgb, var(--sk) 12%, transparent);
-  color:var(--sk);
-  transition:transform .4s var(--spring), background .3s var(--ease), color .3s var(--ease),
-             box-shadow .4s var(--ease);
+  background:var(--sk); color:#fff;
+  box-shadow:0 8px 22px color-mix(in srgb, var(--sk) 45%, transparent);
 }
 .skcard__ico svg{ width:21px; height:21px; display:block; }
+
 .skcard__n{
   font-family:var(--mono); font-size:.72rem; font-weight:500;
-  color:var(--sk); letter-spacing:.02em; opacity:.75;
-  transition:color .3s var(--ease), opacity .3s;
-}
-.skcard h3{
-  position:relative; z-index:1;
-  font-size:1.04rem; font-weight:600; letter-spacing:-.024em;
-  margin-bottom:15px; padding-bottom:13px; border-bottom:1px solid var(--hair-2);
-  transition:color .3s var(--ease), border-color .4s var(--ease);
-}
-.skcard ul{ position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:6px; }
-
-.skchip{
-  display:inline-flex; align-items:center; gap:7px;
-  font-size:.81rem; color:var(--ink-2);
-  background:var(--gray); border:1px solid transparent;
-  padding:5px 11px 5px 8px; border-radius:9px;
-  transition:color .3s var(--ease), background .3s var(--ease),
-             border-color .3s var(--ease), transform .25s var(--spring);
-}
-.skchip__i{
-  width:14px; height:14px; flex:none; display:block;
-  color:var(--bc,var(--sk));
-  transition:transform .25s var(--spring), color .3s var(--ease);
-}
-.skchip.is-core{ color:var(--ink); font-weight:500; background:var(--white);
-                 border-color:var(--hair); }
-
-/* Hover is gated on a real pointer: on touch, :hover sticks after a tap
-   and would leave a card stranded in its inverted state. */
-@media (hover:hover) and (pointer:fine){
-  /* ── hover: the card inverts to dark and lights up in its own accent ──
-   A tint on white read as almost nothing, so the whole surface flips.
-   Chips swap to --bc-d, a second brand colour lifted for a dark ground. */
-.skcard:hover{
-  --card:#0d0d11;
-  border-color:color-mix(in srgb, var(--sk) 55%, #2a2a31);
-  box-shadow:0 22px 60px rgba(0,0,0,.30),
-             0 0 0 1px color-mix(in srgb, var(--sk) 30%, transparent),
-             0 14px 50px -8px color-mix(in srgb, var(--sk) 45%, transparent);
-}
-  .skcard:hover::after{ opacity:1; }
-  .skcard:hover::before{ transform:none; }
-  /* on hover the tile fills solid and glows */
-.skcard:hover .skcard__ico{
-  background:var(--sk); color:#fff;
-  transform:scale(1.1) rotate(-4deg);
-  box-shadow:0 8px 24px color-mix(in srgb, var(--sk) 55%, transparent);
-}
-  .skcard:hover .skcard__n{
-  opacity:1;
-  /* the accent is tuned for a white card; lighten it once the card inverts */
+  letter-spacing:.02em;
   color:#ffffff;
   color:color-mix(in srgb, var(--sk) 35%, #ffffff);
 }
-  .skcard:hover h3{ color:#fff; border-bottom-color:rgba(255,255,255,.16); }
-  /* chips follow the card into dark */
-.skcard:hover .skchip{
-  background:rgba(255,255,255,.07);
-  border-color:rgba(255,255,255,.10);
-  color:#d7d7de;
+
+.skcard h3{
+  font-size:1.04rem; font-weight:600; letter-spacing:-.024em; color:#fff;
+  margin-bottom:15px; padding-bottom:13px;
+  border-bottom:1px solid rgba(255,255,255,.14);
 }
-  .skcard:hover .skchip.is-core{
-  background:rgba(255,255,255,.13);
-  border-color:rgba(255,255,255,.22);
-  color:#fff;
+
+.skcard ul{ display:flex; flex-wrap:wrap; gap:6px; }
+
+/* every chip is identical: dark pill, white label, its own symbol */
+.skchip{
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:.81rem; font-weight:450; color:#f0f0f4;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.13);
+  padding:5px 11px 5px 8px; border-radius:9px;
 }
-  .skcard:hover .skchip__i{
-  /* brand chips use their dark-lifted colour; generic glyphs take a
-     bright tint of the card accent rather than flat white */
-  color:#fff;
+.skchip__i{
+  width:14px; height:14px; flex:none; display:block;
+  /* brand marks keep their own colour (lifted for a dark ground);
+     generic glyphs take a bright tint of the card accent */
+  color:#ffffff;
   color:var(--bc-d, color-mix(in srgb, var(--sk) 42%, #ffffff));
-}
-  .skchip:hover{ transform:translateY(-2px); }
-  .skcard:hover .skchip:hover{
-  background:rgba(255,255,255,.18);
-  border-color:color-mix(in srgb, var(--bc-d,var(--sk)) 60%, transparent);
-  color:#fff;
-}
-  .skchip:hover .skchip__i{ transform:scale(1.14); }
 }
 
 /* filtered out: dimmed in place, so nothing reflows and everything stays readable */

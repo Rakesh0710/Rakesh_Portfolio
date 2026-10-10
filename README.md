@@ -200,25 +200,24 @@ at the same visual weight as the brand marks.
 > Search Console and GA4 — they rendered as thin slivers. It saved 8 KB gzipped and cost seven
 > logos. Full precision is deliberate.
 
-### Toolkit hover
+### Toolkit cards are dark, and have no hover state
 
-A tint on a white card read as almost nothing, so hovering a card **inverts it**: the surface goes
-to `#0d0d11`, the icon tile fills solid with the accent, the title goes white and the chips move to
-dark pills.
+The cards are permanently dark (`background-color:#0b0b0e` plus a faint accent gradient). There is
+**no hover effect at all** — no tilt, no inversion, no spotlight. That is deliberate; earlier
+versions had both a subtle tint and a full inversion and neither was wanted.
 
-That needs two colours per brand icon, both set inline on the chip:
+Every chip is styled identically: a dark pill, white label, and its symbol. There is no "core
+tool" emphasis any more.
 
-| Var | Used | Lifted against |
-|---|---|---|
-| `--bc` | card at rest (white) | `#f5f5f7`, darkened to 3:1 |
-| `--bc-d` | card hovered (dark) | `#1b1b1f`, lightened to 3:1 |
+Icon colour comes from `--bc-d`, set inline per brand chip and lifted to 3:1 against the dark
+pill. Brands with almost no saturation (GitHub, Next.js, Apache) go near-white rather than grey,
+which is what those brands do in their own dark modes. Generic glyphs have no `--bc-d` and fall
+back to a bright tint of the card accent.
 
-Brands with almost no saturation (GitHub, Next.js, Apache) are forced to `#e8e8ed` on dark instead
-of being lightened to grey, which is what those brands do in their own dark modes. Generic glyphs
-have no `--bc` and fall back to the card accent, tinted toward white on the dark state.
-
-All of the hover rules live in one `@media (hover:hover) and (pointer:fine)` block. **Keep them
-there** — on touch, `:hover` sticks after a tap and would strand a card in its inverted state.
+> Set `background-color` and `background-image` separately on a card, never the `background`
+> shorthand with a gradient. The shorthand resets the colour to transparent, which leaves no solid
+> ground if `color-mix` is unsupported — and makes any contrast check read the section behind it
+> instead of the card.
 
 ### The toolkit filter
 
