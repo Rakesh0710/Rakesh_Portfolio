@@ -237,15 +237,50 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   overflow:hidden; isolation:isolate;
   display:flex; flex-direction:column;
 }
+/* ── time of day ──────────────────────────────────────────────
+   script.js stamps data-tod on <html> from the visitor's clock.
+   Day is the original palette; the others warm or cool it. ── */
+:root,
+[data-tod="day"]  { --g1:rgba(41,151,255,.30); --g2:rgba(0,86,214,.28);  --g3:rgba(124,212,255,.12); }
+[data-tod="dawn"] { --g1:rgba(255,168,116,.26); --g2:rgba(206,112,170,.22); --g3:rgba(255,214,170,.12); }
+[data-tod="dusk"] { --g1:rgba(255,138,80,.26);  --g2:rgba(124,82,214,.26);  --g3:rgba(255,170,120,.12); }
+[data-tod="night"]{ --g1:rgba(41,110,220,.22);  --g2:rgba(10,32,92,.34);    --g3:rgba(96,150,230,.10); }
+
+/* ── season: an accent plus a tint that layers over the glow ── */
+:root,
+[data-season="none"]{ --season:#2997ff; --season-soft:rgba(41,151,255,.10); }
+[data-season="oct"] { --season:#ff9248; --season-soft:rgba(255,120,40,.13); }
+[data-season="nov"] { --season:#e09a4e; --season-soft:rgba(200,116,40,.13); }
+[data-season="dec"] { --season:#bfe2ff; --season-soft:rgba(150,200,255,.12); }
+
 .hero__glow{
   position:absolute; z-index:-2; inset:-30% -20% auto -20%; height:130%;
   background:
-    radial-gradient(42% 38% at 68% 16%, rgba(41,151,255,.30), transparent 66%),
-    radial-gradient(38% 40% at 20% 50%, rgba(0,86,214,.28), transparent 70%),
-    radial-gradient(30% 30% at 52% 86%, rgba(124,212,255,.12), transparent 70%);
+    radial-gradient(42% 38% at 68% 16%, var(--g1), transparent 66%),
+    radial-gradient(38% 40% at 20% 50%, var(--g2), transparent 70%),
+    radial-gradient(30% 30% at 52% 86%, var(--g3), transparent 70%),
+    radial-gradient(70% 55% at 50% 100%, var(--season-soft), transparent 72%);
   filter:blur(28px);
   animation:drift 22s ease-in-out infinite alternate;
 }
+
+/* seasonal particles: embers, leaves or snow, drawn in script.js */
+.season{
+  position:absolute; inset:0; z-index:-1;
+  width:100%; height:100%;
+  pointer-events:none;
+}
+
+/* ── greeting: empty until JS fills it, so nothing shifts if JS fails ── */
+.greet:empty{ display:none; }
+.greet{
+  font-family:var(--mono);
+  font-size:clamp(.66rem,1.25vw,.74rem); font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase;
+  color:var(--on-dark-3);
+  margin-bottom:clamp(12px,1.8vh,18px);
+}
+.greet b{ font-weight:500; color:var(--season); }
 @keyframes drift{
   0%  { transform:translate3d(0,0,0) scale(1); }
   100%{ transform:translate3d(-4%,3%,0) scale(1.12); }
@@ -1125,6 +1160,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   .say__text .w{ color:var(--on-dark); }
   .say__text .w.key{ color:var(--blue-dark); }
   .ide, .phone{ transform:none !important; }
+  .season{ display:none; }   /* seasonal particles off; the colour shift stays */
   .showcase{ height:auto; }
   .showcase__stick{ position:static; height:auto; padding-block:90px; }
   .slides{ position:static; min-height:0; display:grid; gap:20px; }

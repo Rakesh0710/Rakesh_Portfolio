@@ -459,6 +459,201 @@
 
 
   /* ═══════════════════════════════════════════════════════════════
+     8c · SEASON + TIME OF DAY
+     Reads the visitor's own clock, so there is nothing to fetch and
+     nothing to keep in sync. ?season= and ?tod= force a value, which
+     is how you preview a month without waiting for it.
+     ═══════════════════════════════════════════════════════════════ */
+  (function () {
+    var root = document.documentElement;
+    var q    = new URLSearchParams(location.search);
+    var now  = new Date();
+
+    /* ── which season ── */
+    var SEASONS = { 9: "oct", 10: "nov", 11: "dec" };      /* 0-indexed months */
+    var season  = SEASONS[now.getMonth()] || "none";
+    var forced  = (q.get("season") || "").toLowerCase();
+    if (/^(oct|nov|dec|none)$/.test(forced)) season = forced;
+
+    /* ── which part of the day ── */
+    var h = now.getHours();
+    var tod = h < 5  ? "night"
+            : h < 7  ? "dawn"
+            : h < 17 ? "day"
+            : h < 21 ? "dusk"
+            : "night";
+    var ftod = (q.get("tod") || "").toLowerCase();
+    if (/^(dawn|day|dusk|night)$/.test(ftod)) {
+      tod = ftod;
+      /* keep the greeting consistent with a forced preview, otherwise
+         ?tod=dawn would still say "Working late" from the real clock */
+      h = { dawn: 6, day: 14, dusk: 19, night: 23 }[tod];
+    }
+
+    root.setAttribute("data-season", season);
+    root.setAttribute("data-tod", tod);
+
+    /* ── greeting ── */
+    var DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var phrase = h < 5  ? "Working late"
+               : h < 7  ? "Up early"
+               : h < 12 ? "Good morning"
+               : h < 17 ? "Good afternoon"
+               : h < 22 ? "Good evening"
+               : "Working late";
+    var greet = document.querySelector("[data-greet]");
+    if (greet) {
+      greet.textContent = phrase + " · ";
+      var day = document.createElement("b");
+      day.textContent = DAYS[now.getDay()];
+      greet.appendChild(day);
+    }
+
+    /* ── the seasonal line in the code window ── */
+    var CODE = {
+      none: ["'default'", ""],
+      oct:  ["'halloween'", "   // spooky season"],
+      nov:  ["'harvest'",   "   // thanksgiving"],
+      dec:  ["'winter'",    "   // snow is falling"]
+    };
+    var cEl = document.querySelector("[data-season-code]");
+    var nEl = document.querySelector("[data-season-note]");
+    if (cEl) cEl.textContent = CODE[season][0];
+    if (nEl) nEl.textContent = CODE[season][1];
+
+    /* ── particles ──────────────────────────────────────────────── */
+    var SPEC = {
+      oct: { kind: "ember", n: 44, colors: ["#ff9248", "#ff6a2a", "#ffc489"] },
+      nov: { kind: "leaf",  n: 26, colors: ["#e09a4e", "#c2703a", "#a85f33", "#d8a357"] },
+      dec: { kind: "snow",  n: 54, colors: ["#ffffff", "#dcefff", "#bfe2ff"] }
+    };
+    var spec = SPEC[season];
+    var cv   = document.querySelector("[data-season-canvas]");
+    var hero = document.getElementById("top");
+    if (!spec || !cv || !hero || reduce || !cv.getContext) return;
+
+    var ctx = cv.getContext("2d");
+    var W = 0, H = 0, dpr = 1, bits = [], raf = null, live = false, last = 0;
+
+    function size() {
+      var r = hero.getBoundingClientRect();
+      W = r.width; H = r.height;
+      if (!W || !H) return;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      cv.width = Math.round(W * dpr);
+      cv.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function spawn(first) {
+      var c = spec.colors[(Math.random() * spec.colors.length) | 0];
+      var b = { c: c, ph: Math.random() * 6.28, sw: 0.4 + Math.random() * 1.1 };
+      if (spec.kind === "ember") {
+        b.x = Math.random() * W;
+        b.y = first ? Math.random() * H : H + 10;
+        b.r = 0.9 + Math.random() * 1.9;
+        b.vy = -(10 + Math.random() * 22);
+        b.life = 0.45 + Math.random() * 0.55;
+      } else if (spec.kind === "leaf") {
+        b.x = Math.random() * W;
+        b.y = first ? Math.random() * H : -20;
+        b.r = 3.2 + Math.random() * 3.4;
+        b.vy = 16 + Math.random() * 24;
+        b.rot = Math.random() * 6.28;
+        b.vr = (Math.random() - 0.5) * 1.6;
+        b.life = 0.5 + Math.random() * 0.4;
+      } else {
+        b.x = Math.random() * W;
+        b.y = first ? Math.random() * H : -10;
+        b.r = 0.9 + Math.random() * 2.1;
+        b.vy = 14 + Math.random() * 26;
+        b.life = 0.45 + Math.random() * 0.45;
+      }
+      return b;
+    }
+
+    function build() {
+      bits = [];
+      var n = Math.round(spec.n * Math.min(1, W / 1100));
+      for (var i = 0; i < Math.max(10, n); i++) bits.push(spawn(true));
+    }
+
+    function frame(t) {
+      raf = null;
+      if (!live) return;
+      var dt = Math.min(t - last, 100) / 1000;   /* cap a backgrounded tab */
+      last = t;
+      ctx.clearRect(0, 0, W, H);
+
+      for (var i = 0; i < bits.length; i++) {
+        var b = bits[i];
+        b.ph += dt * b.sw;
+        b.y += b.vy * dt;
+        b.x += Math.sin(b.ph) * (spec.kind === "leaf" ? 26 : 12) * dt;
+
+        var out = spec.kind === "ember" ? b.y < -12 : b.y > H + 20;
+        if (out || b.x < -30 || b.x > W + 30) { bits[i] = spawn(false); continue; }
+
+        ctx.globalAlpha = b.life * (spec.kind === "ember"
+          ? Math.max(0, 1 - (H - b.y) / H) * (0.65 + 0.35 * Math.sin(b.ph * 3))
+          : 1);
+        ctx.fillStyle = b.c;
+
+        if (spec.kind === "leaf") {
+          b.rot += b.vr * dt;
+          ctx.save();
+          ctx.translate(b.x, b.y);
+          ctx.rotate(b.rot);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, b.r, b.r * 0.46, 0, 0, 6.283);
+          ctx.fill();
+          ctx.restore();
+        } else {
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r, 0, 6.283);
+          ctx.fill();
+        }
+      }
+      ctx.globalAlpha = 1;
+      raf = requestAnimationFrame(frame);
+    }
+
+    function start() {
+      if (live || !W) return;
+      live = true; last = performance.now();
+      raf = requestAnimationFrame(frame);
+    }
+    function stop() {
+      live = false;
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+    }
+
+    size(); build();
+
+    if ("ResizeObserver" in window) {
+      new ResizeObserver(function () {
+        var w0 = W; size();
+        if (Math.abs(W - w0) > 40) build();
+      }).observe(hero);
+    } else {
+      window.addEventListener("resize", function () { size(); build(); });
+    }
+
+    /* only run while the hero is actually on screen */
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) {
+        e[0].isIntersecting ? start() : stop();
+      }, { threshold: 0 }).observe(hero);
+    } else {
+      start();
+    }
+    document.addEventListener("visibilitychange", function () {
+      document.hidden ? stop() : start();
+    });
+  })();
+
+
+  /* ═══════════════════════════════════════════════════════════════
      9 · Kick everything once layout has settled
      ═══════════════════════════════════════════════════════════════ */
   window.addEventListener("load", requestFrame);

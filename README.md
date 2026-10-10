@@ -200,6 +200,46 @@ at the same visual weight as the brand marks.
 > Search Console and GA4 — they rendered as thin slivers. It saved 8 KB gzipped and cost seven
 > logos. Full precision is deliberate.
 
+### The hero knows what month and time it is
+
+`script.js` §8c reads the visitor's own clock and stamps two attributes on `<html>`:
+
+| Attribute | Values | Drives |
+|---|---|---|
+| `data-season` | `oct` `nov` `dec` `none` | particle type, accent colour, the `season:` line in the code window |
+| `data-tod` | `dawn` `day` `dusk` `night` | the hero glow palette (`--g1/--g2/--g3`) and the greeting wording |
+
+Nothing is fetched and there is nothing to keep in sync. The trade-off is that a visitor with a
+wrong device clock sees the wrong theme, which is harmless.
+
+**Previewing without waiting for the calendar:**
+
+```
+?season=oct     ?season=nov     ?season=dec     ?season=none
+?tod=dawn       ?tod=day        ?tod=dusk       ?tod=night
+```
+
+They combine: `?season=dec&tod=night`. Forcing `tod` also moves the greeting, so a preview never
+says "Working late" at a forced dawn. **Use `?season=none` to mute the whole thing** before a
+specific interview.
+
+Only October, November and December have themes. The other nine months fall through to `none`,
+which is the original blue. Four good themes beat twelve mediocre ones; add more by extending the
+`SEASONS`, `CODE` and `SPEC` maps in §8c and the two token blocks in `styles.css`.
+
+**Rules the particle layer follows** — change them at your peril:
+
+- Hidden entirely under `prefers-reduced-motion`; the colour shift and greeting stay.
+- `IntersectionObserver` stops the loop when the hero leaves the viewport (verified: zero
+  `requestAnimationFrame` calls while scrolled away), and `visibilitychange` stops it on a
+  background tab.
+- A frame advances by at most 100ms, so returning to a backgrounded tab does not teleport
+  every particle.
+- The canvas is `z-index:-1` inside `.hero`, which has `isolation:isolate`, so particles always
+  paint behind the text. They show *through* the translucent badge; that is correct, not a bug.
+- Greeting text is empty in the HTML and filled by JS, with `.greet:empty{display:none}` so
+  nothing shifts if JS fails.
+
 ### Toolkit cards are dark, and have no hover state
 
 The cards are permanently dark (`background-color:#0b0b0e` plus a faint accent gradient). There is

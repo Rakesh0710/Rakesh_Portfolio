@@ -69,8 +69,11 @@
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__grid" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
+  <canvas class="season" data-season-canvas aria-hidden="true"></canvas>
 
   <div class="hero__in shell">
+
+    <p class="greet" data-greet data-lift="0"></p>
 
     <p class="hero__badge" data-lift="1">
       <i aria-hidden="true"></i>Open to Frontend &amp; Website Operations roles
@@ -122,14 +125,15 @@
         <pre class="ide__code" aria-label="Illustrative TypeScript snippet describing how a release ships"><code><span class="ln" style="--l:0"><b class="c-key">export const</b> <b class="c-var">rakesh</b> = {</span>
 <span class="ln" style="--l:1">  builds:   [<b class="c-str">'React'</b>, <b class="c-str">'Next.js'</b>, <b class="c-str">'TypeScript'</b>, <b class="c-str">'Java'</b>],</span>
 <span class="ln" style="--l:2">  operates: [<b class="c-str">'Sanity'</b>, <b class="c-str">'AEM'</b>, <b class="c-str">'Cloudflare'</b>, <b class="c-str">'GA4'</b>],</span>
-<span class="ln" style="--l:3">&nbsp;</span>
-<span class="ln" style="--l:4">  <b class="c-key">async</b> <b class="c-fn">ship</b>(site: <b class="c-typ">Site</b>) {</span>
-<span class="ln" style="--l:5">    <b class="c-key">await</b> <b class="c-fn">requirements</b>(site);</span>
-<span class="ln" style="--l:6">    <b class="c-key">await</b> <b class="c-fn">build</b>(site);</span>
-<span class="ln" style="--l:7">    <b class="c-key">await</b> <b class="c-fn">qa</b>(site);      <span class="c-com">// a11y · CWV · cross-browser</span></span>
-<span class="ln" style="--l:8">    <b class="c-key">return</b> <b class="c-fn">release</b>(site); <span class="c-com">// 175+ and counting</span></span>
-<span class="ln" style="--l:9">  },</span>
-<span class="ln" style="--l:10">};<span class="caret" aria-hidden="true"></span></span></code></pre>
+<span class="ln" style="--l:3">  season:   <b class="c-str" data-season-code>'default'</b>,<span class="c-com" data-season-note></span></span>
+<span class="ln" style="--l:4">&nbsp;</span>
+<span class="ln" style="--l:5">  <b class="c-key">async</b> <b class="c-fn">ship</b>(site: <b class="c-typ">Site</b>) {</span>
+<span class="ln" style="--l:6">    <b class="c-key">await</b> <b class="c-fn">requirements</b>(site);</span>
+<span class="ln" style="--l:7">    <b class="c-key">await</b> <b class="c-fn">build</b>(site);</span>
+<span class="ln" style="--l:8">    <b class="c-key">await</b> <b class="c-fn">qa</b>(site);      <span class="c-com">// a11y · CWV · cross-browser</span></span>
+<span class="ln" style="--l:9">    <b class="c-key">return</b> <b class="c-fn">release</b>(site); <span class="c-com">// 175+ and counting</span></span>
+<span class="ln" style="--l:10">  },</span>
+<span class="ln" style="--l:11">};<span class="caret" aria-hidden="true"></span></span></code></pre>
       </div>
     </div>
   </div>
