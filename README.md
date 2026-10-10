@@ -233,9 +233,14 @@ overlay alone is not enough: `.ide` has `backdrop-filter` plus a `preserve-3d` 3
 Safari promotes to its own compositing layer and can paint above a sibling overlay no matter what
 `z-index` says. A mask is part of the element's own rendering, so it cannot be out-ordered.
 
-- The **mask** dissolves the window, and must reach `transparent` before ~92%, because the window
-  renders ~27px taller than the hero and `overflow:hidden` clips it there. Reach transparent later
-  than that and a faint hard edge reappears at the clip line.
+- The **mask** dissolves the window. It is set to `#000 30%, transparent 72%`, measured rather
+  than guessed: the window's fill sits about 15 luminance above the page, so its *silhouette*
+  stays readable long after the text has gone. At 55%-90% the edge was still visible 79% of the
+  way down; at 30%-72% it is gone by 66%, leaving ~215px of clean black before the boundary.
+
+  > Measure this by sampling pixels 3px either side of the window's **left border**, not by
+  > comparing the window's centre against the page margin. The `--g3` glow is centred at 52%
+  > across, so a centre sample measures the glow and reports the same answer for every mask value.
 - The **overlay** dissolves everything around the window: the grid, the glow and the particles.
 
 Removing either one brings back a visible seam, in at least one browser.

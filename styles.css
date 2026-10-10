@@ -435,8 +435,8 @@ ul,ol{ margin:0; padding:0; list-style:none; }
      A mask is part of the element's own rendering, so it cannot be
      out-ordered. Both are kept: the mask handles the window, the overlay
      handles the grid, glow and particles around it. */
-  -webkit-mask-image:linear-gradient(to bottom, #000 55%, transparent 90%);
-          mask-image:linear-gradient(to bottom, #000 55%, transparent 90%);
+  -webkit-mask-image:linear-gradient(to bottom, #000 30%, transparent 72%);
+          mask-image:linear-gradient(to bottom, #000 30%, transparent 72%);
 }
 .ide__bar{
   display:flex; align-items:center; gap:16px;
