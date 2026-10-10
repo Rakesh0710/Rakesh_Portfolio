@@ -264,6 +264,18 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   animation:drift 22s ease-in-out infinite alternate;
 }
 
+/* The hero clips its own content (the code window runs past the bottom
+   edge), so without this the window, grid, glow and particles all stop on
+   one hard line. This dissolves the last stretch into solid black, which
+   is exactly the colour the next section starts with. */
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:0;
+  height:clamp(170px,26vh,320px);
+  background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 86%);
+  pointer-events:none;
+  z-index:1;            /* above the code window, below nothing that matters */
+}
+
 /* seasonal particles: embers, leaves or snow, drawn in script.js */
 .season{
   position:absolute; inset:0; z-index:-1;

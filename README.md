@@ -227,6 +227,12 @@ Only October, November and December have themes. The other nine months fall thro
 which is the original blue. Four good themes beat twelve mediocre ones; add more by extending the
 `SEASONS`, `CODE` and `SPEC` maps in §8c and the two token blocks in `styles.css`.
 
+**The hero fades into the next section on purpose.** The code window is taller than the hero, so
+`overflow:hidden` used to slice it off on a hard horizontal line. `.hero::after` lays a
+transparent-to-black gradient over the last ~26vh, dissolving the window, grid, glow and particles
+into the solid black the next section opens with. It sits at `z-index:1` so it covers the code
+window, and is `pointer-events:none`. Remove it and the hard cut comes back.
+
 **Rules the particle layer follows** — change them at your peril:
 
 - Hidden entirely under `prefers-reduced-motion`; the colour shift and greeting stay.

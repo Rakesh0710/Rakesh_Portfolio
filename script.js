@@ -523,9 +523,9 @@
 
     /* ── particles ──────────────────────────────────────────────── */
     var SPEC = {
-      oct: { kind: "ember", n: 44, colors: ["#ff9248", "#ff6a2a", "#ffc489"] },
-      nov: { kind: "leaf",  n: 26, colors: ["#e09a4e", "#c2703a", "#a85f33", "#d8a357"] },
-      dec: { kind: "snow",  n: 54, colors: ["#ffffff", "#dcefff", "#bfe2ff"] }
+      oct: { kind: "ember", n: 62, colors: ["#ff9d52", "#ff7433", "#ffd09a"] },
+      nov: { kind: "leaf",  n: 34, colors: ["#e8a85c", "#c2703a", "#a85f33", "#e0a95d"] },
+      dec: { kind: "snow",  n: 72, colors: ["#ffffff", "#e6f3ff", "#c9e6ff"] }
     };
     var spec = SPEC[season];
     var cv   = document.querySelector("[data-season-canvas]");
@@ -551,13 +551,13 @@
       if (spec.kind === "ember") {
         b.x = Math.random() * W;
         b.y = first ? Math.random() * H : H + 10;
-        b.r = 0.9 + Math.random() * 1.9;
+        b.r = 1.1 + Math.random() * 2.0;
         b.vy = -(10 + Math.random() * 22);
         b.life = 0.45 + Math.random() * 0.55;
       } else if (spec.kind === "leaf") {
         b.x = Math.random() * W;
         b.y = first ? Math.random() * H : -20;
-        b.r = 3.2 + Math.random() * 3.4;
+        b.r = 3.8 + Math.random() * 3.8;
         b.vy = 16 + Math.random() * 24;
         b.rot = Math.random() * 6.28;
         b.vr = (Math.random() - 0.5) * 1.6;
@@ -565,7 +565,7 @@
       } else {
         b.x = Math.random() * W;
         b.y = first ? Math.random() * H : -10;
-        b.r = 0.9 + Math.random() * 2.1;
+        b.r = 1.1 + Math.random() * 2.3;
         b.vy = 14 + Math.random() * 26;
         b.life = 0.45 + Math.random() * 0.45;
       }
@@ -573,9 +573,11 @@
     }
 
     function build() {
+      /* scale by area: the hero is around 1400px tall, so sizing off width
+         alone left it looking almost empty */
+      var n = Math.round(spec.n * (W * H) / (1280 * 800));
       bits = [];
-      var n = Math.round(spec.n * Math.min(1, W / 1100));
-      for (var i = 0; i < Math.max(10, n); i++) bits.push(spawn(true));
+      for (var i = 0; i < Math.min(170, Math.max(14, n)); i++) bits.push(spawn(true));
     }
 
     function frame(t) {
@@ -594,10 +596,21 @@
         var out = spec.kind === "ember" ? b.y < -12 : b.y > H + 20;
         if (out || b.x < -30 || b.x > W + 30) { bits[i] = spawn(false); continue; }
 
-        ctx.globalAlpha = b.life * (spec.kind === "ember"
-          ? Math.max(0, 1 - (H - b.y) / H) * (0.65 + 0.35 * Math.sin(b.ph * 3))
-          : 1);
+        if (spec.kind === "ember") {
+          /* full brightness for the first 70% of the climb, then fade out */
+          var up = 1 - b.y / H;
+          var fade = up < 0.7 ? 1 : Math.max(0, 1 - (up - 0.7) / 0.3);
+          ctx.globalAlpha = b.life * fade * (0.7 + 0.3 * Math.sin(b.ph * 3));
+        } else {
+          ctx.globalAlpha = b.life;
+        }
         ctx.fillStyle = b.c;
+
+        if (spec.kind === "ember") {        /* soft halo so they read as embers */
+          ctx.globalAlpha *= 0.22;
+          ctx.beginPath(); ctx.arc(b.x, b.y, b.r * 2.6, 0, 6.283); ctx.fill();
+          ctx.globalAlpha /= 0.22;
+        }
 
         if (spec.kind === "leaf") {
           b.rot += b.vr * dt;
