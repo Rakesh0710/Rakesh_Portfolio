@@ -200,6 +200,26 @@ at the same visual weight as the brand marks.
 > Search Console and GA4 — they rendered as thin slivers. It saved 8 KB gzipped and cost seven
 > logos. Full precision is deliberate.
 
+### Toolkit hover
+
+A tint on a white card read as almost nothing, so hovering a card **inverts it**: the surface goes
+to `#0d0d11`, the icon tile fills solid with the accent, the title goes white and the chips move to
+dark pills.
+
+That needs two colours per brand icon, both set inline on the chip:
+
+| Var | Used | Lifted against |
+|---|---|---|
+| `--bc` | card at rest (white) | `#f5f5f7`, darkened to 3:1 |
+| `--bc-d` | card hovered (dark) | `#1b1b1f`, lightened to 3:1 |
+
+Brands with almost no saturation (GitHub, Next.js, Apache) are forced to `#e8e8ed` on dark instead
+of being lightened to grey, which is what those brands do in their own dark modes. Generic glyphs
+have no `--bc` and fall back to the card accent, tinted toward white on the dark state.
+
+All of the hover rules live in one `@media (hover:hover) and (pointer:fine)` block. **Keep them
+there** — on touch, `:hover` sticks after a tap and would strand a card in its inverted state.
+
 ### The toolkit filter
 
 Twelve `.skcard` blocks, each tagged `data-skg="build|operate|platform"`. The filter buttons carry

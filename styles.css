@@ -945,84 +945,128 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 
 .skcard{
   --sk:var(--blue);
+  --card:var(--white);
   position:relative; overflow:hidden;
-  background:var(--white); border:1px solid var(--hair-2); border-radius:20px;
+  background:var(--card); border:1px solid var(--hair-2); border-radius:20px;
   padding:clamp(20px,2.4vw,26px);
-  transition:transform .5s var(--ease-out), box-shadow .5s var(--ease),
-             border-color .4s var(--ease), opacity .45s var(--ease), filter .45s var(--ease);
+  transition:background .4s var(--ease), border-color .4s var(--ease),
+             box-shadow .45s var(--ease), transform .5s var(--ease-out),
+             opacity .45s var(--ease), filter .45s var(--ease);
   will-change:transform;
 }
-/* accent rule across the top, drawn on hover */
+
+/* accent wash, far stronger than the old one and now on a dark ground */
+.skcard::after{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(420px circle at var(--mx,50%) var(--my,0%),
+      color-mix(in srgb, var(--sk) 42%, transparent), transparent 70%),
+    linear-gradient(160deg, color-mix(in srgb, var(--sk) 16%, transparent), transparent 55%);
+  opacity:0; transition:opacity .4s var(--ease);
+}
+/* accent rule across the top */
 .skcard::before{
-  content:""; position:absolute; left:0; right:0; top:0; height:2px;
+  content:""; position:absolute; left:0; right:0; top:0; height:3px; z-index:2;
   background:var(--sk); transform:scaleX(0); transform-origin:left;
   transition:transform .55s var(--ease-out);
 }
-.skcard:hover::before{ transform:none; }
-/* cursor spotlight in the card's own accent */
-.skcard::after{
-  content:""; position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),
-             color-mix(in srgb, var(--sk) 14%, transparent), transparent 62%);
-  opacity:0; transition:opacity .4s var(--ease);
-}
-.skcard:hover{
-  box-shadow:0 18px 46px rgba(0,0,0,.08);
-  box-shadow:0 18px 46px color-mix(in srgb, var(--sk) 16%, transparent);
-  border-color:var(--hair);
-  border-color:color-mix(in srgb, var(--sk) 32%, var(--hair-2));
-}
-.skcard:hover::after{ opacity:1; }
-
 .skcard__top{
+  position:relative; z-index:1;
   display:flex; align-items:center; justify-content:space-between;
   margin-bottom:14px;
 }
 .skcard__ico{
   width:40px; height:40px; border-radius:12px;
   display:grid; place-items:center; flex:none;
-  background:var(--gray);   /* fallback if color-mix is unsupported */
+  background:var(--gray);
   background:color-mix(in srgb, var(--sk) 12%, transparent);
   color:var(--sk);
-  transition:transform .4s var(--spring), background .3s var(--ease);
+  transition:transform .4s var(--spring), background .3s var(--ease), color .3s var(--ease),
+             box-shadow .4s var(--ease);
 }
 .skcard__ico svg{ width:21px; height:21px; display:block; }
-.skcard:hover .skcard__ico{
-  transform:scale(1.07) rotate(-3deg);
-  background:color-mix(in srgb, var(--sk) 18%, transparent);
-}
 .skcard__n{
   font-family:var(--mono); font-size:.72rem; font-weight:500;
   color:var(--sk); letter-spacing:.02em; opacity:.75;
+  transition:color .3s var(--ease), opacity .3s;
 }
 .skcard h3{
+  position:relative; z-index:1;
   font-size:1.04rem; font-weight:600; letter-spacing:-.024em;
   margin-bottom:15px; padding-bottom:13px; border-bottom:1px solid var(--hair-2);
+  transition:color .3s var(--ease), border-color .4s var(--ease);
 }
-.skcard ul{ display:flex; flex-wrap:wrap; gap:6px; }
+.skcard ul{ position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:6px; }
 
 .skchip{
   display:inline-flex; align-items:center; gap:7px;
   font-size:.81rem; color:var(--ink-2);
   background:var(--gray); border:1px solid transparent;
   padding:5px 11px 5px 8px; border-radius:9px;
-  transition:color .25s var(--ease), background .25s var(--ease),
-             border-color .25s var(--ease), transform .25s var(--spring);
+  transition:color .3s var(--ease), background .3s var(--ease),
+             border-color .3s var(--ease), transform .25s var(--spring);
 }
 .skchip__i{
   width:14px; height:14px; flex:none; display:block;
   color:var(--bc,var(--sk));
-  opacity:.9; transition:transform .25s var(--spring), opacity .25s;
+  transition:transform .25s var(--spring), color .3s var(--ease);
 }
 .skchip.is-core{ color:var(--ink); font-weight:500; background:var(--white);
                  border-color:var(--hair); }
-.skchip:hover{
-  color:var(--ink); background:var(--white);
-  border-color:var(--hair);
-  border-color:color-mix(in srgb, var(--bc,var(--sk)) 55%, var(--hair));
-  transform:translateY(-2px);
+
+/* Hover is gated on a real pointer: on touch, :hover sticks after a tap
+   and would leave a card stranded in its inverted state. */
+@media (hover:hover) and (pointer:fine){
+  /* ── hover: the card inverts to dark and lights up in its own accent ──
+   A tint on white read as almost nothing, so the whole surface flips.
+   Chips swap to --bc-d, a second brand colour lifted for a dark ground. */
+.skcard:hover{
+  --card:#0d0d11;
+  border-color:color-mix(in srgb, var(--sk) 55%, #2a2a31);
+  box-shadow:0 22px 60px rgba(0,0,0,.30),
+             0 0 0 1px color-mix(in srgb, var(--sk) 30%, transparent),
+             0 14px 50px -8px color-mix(in srgb, var(--sk) 45%, transparent);
 }
-.skchip:hover .skchip__i{ transform:scale(1.14); opacity:1; }
+  .skcard:hover::after{ opacity:1; }
+  .skcard:hover::before{ transform:none; }
+  /* on hover the tile fills solid and glows */
+.skcard:hover .skcard__ico{
+  background:var(--sk); color:#fff;
+  transform:scale(1.1) rotate(-4deg);
+  box-shadow:0 8px 24px color-mix(in srgb, var(--sk) 55%, transparent);
+}
+  .skcard:hover .skcard__n{
+  opacity:1;
+  /* the accent is tuned for a white card; lighten it once the card inverts */
+  color:#ffffff;
+  color:color-mix(in srgb, var(--sk) 35%, #ffffff);
+}
+  .skcard:hover h3{ color:#fff; border-bottom-color:rgba(255,255,255,.16); }
+  /* chips follow the card into dark */
+.skcard:hover .skchip{
+  background:rgba(255,255,255,.07);
+  border-color:rgba(255,255,255,.10);
+  color:#d7d7de;
+}
+  .skcard:hover .skchip.is-core{
+  background:rgba(255,255,255,.13);
+  border-color:rgba(255,255,255,.22);
+  color:#fff;
+}
+  .skcard:hover .skchip__i{
+  /* brand chips use their dark-lifted colour; generic glyphs take a
+     bright tint of the card accent rather than flat white */
+  color:#fff;
+  color:var(--bc-d, color-mix(in srgb, var(--sk) 42%, #ffffff));
+}
+  .skchip:hover{ transform:translateY(-2px); }
+  .skcard:hover .skchip:hover{
+  background:rgba(255,255,255,.18);
+  border-color:color-mix(in srgb, var(--bc-d,var(--sk)) 60%, transparent);
+  color:#fff;
+}
+  .skchip:hover .skchip__i{ transform:scale(1.14); }
+}
 
 /* filtered out: dimmed in place, so nothing reflows and everything stays readable */
 .skcard.is-dim{ opacity:.26; filter:saturate(.25); }
