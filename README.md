@@ -33,10 +33,10 @@ sitemap.xml, robots.txt    search
 ## 3. Home page order
 
 1. **Hero:** name, headline, both titles, the code window with the release pipeline, seasonal particles
-2. **01 Selected work:** NFL Season Hub (with the live replay demo), CNR Car Zone (phone with screen tabs), Unity and University of Dayton (real screenshots)
-3. **02 Expertise:** the BUILD / EXPERIENCE / OPERATE explorer, then the full 80-tool stack in a disclosure
-4. **03 Impact:** six figures, each with its source, plus what has been owned in production
-5. **04 Experience:** timeline, with every role's full responsibilities behind "All responsibilities"
+2. **01 Experience:** timeline, with every role's full responsibilities behind "All responsibilities"
+3. **02 Selected work:** NFL Season Hub (with the live replay demo), CNR Car Zone (phone with screen tabs), Unity and University of Dayton (real screenshots)
+4. **03 Expertise:** the BUILD / EXPERIENCE / OPERATE explorer, then the full 80-tool stack in a disclosure
+5. **04 Impact:** six figures, each with its source, plus what has been owned in production
 6. **05 About**
 7. **06 Contact**
 
