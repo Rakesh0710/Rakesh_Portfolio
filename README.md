@@ -33,7 +33,7 @@ sitemap.xml, robots.txt    search
 ## 3. Home page order
 
 1. **Hero:** titles, name, the headline, the code window. Its release pipeline steps Plan → Build → QA → Release → Monitor and lights the matching line of `ship()`; it pauses off screen and is static under reduced motion
-2. **01 Experience:** timeline, with every role's full responsibilities behind "All responsibilities"
+2. **01 Experience:** timeline, with every role's full responsibilities behind "All responsibilities", ending with Education (MS Computer Science, University of Dayton)
 3. **02 Selected work:** four different compositions. NFL Season Hub is an interactive feature (the live replay demo, the real league dashboard, one engineering insight, four metrics); CNR Car Zone is a product demo (phone with screen tabs); Unity is an enterprise spread (two real pages, overlapping); Dayton is a publication spread (the same feature on desktop and phone). Full technical detail sits behind "How it's built"
 4. **03 Expertise:** the BUILD / EXPERIENCE / OPERATE explorer, then the full 80-tool stack in a disclosure
 5. **04 Impact:** six figures, each with its source, plus what has been owned in production

@@ -1021,13 +1021,9 @@ button{ font:inherit; color:inherit; }
 .more li::before{ content:""; position:absolute; left:0; top:.68em; width:5px; height:5px; border-radius:50%; background:var(--text-3); }
 .more li b{ color:var(--text); font-weight:500; }
 
-.edu{
-  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 32px;
-  padding:22px clamp(22px,3vw,34px); border-radius:var(--r-lg);
-  border:1px dashed var(--line);
-}
-.edu b{ display:block; font-family:var(--display); font-size:1.15rem; font-weight:600; }
-.edu span{ font-size:.9rem; color:var(--text-2); }
+.edu{ display:flex; align-items:flex-start; gap:clamp(16px,2.4vw,26px); }
+.edu__mark{ width:clamp(48px,5vw,60px); height:clamp(48px,5vw,60px); flex:none; color:var(--text); }
+.edu__note{ margin-top:12px; color:var(--text-2); max-width:60ch; }
 
 @media (max-width:860px){
   .tl::before{ left:5px; }
