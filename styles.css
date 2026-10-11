@@ -741,6 +741,9 @@ button{ font:inherit; color:inherit; }
   transition:transform .6s var(--ease-out);
 }
 .ud-phone img{ width:100%; aspect-ratio:9/17; object-fit:cover; object-position:top; }
+/* the University of Dayton symbol, taken unaltered from the university's own logo file */
+.brandtitle{ display:flex; align-items:flex-start; gap:.3em; }
+.brandmark{ width:1.08em; height:1.08em; margin-top:-.04em; flex:none; color:var(--text); }
 .ud-copy{
   display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:20px 64px;
   margin-top:clamp(56px,8vw,96px); padding-top:28px; border-top:1px solid var(--line-2);
