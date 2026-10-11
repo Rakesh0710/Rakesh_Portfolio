@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<script>document.documentElement.className="js";</script>
+<title>NFL Season Hub case study | Rakesh Reddy Yeduru</title>
+<meta name="description" content="How I designed and built NFL Season Hub: a static React 19 app over 273,325 plays, with a 60fps canvas replay of every game's win probability." />
+<link rel="canonical" href="https://rakesh0710.github.io/Rakesh_Portfolio/work/nfl-season-hub.html" />
+<meta name="theme-color" content="#0c111b" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='15' fill='%2377c8ff'/><text x='32' y='43' font-family='Helvetica,Arial,sans-serif' font-size='28' font-weight='bold' fill='%230c111b' text-anchor='middle'>RY</text></svg>" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Rakesh Reddy Yeduru" />
+<meta property="og:url" content="https://rakesh0710.github.io/Rakesh_Portfolio/work/nfl-season-hub.html" />
+<meta property="og:title" content="NFL Season Hub | Case study by Rakesh Reddy Yeduru" />
+<meta property="og:description" content="How I designed and built NFL Season Hub: a static React 19 app over 273,325 plays, with a 60fps canvas replay of every game's win probability." />
+<meta property="og:image" content="https://rakesh0710.github.io/Rakesh_Portfolio/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "NFL Season Hub",
+  "description": "How I designed and built NFL Season Hub: a static React 19 app over 273,325 plays, with a 60fps canvas replay of every game's win probability.",
+  "url": "https://rakesh0710.github.io/Rakesh_Portfolio/work/nfl-season-hub.html",
+  "author": {
+    "@type": "Person",
+    "name": "Rakesh Reddy Yeduru",
+    "url": "https://rakesh0710.github.io/Rakesh_Portfolio/"
+  },
+  "about": {
+    "@type": "WebSite",
+    "url": "https://nfl-season-hub.vercel.app"
+  }
+}
+</script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute"><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol><symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.3 7.2V18h2.6v-7.8zm1.3-4.1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 10.2V18h2.6v-4.1c0-1.1.2-2.2 1.6-2.2s1.4 1.3 1.4 2.3v4H19v-4.5c0-2.2-.5-3.9-3-3.9a2.7 2.7 0 0 0-2.4 1.3v-1.1z"/></symbol><symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol></svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<header>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav__in">
+      <a class="brand" href="../index.html" aria-label="Rakesh Reddy Yeduru, home">
+        <span class="brand__mark" aria-hidden="true">RY</span>
+        <span class="brand__txt">Rakesh Reddy Yeduru<span class="brand__role">Frontend Engineer</span></span>
+      </a>
+      <div class="nav__menu">
+        <ul class="nav__links">
+          <li><a href="../index.html#work" aria-current="true">Work</a></li>
+          <li><a href="../index.html#expertise">Expertise</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#about">About</a></li>
+        </ul>
+      </div>
+      <a class="btn btn--primary nav__cta" href="../index.html#contact">Contact</a>
+      <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="sheet" id="sheet" hidden>
+    <a href="../index.html#work">Work <span>01</span></a>
+    <a href="../index.html#expertise">Expertise <span>02</span></a>
+    <a href="../index.html#experience">Experience <span>04</span></a>
+    <a href="../index.html#about">About <span>05</span></a>
+    <a href="../index.html#contact">Contact <span>06</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="case-hero" aria-labelledby="case-title">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="shell">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="../index.html#work"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>All work</a>
+    </nav>
+    <p class="eyebrow">Case study · Personal product</p>
+    <h1 id="case-title">NFL Season Hub</h1>
+    <p class="case-hero__lede">Six NFL seasons you can drill through, from league standings to any team and any game, ending in a scrubbable replay of how that game's win probability actually moved.</p>
+    <dl class="case-meta">
+      <div><dt>Role</dt><dd>Solo build: product, interface, data pipeline, tests</dd></div>
+      <div><dt>Stack</dt><dd>React 19, TypeScript, Vite, Canvas, Python (polars)</dd></div>
+      <div><dt>Scope</dt><dd>2020 to 2025 · 1,693 games · 273,325 plays</dd></div>
+      <div><dt>Status</dt><dd>Live on Vercel, CI on every push</dd></div>
+    </dl>
+    <div class="proj__acts"><a class="btn btn--primary" href="https://nfl-season-hub.vercel.app" target="_blank" rel="noopener">Open the live app<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a><a class="btn btn--ghost" href="https://github.com/Rakesh0710/nfl-season-hub" target="_blank" rel="noopener"><svg class="i" aria-hidden="true"><use href="#i-github"/></svg>Source on GitHub<span class="vh"> (opens in a new tab)</span></a></div>
+  </div>
+</section>
+
+<div class="shell case-shot">
+<figure class="frame"><div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">nfl-season-hub.vercel.app/game/2022_15_IND_MIN</span></div><img src="../assets/work/nfl-game.webp" srcset="../assets/work/nfl-game-640.webp 640w, ../assets/work/nfl-game.webp 1280w" sizes="(max-width:760px) 100vw, 1100px" alt="The game replay page: Minnesota's win-probability curve against Indianapolis, falling near zero in the third quarter and climbing back in overtime, with key-play markers below." width="1280" height="800" fetchpriority="high" decoding="async"></figure>
+</div>
+
+<div class="shell case-body">
+  <nav class="toc" data-toc aria-label="On this page">
+    <p>On this page</p>
+    <ol>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#role">Responsibilities</a></li>
+          <li><a href="#challenge">Challenge</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#engineering">Engineering</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#outcome">Outcome</a></li>
+          <li><a href="#lessons">Lessons</a></li>
+    </ol>
+  </nav>
+  <div class="prose">
+        <section id="overview" aria-labelledby="overview-h">
+          <p class="k">Overview</p>
+          <h2 id="overview-h">A way to see the shape of a game</h2>
+          <p>NFL play-by-play data is public and excellent. nflverse publishes every play of every game, win
+          probability included. It is also almost unreadable: season-sized files with hundreds of columns,
+          wonderful for a modelling notebook and useless if your question is <b>"what did that comeback
+          look like?"</b></p>
+          <p>NFL Season Hub is a static site that takes a visitor from all 32 teams down to a single play
+          in three clicks, and then plays the game back to them.</p>
+          <ul class="dots">
+            <li><b>League dashboard.</b> 32 teams, sortable and filterable. The view lives in the URL, so a filtered dashboard is a link you can send.</li>
+            <li><b>Team page.</b> Projected wins against last season, offensive and defensive splits, depth chart, roster, draft class and every game as a route into its replay.</li>
+            <li><b>Game replay.</b> The flagship: win probability animated one play at a time on a canvas, with decisive plays marked, a scrubber, and a context box that always says where the game stands.</li>
+          </ul>
+        </section>
+
+        <section id="role" aria-labelledby="role-h">
+          <p class="k">Responsibilities</p>
+          <h2 id="role-h">What I built</h2>
+          <p>Everything. It is a solo project, so the product decisions, the interface, the data pipeline
+          and the test suite are all mine.</p>
+          <ul class="dots">
+            <li><b>Product and interface:</b> the League → Team → Game → Replay flow, the layout, and the replay's controls.</li>
+            <li><b>Data pipeline:</b> a Python ETL in polars over nflverse, writing 1,727 typed JSON files, plus a validator that enforces the contract.</li>
+            <li><b>Front end:</b> React 19, TypeScript and Vite, with lazy-loaded routes and a custom canvas renderer.</li>
+            <li><b>Quality:</b> 216 unit and component tests, 6 end-to-end specs on two devices, CI on every push, and a keyboard-only accessibility audit.</li>
+          </ul>
+        </section>
+
+        <section id="challenge" aria-labelledby="challenge-h">
+          <p class="k">Challenge</p>
+          <h2 id="challenge-h">Three hard problems</h2>
+          <h3>Turning a spreadsheet into a story</h3>
+          <p>The gap was never the data. It was that nothing turns a row of <code>home_wp = 0.11</code> into
+          the thing a person came for.</p>
+          <h3>Animating at 60 frames a second inside React</h3>
+          <p>The replay advances a cursor sixty times a second. Storing that in <code>useState</code> means a
+          render, a reconciliation and a commit per frame, for a chart whose only change is a few hundred
+          pixels of line.</p>
+          <h3>Staying fast with no backend</h3>
+          <p>1,693 games and 273,325 plays, served without a server, a database or a cold start.</p>
+        </section>
+
+        <section id="process" aria-labelledby="process-h">
+          <p class="k">Process</p>
+          <h2 id="process-h">Validate cheaply, then build the hard thing once</h2>
+          <ul class="dots">
+            <li><b>Data first.</b> The ETL runs locally, by hand, and writes static JSON. A finished season is a fact, so freshness is a human action, not a runtime one.</li>
+            <li><b>Prove the data with a library.</b> The win-probability chart was first built in Recharts to validate the numbers. It did that job and was then deleted.</li>
+            <li><b>Then build the flagship.</b> A custom canvas renderer, because no charting library gives per-frame control of a 218-point animated reveal.</li>
+            <li><b>Check the contract from both sides.</b> <code>validate.py</code> on the producing side; a runtime check in the browser on the consuming side.</li>
+            <li><b>Test what could break.</b> Every test targets behaviour that could plausibly fail. Two exist because the bug happened first.</li>
+            <li><b>Audit by hand.</b> Keyboard only, contrast read from the rendered page, Lighthouse as a floor rather than the audit.</li>
+          </ul>
+          <div class="callout"><b>The validator earned its keep.</b> It caught four real defects: non-chronological
+          play IDs, timeout rows carrying stale scores, playoff games inflating per-game rates, and an upstream
+          depth-chart schema change in 2025.</div>
+        </section>
+
+        <section id="engineering" aria-labelledby="engineering-h">
+          <p class="k">Engineering</p>
+          <h2 id="engineering-h">The decision everything follows from</h2>
+          <p><b>The data never changes at runtime.</b> That one decision removes the database, the API, the
+          cache-invalidation problem and the cold start, and replaces them with a build step.</p>
+          <div class="arch" role="img" aria-label="Architecture: nflverse data feeds a Python ETL, which writes 1,727 typed JSON files checked by a validator, committed to the repository, read by a React 19 app through a runtime contract check, and drawn by a canvas replay, deployed statically on Vercel.">
+            <div class="arch__node"><b>nflverse</b><span>play-by-play, rosters, depth charts, draft, schedules</span></div>
+            <div class="arch__link"><span>run once, locally</span></div>
+            <div class="arch__node"><b>Python ETL (polars)</b><span>etl/build_data.py</span></div>
+            <div class="arch__link"><span>validate.py enforces the contract</span></div>
+            <div class="arch__node arch__node--hi"><b>1,727 typed static JSON files</b><span>teams-index · games-index · team/&lt;ID&gt; · game/&lt;ID&gt;</span></div>
+            <div class="arch__link"><span>runtime contract check</span></div>
+            <div class="arch__node"><b>React 19 + TypeScript + Vite</b><span>src/lib/data.ts, three lazy routes</span></div>
+            <div class="arch__link"><span>requestAnimationFrame</span></div>
+            <div class="arch__node"><b>Canvas replay</b><span>deployed statically on Vercel</span></div>
+          </div>
+          <h3>Why the replay is not React state</h3>
+          <p>The cursor is a <code>useRef</code>, a fractional play index. A <code>requestAnimationFrame</code> loop
+          advances it by elapsed time and repaints the canvas directly. The two facts a person can see, whether
+          it is running and which play it is on, are published through <code>useSyncExternalStore</code>, so React
+          re-renders once per play rather than once per frame.</p>
+          <div class="codeblock">
+            <div class="codeblock__bar"><span>replay data flow</span><span>218-play game at 1×</span></div>
+            <pre>rAF loop ──writes──▶ cursor (ref) ──read by──▶ canvas repaint   60×/s
+                            │                    scrubber thumb   60×/s
+                            └── useSyncExternalStore ──▶ React   8×/s</pre>
+          </div>
+          <h3>Tradeoffs I made on purpose</h3>
+          <ul class="dots">
+            <li><b>Static JSON over an API.</b> A 15 MiB repository and a manual re-run, in exchange for no server, no database and no failure mode worse than a 404.</li>
+            <li><b>Framer Motion only where it animates.</b> Importing it into the shared layout pushed the entry chunk from 84 kB to 110 kB. The page fade became nine lines of CSS.</li>
+            <li><b>Logos at the size they are drawn.</b> The league page was loading 1,789 KiB of 500px logos to show them at 40px. Requesting the right size brought it to 262 KiB.</li>
+            <li><b>Contract checks are cheap.</b> Validating the largest file takes 0.23 ms, against 0.57 ms for <code>JSON.parse</code> on the same file.</li>
+          </ul>
+        </section>
+
+        <section id="showcase" aria-labelledby="showcase-h">
+          <p class="k">Showcase</p>
+          <h2 id="showcase-h">Try the replay</h2>
+          <p>This is the real data for the largest comeback in NFL history, running on the same approach as the
+          production app: one cursor, advanced by elapsed time, repainting a canvas.</p>
+          <div class="win" data-win>
+            <div class="win__bar">
+              <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="tab is-on" style="font-family:var(--mono);font-size:.7rem">Game replay · IND at MIN, 2022 week 15</span>
+            </div>
+            <div class="pane">
+              <div class="rp__head">
+                <div class="rp__score">
+                  <span class="rp__team"><i class="rp__sw" data-sw-away></i>IND <b data-as>0</b></span>
+                  <span class="rp__team"><i class="rp__sw" data-sw-home></i>MIN <b data-hs>0</b></span>
+                  <span class="rp__ot" data-ot hidden>OT</span>
+                </div>
+                <div class="rp__meta">
+                  <span class="rp__clock" data-clock>Q1 15:00</span>
+                  <span class="rp__prob">MIN win probability <b data-wp>56.7%</b></span>
+                </div>
+              </div>
+              <div class="rp__canvas">
+                <canvas data-canvas role="img" aria-label="Win probability chart, Minnesota Vikings against Indianapolis Colts, week 15 of the 2022 season. Minnesota falls to 0.1 percent win probability in the third quarter and recovers to win 39 to 36 in overtime."></canvas>
+                <span class="rp__ax rp__ax--top" data-ax-top aria-hidden="true">MIN 100%</span>
+                <span class="rp__ax rp__ax--bot" data-ax-bot aria-hidden="true">IND 100%</span>
+              </div>
+              <div class="rp__ctrl">
+                <button class="rp__play" type="button" data-play aria-label="Play the replay"><span aria-hidden="true"></span></button>
+                <input class="rp__seek" type="range" min="0" max="217" value="0" step="1" data-seek aria-label="Scrub through the game play by play">
+                <span class="rp__n"><b data-n>1</b> / 218</span>
+              </div>
+              <p class="rp__desc" data-desc>Press play to watch the game unfold.</p>
+            </div>
+          </div>
+          <script type="application/json" data-nfl-data>{"g":{"id":"2022_15_IND_MIN","season":2022,"week":15,"date":"2022-12-17","h":{"id":"MIN","n":"Minnesota Vikings","c":"#4F2683","s":39},"a":{"id":"IND","n":"Indianapolis Colts","c":"#002C5F","s":36}},"wp":[567,520,470,497,458,440,443,468,406,418,424,510,512,512,520,527,507,485,293,292,292,353,269,273,268,254,206,208,153,157,157,155,162,150,157,134,108,116,97,99,93,119,95,94,95,76,79,69,74,82,90,46,45,43,42,35,12,16,16,14,15,16,18,21,35,34,36,28,4,4,4,5,5,5,6,6,4,5,6,5,5,5,5,3,4,4,4,7,7,6,4,4,3,2,2,2,2,2,2,2,2,1,1,3,4,3,2,2,2,2,1,2,2,2,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2,5,4,6,6,7,5,20,20,23,20,23,25,31,31,27,37,32,24,36,32,44,29,41,14,17,44,51,65,73,62,58,56,57,57,59,46,41,87,126,110,128,114,90,64,58,36,28,36,38,48,296,434,434,480,485,484,541,610,603,603,549,521,535,535,477,611,622,702,720,760,635,550,450,428,630,633,524,581,647,484,553,682,818,332,316,396,613,450,847],"hs":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,13,14,14,14,14,14,14,14,14,14,14,14,20,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,27,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,34,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,39],"as":[0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,9,10,10,10,10,10,10,10,10,10,10,16,17,17,17,17,17,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20,20,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36],"q":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],"c":[900,892,852,818,779,748,716,675,641,636,599,555,551,551,530,511,504,500,492,492,492,453,440,408,387,355,315,276,235,231,231,226,198,158,121,76,70,35,900,870,834,791,787,782,755,710,666,661,655,652,646,641,637,607,582,546,538,508,468,433,427,423,409,400,389,389,361,357,350,350,350,318,295,288,251,246,240,200,163,120,115,108,103,58,12,8,3,900,897,878,852,845,837,797,777,742,737,692,683,676,641,610,582,549,514,506,502,502,494,456,420,379,339,299,293,293,259,232,199,193,156,124,79,73,73,68,25,20,15,7,900,876,841,809,779,773,773,769,724,684,678,642,626,621,595,589,548,520,496,489,482,477,437,433,426,402,374,368,339,334,330,330,330,288,252,208,205,201,197,192,187,183,177,177,172,165,160,157,148,135,135,131,120,115,82,82,70,65,43,22,13,600,596,560,555,517,497,456,417,374,369,344,298,290,257,229,178,174,143,120,113,109,101,71,48,23,20,7],"key":[{"i":11,"t":"C.McLaughlin 26 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":17,"t":"R.Wright punt is BLOCKED by I.Odenigbo, Center-A.DePaola, RECOVERED by IND-J.Domann at MIN 24.\u2026"},{"i":18,"t":"C.McLaughlin extra point is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":21,"t":"(No Huddle) D.Cook up the middle to IND 31 for 4 yards (Z.Franklin; R.McLeod). FUMBLES\u2026"},{"i":28,"t":"M.Ryan pass short right to D.Jackson for 1 yard, TOUCHDOWN."},{"i":41,"t":"C.McLaughlin 28 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":50,"t":"C.McLaughlin 49 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":67,"t":"(Shotgun) K.Cousins pass short middle intended for J.Reagor INTERCEPTED by J.Blackmon at MIN\u2026"},{"i":84,"t":"(:12) C.McLaughlin 27 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":105,"t":"(Shotgun) K.Cousins pass short left to K.Osborn for 2 yards, TOUCHDOWN."},{"i":113,"t":"C.McLaughlin 52 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":122,"t":"C.Ham up the middle for 1 yard, TOUCHDOWN. PENALTY on MIN-B.O'Neill, Unnecessary Roughness, 15\u2026"},{"i":134,"t":"(Shotgun) K.Cousins pass short left to J.Jefferson for 8 yards, TOUCHDOWN."},{"i":149,"t":"K.Cousins pass deep left intended for J.Reagor INTERCEPTED by R.Thomas at IND 2. R.Thomas ran\u2026"},{"i":159,"t":"K.Cousins pass short right to A.Thielen for 1 yard, TOUCHDOWN."},{"i":165,"t":"D.Jackson right guard to IND 39 for 1 yard (H.Phillips; Z.Smith). PENALTY on MIN-C.Sullivan,\u2026"},{"i":178,"t":"(Shotgun) K.Cousins pass short left to D.Cook for 64 yards, TOUCHDOWN."},{"i":179,"t":"(Pass formation) TWO-POINT CONVERSION ATTEMPT. K.Cousins pass to T.Hockenson is complete.\u2026"},{"i":180,"t":"G.Joseph kicks 71 yards from MIN 35 to IND -6. D.Flowers to IND 25 for 31 yards (L.Vilain)."},{"i":194,"t":"K.Cousins pass short left to D.Cook to MIN 39 for 6 yards (B.Okereke)."},{"i":199,"t":"(Shotgun) K.Cousins pass incomplete short middle to K.Osborn (D.Buckner)."},{"i":201,"t":"(Shotgun) K.Cousins pass short middle to T.Hockenson to IND 39 for 14 yards (Z.Franklin)."},{"i":203,"t":"Z.Moss left tackle to IND 18 for 5 yards (E.Kendricks; J.Hicks)."},{"i":205,"t":"(Shotgun) M.Ryan sacked at IND 28 for -5 yards (sack split by Z.Smith and D.Hunter). FUMBLES\u2026"},{"i":208,"t":"Z.Moss left tackle to IND 44 for 1 yard (H.Phillips)."},{"i":210,"t":"(Shotgun) M.Ryan pass incomplete short left to A.Pierce [D.Hunter]."},{"i":211,"t":"M.Haack punts 38 yards to MIN 18, Center-L.Rhodes, downed by IND-A.Dulin."},{"i":212,"t":"(Shotgun) D.Cook up the middle to MIN 24 for 6 yards (K.Paye)."},{"i":215,"t":"(:23) (No Huddle, Shotgun) K.Cousins pass incomplete short right to T.Hockenson. MIN-C.Darrisaw\u2026"},{"i":216,"t":"(:20) (Shotgun) K.Cousins pass short right to J.Jefferson to IND 27 for 13 yards (I.Odenigbo).\u2026"},{"i":217,"t":"(:07) G.Joseph 40 yard field goal is GOOD, Center-A.DePaola, Holder-R.Wright."}],"teams":[{"id":"BUF","n":"Buffalo Bills","c":"#00338D","p":11.3,"w":13,"l":4},{"id":"LA","n":"Los Angeles Rams","c":"#003594","p":11.2,"w":10,"l":7},{"id":"DEN","n":"Denver Broncos","c":"#002244","p":10.6,"w":10,"l":7},{"id":"SEA","n":"Seattle Seahawks","c":"#002244","p":10.4,"w":10,"l":7},{"id":"PHI","n":"Philadelphia Eagles","c":"#004C54","p":10.4,"w":14,"l":3},{"id":"BAL","n":"Baltimore Ravens","c":"#241773","p":10.3,"w":12,"l":5},{"id":"GB","n":"Green Bay Packers","c":"#203731","p":10.3,"w":11,"l":6},{"id":"DET","n":"Detroit Lions","c":"#0076B6","p":10.2,"w":15,"l":2},{"id":"NE","n":"New England Patriots","c":"#002244","p":10.2,"w":4,"l":13},{"id":"KC","n":"Kansas City Chiefs","c":"#E31837","p":9.9,"w":15,"l":2}]}</script>
+          <div class="figs">
+            <figure class="fig"><figure class="frame"><div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">nfl-season-hub.vercel.app</span></div><img src="../assets/work/nfl-league.webp" srcset="../assets/work/nfl-league-640.webp 640w, ../assets/work/nfl-league.webp 1280w" sizes="(max-width:760px) 100vw, 1100px" alt="The league dashboard: 32 team cards sorted by expected wins, with season, conference and division filters." width="1280" height="800" loading="lazy" decoding="async"></figure>
+              <figcaption>League dashboard, desktop.</figcaption>
+            </figure>
+            <figure class="fig fig--phone">
+              <img src="../assets/work/nfl-mobile.webp" alt="The game replay on a phone, with the win-probability chart and transport controls stacked." width="585" height="1266" loading="lazy" decoding="async">
+              <figcaption>Replay at 390px.</figcaption>
+            </figure>
+          </div>
+          <figure class="fig"><figure class="frame"><div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">nfl-season-hub.vercel.app/team/MIN</span></div><img src="../assets/work/nfl-team.webp" srcset="../assets/work/nfl-team-640.webp 640w, ../assets/work/nfl-team.webp 1280w" sizes="(max-width:760px) 100vw, 1100px" alt="The Minnesota Vikings team page: expected wins against actual, tabs for games, team stats, depth chart, roster and draft class, and the season's game list." width="1280" height="800" loading="lazy" decoding="async"></figure>
+            <figcaption>Team page, with every game as a route into its replay.</figcaption>
+          </figure>
+        </section>
+
+        <section id="outcome" aria-labelledby="outcome-h">
+          <p class="k">Outcome</p>
+          <h2 id="outcome-h">Measured, not estimated</h2>
+          <p>Lighthouse 13.4.1 against the production build, desktop and mobile presets.</p>
+          <div class="results" style="margin:18px 0 24px">
+            <div><b>97-100</b><span>Lighthouse performance, all pages, both form factors</span></div>
+            <div><b>100</b><span>Lighthouse accessibility, every page</span></div>
+            <div><b>0 / 239</b><span>dropped frames during playback</span></div>
+            <div><b>0.14 ms</b><span>canvas drawing cost per frame, of 16.7 ms</span></div>
+            <div><b>114 KiB</b><span>of JavaScript to load the league page</span></div>
+            <div><b>216 + 6</b><span>unit tests and end-to-end specs in CI</span></div>
+          </div>
+          <ul class="dots">
+            <li><b>Lazy loading verified from the network log.</b> The replay engine downloads only when someone opens a game.</li>
+            <li><b>Every control reachable by keyboard.</b> The 41-marker key-play rail is one tab stop, with arrow, Home and End keys.</li>
+            <li><b>Contrast measured on the real surface.</b> All 88 text styles clear 4.5:1, and team colours are lifted until their curve clears 3:1.</li>
+          </ul>
+        </section>
+
+        <section id="lessons" aria-labelledby="lessons-h">
+          <p class="k">Lessons</p>
+          <h2 id="lessons-h">What I'd take to the next project</h2>
+          <ul class="dots">
+            <li><b>Validate with the cheap tool, then replace it.</b> Recharts proved the data before I invested in the canvas. That is cheaper than guessing, and cheaper than building the hard thing twice.</li>
+            <li><b>Measure before optimising.</b> Caching the static chart background to an offscreen bitmap was the obvious optimisation. Measured, it cost more in blitting than it saved, so it was not done.</li>
+            <li><b>A disabled button can steal focus.</b> Disabling Restart at play 0, which pressing it causes, moved focus to the page body. Restart is never disabled now, and a test says so.</li>
+          </ul>
+          <h3>What I'd build next</h3>
+          <ul class="dots">
+            <li>Compare two games, or two seasons, on one axis.</li>
+            <li>A drive-level layer, so the replay can skip forward a drive at a time.</li>
+            <li>A shareable link into a moment, such as <code>/game/&lt;id&gt;?play=142</code>.</li>
+          </ul>
+        </section>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="pn" aria-label="More case studies">
+    <a href="university-of-dayton.html"><span>Previous</span><b>University of Dayton</b></a>
+    <a href="cnr-car-zone.html"><span>Next</span><b>CNR Car Zone</b></a>
+  </nav>
+</div>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <span>© 2026 Rakesh Reddy Yeduru · Frontend Engineer &amp; Website Operations Manager</span>
+    <nav class="foot__links" aria-label="Footer">
+      <a href="../index.html#work">All work</a>
+      <a href="mailto:rakeshreddy202000@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/rakeshyeduru/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a>
+      <a href="https://github.com/Rakesh0710" target="_blank" rel="noopener">GitHub<span class="vh"> (opens in a new tab)</span></a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

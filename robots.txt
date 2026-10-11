@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rakesh0710.github.io/Rakesh_Portfolio/sitemap.xml

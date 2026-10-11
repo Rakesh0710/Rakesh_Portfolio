@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<script>document.documentElement.className="js";</script>
+<title>CNR Car Zone case study | Rakesh Reddy Yeduru</title>
+<meta name="description" content="How I designed and built CNR Car Zone, a mobile-first operations platform that runs a pre-owned vehicle business, on Next.js 15 and Supabase." />
+<link rel="canonical" href="https://rakesh0710.github.io/Rakesh_Portfolio/work/cnr-car-zone.html" />
+<meta name="theme-color" content="#0c111b" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='15' fill='%2377c8ff'/><text x='32' y='43' font-family='Helvetica,Arial,sans-serif' font-size='28' font-weight='bold' fill='%230c111b' text-anchor='middle'>RY</text></svg>" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Rakesh Reddy Yeduru" />
+<meta property="og:url" content="https://rakesh0710.github.io/Rakesh_Portfolio/work/cnr-car-zone.html" />
+<meta property="og:title" content="CNR Car Zone | Case study by Rakesh Reddy Yeduru" />
+<meta property="og:description" content="How I designed and built CNR Car Zone, a mobile-first operations platform that runs a pre-owned vehicle business, on Next.js 15 and Supabase." />
+<meta property="og:image" content="https://rakesh0710.github.io/Rakesh_Portfolio/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "CNR Car Zone",
+  "description": "How I designed and built CNR Car Zone, a mobile-first operations platform that runs a pre-owned vehicle business, on Next.js 15 and Supabase.",
+  "url": "https://rakesh0710.github.io/Rakesh_Portfolio/work/cnr-car-zone.html",
+  "author": {
+    "@type": "Person",
+    "name": "Rakesh Reddy Yeduru",
+    "url": "https://rakesh0710.github.io/Rakesh_Portfolio/"
+  }
+}
+</script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute"><symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol><symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol><symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol><symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.3 7.2V18h2.6v-7.8zm1.3-4.1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 10.2V18h2.6v-4.1c0-1.1.2-2.2 1.6-2.2s1.4 1.3 1.4 2.3v4H19v-4.5c0-2.2-.5-3.9-3-3.9a2.7 2.7 0 0 0-2.4 1.3v-1.1z"/></symbol><symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></symbol></svg>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" id="progress" aria-hidden="true"><i></i></div>
+
+<header>
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav__in">
+      <a class="brand" href="../index.html" aria-label="Rakesh Reddy Yeduru, home">
+        <span class="brand__mark" aria-hidden="true">RY</span>
+        <span class="brand__txt">Rakesh Reddy Yeduru<span class="brand__role">Frontend Engineer</span></span>
+      </a>
+      <div class="nav__menu">
+        <ul class="nav__links">
+          <li><a href="../index.html#work" aria-current="true">Work</a></li>
+          <li><a href="../index.html#expertise">Expertise</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#about">About</a></li>
+        </ul>
+      </div>
+      <a class="btn btn--primary nav__cta" href="../index.html#contact">Contact</a>
+      <button class="nav__burger" id="burger" type="button" aria-expanded="false" aria-controls="sheet" aria-label="Open menu">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </nav>
+  <div class="sheet" id="sheet" hidden>
+    <a href="../index.html#work">Work <span>01</span></a>
+    <a href="../index.html#expertise">Expertise <span>02</span></a>
+    <a href="../index.html#experience">Experience <span>04</span></a>
+    <a href="../index.html#about">About <span>05</span></a>
+    <a href="../index.html#contact">Contact <span>06</span></a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="case-hero" aria-labelledby="case-title">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="shell">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="../index.html#work"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>All work</a>
+    </nav>
+    <p class="eyebrow">Case study · Product</p>
+    <h1 id="case-title">CNR Car Zone</h1>
+    <p class="case-hero__lede">A mobile-first operations platform for a real pre-owned vehicle business. Every car is tracked from the first phone call to ready-for-sale, with a full audit trail.</p>
+    <dl class="case-meta">
+      <div><dt>Role</dt><dd>Sole engineer, designer and product owner</dd></div>
+      <div><dt>Stack</dt><dd>Next.js 15, Supabase, Postgres, Netlify</dd></div>
+      <div><dt>Data</dt><dd>13 tables with row-level security</dd></div>
+      <div><dt>Status</dt><dd>In production, single-owner business</dd></div>
+    </dl>
+    <div class="proj__acts"><p class="note-honest" style="margin:0">The app is private: it holds a real business's seller records, payments and bank details, so there is no public demo. A live walkthrough is available on request.</p></div>
+  </div>
+</section>
+
+<div class="shell case-shot">
+<figure class="frame"><div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">CNR Car Zone · interface recreation</span></div><img src="../assets/work/cnr-hero.webp" alt="The CNR Car Zone dashboard on a phone: a search bar above six tiles for new opportunities, inspections, negotiations, purchased vehicles, pending documents and cars ready for sale." width="1280" height="800" fetchpriority="high" decoding="async"></figure><figcaption>Recreated in HTML and CSS and matched to the live app, because the real screens contain private data.</figcaption>
+</div>
+
+<div class="shell case-body">
+  <nav class="toc" data-toc aria-label="On this page">
+    <p>On this page</p>
+    <ol>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#role">Responsibilities</a></li>
+          <li><a href="#challenge">Challenge</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#engineering">Engineering</a></li>
+          <li><a href="#showcase">Showcase</a></li>
+          <li><a href="#outcome">Outcome</a></li>
+          <li><a href="#lessons">Lessons</a></li>
+    </ol>
+  </nav>
+  <div class="prose">
+        <section id="overview" aria-labelledby="overview-h">
+          <p class="k">Overview</p>
+          <h2 id="overview-h">One system for every car</h2>
+          <p>CNR Car Zone (formerly RKS Motors, rebranded in 2026) runs the day-to-day operations of a
+          pre-owned vehicle business. It follows each car through <b>sourcing, mechanic inspection,
+          negotiation, purchase, payments, photos and documents</b>, through to ready-for-sale.</p>
+          <p>It is built for one owner, used on a phone, and in production today.</p>
+        </section>
+
+        <section id="role" aria-labelledby="role-h">
+          <p class="k">Responsibilities</p>
+          <h2 id="role-h">What I owned</h2>
+          <p>All of it: the product decisions, the interface, the data model, the build and the release
+          process.</p>
+          <ul class="dots">
+            <li><b>Product owner:</b> what each phase ships, and what waits for the next one.</li>
+            <li><b>Designer:</b> a mobile-first interface built around the jobs waiting to be done.</li>
+            <li><b>Engineer:</b> Next.js 15 on Supabase and Postgres, 13 tables protected by row-level security.</li>
+            <li><b>Release manager:</b> separate staging and production environments with a branch-based release.</li>
+          </ul>
+        </section>
+
+        <section id="challenge" aria-labelledby="challenge-h">
+          <p class="k">Challenge</p>
+          <h2 id="challenge-h">A long process, real money, private data</h2>
+          <ul class="dots">
+            <li><b>A multi-step process</b> with inspections, offers, payments, photos and paperwork for every vehicle, which all has to be visible at a glance.</li>
+            <li><b>Sensitive records.</b> Seller IDs and bank details live in the system and must never leak through an export.</li>
+            <li><b>A live business.</b> Changes cannot risk the owner's real data, and the schema has to evolve without breaking records that already exist.</li>
+          </ul>
+        </section>
+
+        <section id="process" aria-labelledby="process-h">
+          <p class="k">Process</p>
+          <h2 id="process-h">Shipped in phases</h2>
+          <div class="timeline-mini">
+            <div><span class="tag">Phase 1A · Shipped</span><div><h3>The core operations loop</h3><p>Opportunity intake with auto-numbering, mechanic inspection, dated negotiation offers, one-way conversion into inventory with a unique stock number, purchase and payment tracking with receipts, a 22-category photo pipeline, an 18-item document checklist, dashboard, global search, a pending-work queue and CSV exports.</p></div></div>
+            <div><span class="tag">Phase 2 · Shipped</span><div><h3>Multi-image documents, staging split and rebrand</h3><p>Documents hold multiple captioned images, backwards-compatible with every existing record. Live and staging environments separated with a branch-based release. A full rebrand from RKS Motors to CNR Car Zone, wired to CSS variables.</p></div></div>
+            <div><span class="tag tag--next">Phase 1B · Next</span><div><h3>Sales flow and profit reporting</h3><p>A sold status and sale record (buyer, date, price, payments received, delivery), with profit calculated against purchase, payments and repair costs, on the dashboard and as an inventory filter.</p></div></div>
+          </div>
+        </section>
+
+        <section id="engineering" aria-labelledby="engineering-h">
+          <p class="k">Engineering</p>
+          <h2 id="engineering-h">How a car moves through the system</h2>
+          <div class="arch" role="img" aria-label="Lifecycle: an opportunity is auto-numbered, inspected and negotiated, then converted one way into inventory with a stock number, where payments, photos and documents are tracked until the car is ready for sale. Every step is written to an activity history.">
+            <div class="arch__node"><b>Opportunity</b><span>auto-numbered, with one-tap Call and WhatsApp</span></div>
+            <div class="arch__link"><span>mechanic inspection</span></div>
+            <div class="arch__node"><b>Negotiation</b><span>dated offers on the record</span></div>
+            <div class="arch__link"><span>one-way conversion</span></div>
+            <div class="arch__node arch__node--hi"><b>Inventory</b><span>unique stock number</span></div>
+            <div class="arch__link"><span>payments, 22 photo categories, 18 documents</span></div>
+            <div class="arch__node"><b>Ready for sale</b><span>every step in the activity history</span></div>
+          </div>
+          <h3>Decisions I'd make again</h3>
+          <ul class="dots">
+            <li><b>Row-level security in Postgres.</b> Access rules live in the database, across all 13 tables, rather than only in the interface.</li>
+            <li><b>A one-way conversion.</b> An opportunity becomes inventory exactly once, with its own stock number, so the record of a purchase cannot be accidentally reopened as a lead.</li>
+            <li><b>Backwards-compatible schema changes.</b> Multi-image documents shipped without breaking a single existing record.</li>
+            <li><b>Staging before production.</b> A branch-based release, so nothing untested reaches the owner's real data.</li>
+            <li><b>Brand in CSS variables.</b> The RKS Motors to CNR Car Zone rebrand made future colour changes a one-file edit.</li>
+            <li><b>Exports that leave things out.</b> CSV downloads for opportunities, inventory, sellers, payments and documents deliberately exclude seller ID and bank details.</li>
+          </ul>
+        </section>
+
+        <section id="showcase" aria-labelledby="showcase-h">
+          <p class="k">Showcase</p>
+          <h2 id="showcase-h">A walkthrough of four screens</h2>
+          <p>Scroll through the four core screens. On a phone, they stack.</p>
+          <section class="showcase" data-show aria-label="CNR Car Zone walkthrough">
+            <div class="showcase__stick">
+              <div class="showcase__grid">
+                <div>
+                  <div class="slides">
+                    <div class="slide is-on"><span class="slide__k">01 · Shipped</span><h3>The operations dashboard</h3><p>Every pending job at a glance: new opportunities, inspections, negotiations, purchased vehicles, outstanding documents and cars ready for sale. Global search covers cars, sellers, numbers and documents.</p></div>
+                    <div class="slide"><span class="slide__k">02 · Shipped</span><h3>Opportunity to inventory</h3><p>Auto-numbered opportunities, mechanic inspection, dated negotiation offers, then one-way conversion into inventory with a unique stock number. Call or WhatsApp the seller straight from the record.</p></div>
+                    <div class="slide"><span class="slide__k">03 · Shipped</span><h3>Documents and evidence</h3><p>An 18-item document checklist with verification rules and a 22-category photo pipeline. Documents hold multiple captioned images, backwards-compatible with every record already in the system.</p></div>
+                    <div class="slide"><span class="slide__k">04 · Shipped</span><h3>Exports and audit trail</h3><p>CSV exports for opportunities, inventory, sellers, payments and document status, with sensitive seller ID and bank details deliberately left out, plus a complete activity history.</p></div>
+                  </div>
+                  <div class="showcase__rail" aria-hidden="true"><i data-rail="0" class="is-on"></i><i data-rail="1"></i><i data-rail="2"></i><i data-rail="3"></i></div>
+                </div>
+                <div class="device">
+                  <div class="phone">
+                    <div class="phone__notch" aria-hidden="true"></div>
+                    <div class="phone__screen" aria-hidden="true">
+                  <!-- Real screenshots are opt-in: save them to cnr/ and add data-ready
+                       to the div below. Until then the HTML recreation shows. -->
+            <div class="cnrshots" data-shots hidden>
+              <img class="cnrshot" data-shot="0" alt="" data-src="../cnr/1-dashboard.png">
+              <img class="cnrshot" data-shot="1" alt="" data-src="../cnr/2-opportunity.png">
+              <img class="cnrshot" data-shot="2" alt="" data-src="../cnr/3-documents.png">
+              <img class="cnrshot" data-shot="3" alt="" data-src="../cnr/4-exports.png">
+            </div>
+
+            <div class="app__top">
+              <span class="app__mark">CNR</span>
+              <span class="app__name">CNR Car Zone</span>
+              <span class="app__ctx" data-ctx>Home</span>
+            </div>
+
+            <div class="app__body">
+
+              <div class="scr is-on" data-scr="0">
+                <div class="search">Search cars, sellers, numbers…</div>
+                <div class="stats">
+                  <div class="st"><i class="ic ic--b"></i><b>0</b><span>New opportunities</span></div>
+                  <div class="st"><i class="ic ic--y"></i><b>0</b><span>Inspections pending</span></div>
+                  <div class="st"><i class="ic ic--y"></i><b>0</b><span>Under negotiation</span></div>
+                  <div class="st"><i class="ic ic--g"></i><b>5</b><span>Purchased vehicles</span></div>
+                  <div class="st"><i class="ic ic--r"></i><b>5</b><span>Pending documents</span></div>
+                  <div class="st"><i class="ic ic--g"></i><b>0</b><span>Ready for sale</span></div>
+                </div>
+              </div>
+
+              <div class="scr" data-scr="1">
+                <div class="veh">
+                  <b>Mahindra Bolero Power plus BS6(O)</b>
+                  <span>OPP-0009 · TS09 EX 1234</span>
+                </div>
+                <div class="acts">
+                  <span class="act act--navy">Call</span>
+                  <span class="act act--green">WhatsApp</span>
+                </div>
+                <div class="banner">
+                  <b>In inventory</b>
+                  <span>HYD-2026-0005 · tap to open</span>
+                </div>
+                <div class="listrows">
+                  <div class="lr"><b>Inspection</b><span>Not started</span></div>
+                  <div class="lr"><b>Negotiation</b><span>Record offers</span></div>
+                </div>
+                <div class="kv">
+                  <div><span>Make</span><b>Mahindra Bolero</b></div>
+                  <div><span>Year</span><b>2020</b></div>
+                  <div><span>Registration</span><b>TS09 EX 1234</b></div>
+                </div>
+              </div>
+
+              <div class="scr" data-scr="2">
+                <div class="sec-h">Document checklist <em>14 / 18</em></div>
+                <div class="checks">
+                  <div class="ck is-ok"><i></i>RC book</div>
+                  <div class="ck is-ok"><i></i>Insurance</div>
+                  <div class="ck is-ok"><i></i>Owner ID</div>
+                  <div class="ck is-ok"><i></i>Form 29</div>
+                  <div class="ck"><i></i>Form 30</div>
+                  <div class="ck"><i></i>NOC</div>
+                </div>
+                <div class="sec-h">Photos <em>22 categories</em></div>
+                <div class="thumbs"><span></span><span></span><span></span><span></span></div>
+              </div>
+
+              <div class="scr" data-scr="3">
+                <div class="sec-h">Export (CSV)</div>
+                <div class="dls">
+                  <div class="dl"><b>Opportunities</b><span>Download</span></div>
+                  <div class="dl"><b>Purchased inventory</b><span>Download</span></div>
+                  <div class="dl"><b>Seller information</b><span>Download</span></div>
+                  <div class="dl"><b>Purchase &amp; payments</b><span>Download</span></div>
+                  <div class="dl"><b>Document status</b><span>Download</span></div>
+                </div>
+                <div class="note">Sensitive seller ID and bank details are not included.</div>
+              </div>
+
+            </div>
+
+            <div class="app__nav">
+              <span class="is-on"><i></i>Home</span>
+              <span><i></i>Opportunities</span>
+              <span><i></i>Inventory</span>
+              <span><i></i>Pending</span>
+              <span><i></i>More</span>
+            </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <p class="note-honest">This phone is an HTML and CSS recreation, matched to the live app. The vehicle and
+          registration details shown are placeholders, not real records.</p>
+        </section>
+
+        <section id="outcome" aria-labelledby="outcome-h">
+          <p class="k">Outcome</p>
+          <h2 id="outcome-h">Running a real business</h2>
+          <p>CNR Car Zone is in production for a single-owner business. Phases 1A and 2 have
+          shipped; sales and profit reporting is next.</p>
+          <p>There are no traffic or revenue numbers here, because this is an internal tool for one owner,
+          and I would rather show what it does than invent a metric for it.</p>
+        </section>
+
+        <section id="lessons" aria-labelledby="lessons-h">
+          <p class="k">Lessons</p>
+          <h2 id="lessons-h">What building it solo taught me</h2>
+          <ul class="dots">
+            <li><b>Phase the work by what the business needs next.</b> The core loop came first; reporting waits until there is data worth reporting on.</li>
+            <li><b>Plan for the schema you will have later.</b> Keeping old records valid is what let multi-image documents ship without a migration headache.</li>
+            <li><b>Treat privacy as a feature.</b> Deciding what an export leaves out is as much a design decision as what it includes.</li>
+          </ul>
+        </section>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="pn" aria-label="More case studies">
+    <a href="nfl-season-hub.html"><span>Previous</span><b>NFL Season Hub</b></a>
+    <a href="unity.html"><span>Next</span><b>Unity Technologies</b></a>
+  </nav>
+</div>
+
+</main>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <span>© 2026 Rakesh Reddy Yeduru · Frontend Engineer &amp; Website Operations Manager</span>
+    <nav class="foot__links" aria-label="Footer">
+      <a href="../index.html#work">All work</a>
+      <a href="mailto:rakeshreddy202000@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/rakeshyeduru/" target="_blank" rel="noopener">LinkedIn<span class="vh"> (opens in a new tab)</span></a>
+      <a href="https://github.com/Rakesh0710" target="_blank" rel="noopener">GitHub<span class="vh"> (opens in a new tab)</span></a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

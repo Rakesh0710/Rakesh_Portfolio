@@ -1,360 +1,151 @@
-# Portfolio — Rakesh Reddy Yeduru
+# Portfolio · Rakesh Reddy Yeduru
 
-A single-page portfolio, designed in the spirit of apple.com. No build step, no npm, no framework.
-Three files, open and edit.
+Frontend Engineer · Website Operations Manager
+Live at **https://rakesh0710.github.io/Rakesh_Portfolio/**
 
-Positioned as a **frontend engineer** first, with website operations as the second track.
-Each role in the Experience section leads with a frontend title, with the résumé title beneath.
+Plain HTML, CSS and JavaScript. No framework, no build step, no npm. Open a file, edit it,
+push it.
 
 ---
 
 ## 1. Run it
 
-Put `index.html`, `styles.css` and `script.js` in one folder, flat — no subfolders.
+Double-click `index.html`. Everything works from the file system except the "Live app" tab in the
+NFL demo, which embeds a remote site.
 
-**Quick:** double-click `index.html`.
+## 2. Files
 
-**Better:** in VS Code install **Live Server** (Ritwick Dey), right-click `index.html` → **Open with
-Live Server**. Every Cmd+S refreshes the browser.
-
-> Fonts load from Google Fonts, so the first load needs internet. Without it the page still works,
-> falling back to your Mac's San Francisco.
-
----
-
-## 2. What each file does
-
-| File | What's in it |
-|---|---|
-| `index.html` | All content — headline, live work, experience bullets, project, skills, contact. |
-| `styles.css` | The look — design tokens, layout, every CSS animation. |
-| `script.js` | The behaviour — scroll scrubbing, the pinned showcase, reveals, counters, tilt. |
-
----
-
-## 3. Page order
-
-1. **Hero** — name kicker, the "I build web platforms / and keep them running" headline, dual role line, live-work chips, code window
-2. **Statement** — words light up one at a time as you scroll
-3. **Metrics** — 5+ / 175+ / 100+ / 7, counting up
-4. **Live work** — the four public URLs you shipped ← *the most valuable section on the page*
-5. **Build / Operate** — the two halves of the job
-6. **Experience** — three roles, both job titles each
-7. **NFL Season Hub** — interactive demo window (replay / league / live app)
-8. **CNR Car Zone** — pinned phone walkthrough
-9. **Stack** — twelve skill cards with a discipline filter
-10. **Education**, **Contact**
-
-### The NFL Season Hub demo
-
-Three tabs inside one browser-chrome window:
-
-- **Game replay** — a canvas animation of the real win-probability curve for the 2022 week 15
-  Vikings/Colts game, with play/pause, a scrubber and key-play beads. Mirrors the real project's
-  technique: a fractional cursor advanced by elapsed time, repainting the canvas directly, with
-  DOM text updated only when the whole play index changes.
-- **League** — the top ten teams by projected wins, in their own colours.
-- **Live app** — a facade that only injects the `<iframe>` when the visitor clicks, so the
-  deployed React app never loads on a first visit.
-
-**The data is real.** It was fetched once from the deployed app's own public JSON
-(`/data/game/2022_15_IND_MIN.json` and `/data/teams-index.json`), trimmed, and inlined into
-`index.html` as a `<script type="application/json">` block (7 KB raw, 2.3 KB gzipped). To refresh
-or swap the game, re-fetch and regenerate that block; nothing else changes.
-
-Team colours are lifted toward WCAG contrast against the dark card at runtime, the same idea the
-real project uses, so Minnesota's `#4F2683` stays purple but becomes legible.
-
----
-
-## 4. The design system
-
-Everything comes from the token block at the top of `styles.css` — these are Apple's real values:
-
-```css
-:root{
-  --black:#000000;    /* dark sections */
-  --paper:#fbfbfd;    /* light section */
-  --gray:#f5f5f7;     /* alternating light section */
-  --ink:#1d1d1f;      /* primary text */
-  --ink-2:#6e6e73;    /* secondary text */
-  --blue:#0071e3;     /* accent on light */
-  --blue-dark:#2997ff;/* accent on dark */
-
-  --cnr:#1e3a63;      /* CNR Car Zone navy, matched to the live app */
-  --cnr-green:#2f8558;
-}
+```
+index.html                 home page
+work/
+  nfl-season-hub.html      case study · personal product
+  cnr-car-zone.html        case study · product (pinned phone walkthrough)
+  unity.html               case study · enterprise, team build
+  university-of-dayton.html case study · enterprise, team build
+styles.css                 one stylesheet for every page
+script.js                  one script for every page; each module no-ops if its markup is absent
+assets/work/*.webp         real screenshots of the live pages, 1280px plus a 640px copy
+og.png                     1200×630 link-preview card
+sitemap.xml, robots.txt    search
+404.html                   GitHub Pages serves this for any missing URL (absolute paths only)
 ```
 
-Type is `Inter` with an `-apple-system` fallback, so on a Mac it renders in real SF Pro. Code and
-metadata use `JetBrains Mono`.
+## 3. Home page order
 
----
+1. **Hero:** name, headline, both titles, the code window with the release pipeline, seasonal particles
+2. **01 Selected work:** NFL Season Hub (with the live replay demo), CNR Car Zone (phone with screen tabs), Unity and University of Dayton (real screenshots)
+3. **02 Expertise:** the BUILD / EXPERIENCE / OPERATE explorer, then the full 80-tool stack in a disclosure
+4. **03 Impact:** six figures, each with its source, plus what has been owned in production
+5. **04 Experience:** timeline, with every role's full responsibilities behind "All responsibilities"
+6. **05 About**
+7. **06 Contact**
 
-## 5. ⚠️ Two rules that will break the page if you ignore them
+Every case study follows the same eight sections: Overview, Responsibilities, Challenge, Process,
+Engineering, Showcase, Outcome, Lessons. The two team builds (Unity, University of Dayton) leave
+Lessons out on purpose; see §8.
 
-### Never reuse a class name
+## 4. Design system
 
-An earlier version named the hero's per-letter spans `.ch` **and** the contact links `.ch`. The
-second rule won, every letter of the name became `display:block` with padding, and the name rendered
-**one letter per line, vertically**. It looked like a layout bug; it was a name collision.
+All values are tokens at the top of `styles.css`.
 
-Before adding a class, Cmd+F for it in `styles.css` first. To check the whole file at once:
+| Token | Value | Use |
+| --- | --- | --- |
+| `--bg` | `#0c111b` | page |
+| `--surface` / `--surface-2` | `#141d2b` / `#1b2638` | cards |
+| `--text` | `#f5f7fa` | headings, body emphasis |
+| `--text-2` | `#a3b4c9` | body copy |
+| `--text-3` | `#8597ae` | labels, captions |
+| `--accent` | `#77c8ff` | links, buttons, active states |
+| `--paper` | `#e8e9e6` | the Impact section only |
 
-```bash
-python3 - <<'PY'
-import re,collections
-c=re.sub(r'/\*.*?\*/','',open('styles.css').read(),flags=re.S)
-top=re.sub(r'@media[^{]*\{(?:[^{}]*\{[^{}]*\})*[^{}]*\}','',c,flags=re.S)
-p=collections.defaultdict(lambda: collections.defaultdict(set))
-for m in re.finditer(r'(^|[},])\s*([^{}@]+?)\{([^{}]*)\}',top,flags=re.S):
-    for s in m.group(2).split(','):
-        s=s.strip()
-        if re.fullmatch(r'\.[\w-]+',s):
-            for prop in ('display','position','background','padding'):
-                v=re.search(rf'(?:^|;)\s*{prop}\s*:\s*([^;]+)',m.group(3))
-                if v: p[s][prop].add(v.group(1).strip())
-bad=[(k,{a:b for a,b in v.items() if len(b)>1}) for k,v in p.items() if any(len(b)>1 for b in v.values())]
-print(bad or "no collisions")
-PY
+Type: **Space Grotesk** for headings, **Inter** for text, **JetBrains Mono** for labels and code.
+
+Motion uses only `transform` and `opacity`, never scroll-jacks, and is switched off under
+`prefers-reduced-motion`. With JavaScript off, every section is still fully visible.
+
+## 5. ⚠️ Rules that will break the page if you ignore them
+
+### Never style a bare tag inside a component
+
+`.cap span { … }` also matches `<span class="cap__i">`, and its `display:block` beat the icon box's
+`display:grid`, so every icon slid into a corner. `.ecard p` did the same to the small project label.
+Give the element its own class (`.cap__t span`, `.ecard__desc`) instead. This is the same family of
+bug that once printed the hero name one letter per line.
+
+To check, open the page, paste this into the console, and investigate anything it lists:
+
+```js
+[...document.styleSheets[0].cssRules].flatMap(r => r.selectorText ? r.selectorText.split(",") : [])
+  .map(s => s.trim()).filter(s => /\s(span|b|i|div|a|p|li|em|img)$/.test(s))
+  .map(s => [s, [...document.querySelectorAll(s)].filter(e => e.className).map(e => e.className)])
+  .filter(([, c]) => c.length)
 ```
 
-### Gradient text and animated letters cannot be combined
+### Mobile grid columns are `minmax(0,1fr)`, never `1fr`
 
-`.hline--2` (the second headline line) used `background-clip:text` with a CSS gradient. It rendered
-**completely invisible**: each per-letter span animates, which puts it in its own compositing
-layer, and the parent's text clip cannot reach into it. The line took up space and painted nothing.
-Verified by rendering with each property disabled in turn: opacity, transform and filter all
-trigger it individually.
+A bare `1fr` column cannot shrink below its widest child, so one code block or demo window widened
+the whole page past the screen at 320–430px. Every layout grid uses `minmax(0,1fr)`.
 
-`script.js` now tints each glyph along the same colour ramp, so no clipping is involved. **If you
-reintroduce a CSS gradient on any element whose children animate, it will disappear again.**
+### Text colour tokens sit at a measured contrast floor
 
-### Text colour tokens are set to a measured contrast floor
-
-`--ink-3`, `--on-dark-3` and `--blue` are not arbitrary. They were raised until every piece of
-small text on the page cleared WCAG AA (4.5:1) against the background it is actually composited on:
-
-| Token | Value | Clears |
-|---|---|---|
-| `--ink-3` | `#707075` | 4.9:1 on white, 4.5:1 on the gray section |
-| `--on-dark-3` | `#88888d` | 6.0:1 on black, 4.6:1 on the lightest dark card |
-| `--blue` | `#006ddf` | 4.9:1 on white, and white-on-blue 4.9:1 for buttons |
-
-Apple's own `#86868b` and `#0071e3` sit at 3.3:1 and 4.3:1 for small text, which fails. **If you
-lighten these back toward Apple's values, re-measure.** Parse the colour by painting it on a canvas
-and reading the pixel back rather than by regex; Tailwind-style `oklch()` and any `rgba()` will
-otherwise be read wrong, and semi-transparent layers must be composited over their ancestors or a
-3% white overlay reads as pure white.
+`--text-3` is 5.0:1 on the lightest dark surface and `--ink-2` is 6.2:1 on `--paper`. Do not lighten
+or darken them without re-measuring, and do not put small text on a translucent surface without
+checking the colour it actually composites to.
 
 ### The 960px breakpoint must match in both files
 
-`script.js` checks `window.innerWidth > 960`; `styles.css` switches at `max-width:960px`. Below it
-the CSS unstacks the project slides into a normal list; above it they're stacked and JS shows one.
-**If those two numbers drift apart, all four panels render on top of each other.**
+On the CNR case study, `canPin()` in `script.js` and the `@media (max-width:960px)` block for
+`.showcase` in `styles.css` decide together whether the phone walkthrough pins. Change one, change both.
 
----
+### Don't round icon path coordinates
+
+The brand icons in the inline sprite are full-precision Simple Icons paths. Rounding them to one
+decimal destroyed seven logos.
+
+### The code window must fit its column
+
+The longest code line is about 45 characters. Under 1180px and under 360px the window tightens its
+font and padding so nothing scrolls sideways. If you lengthen a line, check 1024px and 320px.
 
 ## 6. Common edits
 
-**Change any text** — open `index.html`, Cmd+F, type over it.
+**Text.** Search for it in `index.html` or the relevant `work/*.html` and change it.
 
-**Add or change a live-work card** — copy an `<a class="lw rv">` block in the `#live` section. The
-preview graphic is pure CSS: pick a `prev--unity` / `prev--made` / `prev--ud` / `prev--ud2` variant,
-or add your own colour pair in `styles.css`:
+**Navigation and footer on case studies.** They are repeated in each of the four `work/*.html`
+files. Edit all four.
 
-```css
-.prev--yours{ --prev-bg:#101820; --prev-fg:#00d1b2; }
-```
+**Add a project to the Explorer.** Each pillar's panel has a "Where it shows up" list of two links
+with a 640×400 thumbnail. Copy one.
 
-**Swap in real screenshots instead** — replace the `<span class="prev …">` block with
-`<img src="unity.png" alt="" class="prev">` and drop the PNG in the folder. Keep them under ~300KB
-each or the page gets slow.
+**Preview a season or time of day.** Add `?season=oct`, `nov`, `dec` or `none`, and/or
+`?tod=dawn`, `day`, `dusk` or `night` to the URL.
 
-**Change the highlighted words in the scrolling statement** — `script.js` §5:
-```js
-var KEYWORDS = ["build", "publish", "fast", "findable", "online"];
-```
-Lowercase, no punctuation. They render in blue as they light up.
+**Add the real CNR Car Zone screenshots.** Save four phone screenshots as
+`cnr/1-dashboard.png`, `cnr/2-opportunity.png`, `cnr/3-documents.png` and `cnr/4-exports.png`, then
+add `data-ready` to the `<div class="cnrshots" data-shots hidden>` element in `index.html` and in
+`work/cnr-car-zone.html`. Blur or replace registration plates, seller names, phone numbers and bank
+details first: this is a public page. Without `data-ready` the site never requests the files, so
+there is no 404 in the console.
 
-**Change the hero code window** — `index.html`, search `ide__code`. Each line is one
-`<span class="ln" style="--l:N">`; keep `--l` sequential — it drives the line number *and* the typing
-stagger. Colour classes: `c-key` `c-typ` `c-var` `c-str` `c-fn` `c-com`.
-
-### Toolkit icons
-
-Every chip carries an icon from an inline SVG sprite at the top of `<body>` (67 symbols, ~51 KB
-raw / ~22 KB gzipped). 31 are real brand marks from [Simple Icons](https://simpleicons.org)
-(CC0); the other 36 are generic glyphs authored for this page, drawn as solid shapes so they sit
-at the same visual weight as the brand marks.
-
-- **Referencing:** `<svg class="skchip__i"><use href="#i-react"/></svg>`. Symbol ids are `i-<slug>`.
-- **Icon colour:** a chip with a brand icon sets `--bc` inline to that brand's colour, already
-  darkened to clear 3:1 on the chip background. Chips without one inherit the card's `--sk` accent.
-- **Adding a brand:** grab the path from
-  `https://cdn.jsdelivr.net/npm/simple-icons@13/icons/<slug>.svg`, add a `<symbol>`, and compute the
-  lifted colour the same way (see §5 for why you must measure rather than eyeball it).
-
-> ⚠️ **Do not "optimise" the sprite by rounding path coordinates.** Rounding to 1 decimal looks
-> harmless at a 24-unit viewBox but silently destroyed React, Java, Node.js, MySQL, WordPress,
-> Search Console and GA4 — they rendered as thin slivers. It saved 8 KB gzipped and cost seven
-> logos. Full precision is deliberate.
-
-### The hero knows what month and time it is
-
-`script.js` §8c reads the visitor's own clock and stamps two attributes on `<html>`:
-
-| Attribute | Values | Drives |
-|---|---|---|
-| `data-season` | `oct` `nov` `dec` `none` | particle type, accent colour, the `season:` line in the code window |
-| `data-tod` | `dawn` `day` `dusk` `night` | the hero glow palette (`--g1/--g2/--g3`) and the greeting wording |
-
-Nothing is fetched and there is nothing to keep in sync. The trade-off is that a visitor with a
-wrong device clock sees the wrong theme, which is harmless.
-
-**Previewing without waiting for the calendar:**
-
-```
-?season=oct     ?season=nov     ?season=dec     ?season=none
-?tod=dawn       ?tod=day        ?tod=dusk       ?tod=night
-```
-
-They combine: `?season=dec&tod=night`. Forcing `tod` also moves the greeting, so a preview never
-says "Working late" at a forced dawn. **Use `?season=none` to mute the whole thing** before a
-specific interview.
-
-Only October, November and December have themes. The other nine months fall through to `none`,
-which is the original blue. Four good themes beat twelve mediocre ones; add more by extending the
-`SEASONS`, `CODE` and `SPEC` maps in §8c and the two token blocks in `styles.css`.
-
-**The code window fits inside the hero, and is never clipped or faded.**
-
-It used to render taller than the hero, so `overflow:hidden` cut it on a hard line. Every attempt
-to hide that by fading the window itself traded one problem for another: the border, box-shadow
-and backdrop-filter each traced its outline for the full height, and fading hard enough to kill
-them also hid half the code.
-
-The fix was to make it **fit** instead. `line-height` is 1.5 and `.ide__body` padding is tight, so
-the window is ~517px against a 1290-1430px hero, clearing the bottom by 53-88px at every viewport
-tested (390x844 through 1710x1073). It is a finished card again: full `border-radius`, a real
-border, a solid fill.
-
-`.hero__in` and `.ide-hold` sit at `z-index:2`, **above** `.hero::after`. That matters: the bottom
-gradient should dim the grid, glow and particles, never the content. Drop that z-index and the
-last few code lines go grey again.
-
-**The hero fades into the next section on purpose.****The hero fades into the next section on purpose.** The code window is taller than the hero, so
-`overflow:hidden` used to slice it off on a hard horizontal line. `.hero::after` lays a
-transparent-to-black gradient over the last ~26vh, dissolving the window, grid, glow and particles
-into the solid black the next section opens with. It sits at `z-index:1` so it covers the code
-window, and is `pointer-events:none`. Remove it and the hard cut comes back.
-
-**Rules the particle layer follows** — change them at your peril:
-
-- Hidden entirely under `prefers-reduced-motion`; the colour shift and greeting stay.
-- `IntersectionObserver` stops the loop when the hero leaves the viewport (verified: zero
-  `requestAnimationFrame` calls while scrolled away), and `visibilitychange` stops it on a
-  background tab.
-- A frame advances by at most 100ms, so returning to a backgrounded tab does not teleport
-  every particle.
-- The canvas is `z-index:-1` inside `.hero`, which has `isolation:isolate`, so particles always
-  paint behind the text. They show *through* the translucent badge; that is correct, not a bug.
-- Greeting text is empty in the HTML and filled by JS, with `.greet:empty{display:none}` so
-  nothing shifts if JS fails.
-
-### Toolkit cards are dark, and have no hover state
-
-The cards are permanently dark (`background-color:#0b0b0e` plus a faint accent gradient). There is
-**no hover effect at all** — no tilt, no inversion, no spotlight. That is deliberate; earlier
-versions had both a subtle tint and a full inversion and neither was wanted.
-
-Every chip is styled identically: a dark pill, white label, and its symbol. There is no "core
-tool" emphasis any more.
-
-Icon colour comes from `--bc-d`, set inline per brand chip and lifted to 3:1 against the dark
-pill. Brands with almost no saturation (GitHub, Next.js, Apache) go near-white rather than grey,
-which is what those brands do in their own dark modes. Generic glyphs have no `--bc-d` and fall
-back to a bright tint of the card accent.
-
-> Set `background-color` and `background-image` separately on a card, never the `background`
-> shorthand with a gradient. The shorthand resets the colour to transparent, which leaves no solid
-> ground if `color-mix` is unsupported — and makes any contrast check read the section behind it
-> instead of the card.
-
-### The toolkit filter
-
-Twelve `.skcard` blocks, each tagged `data-skg="build|operate|platform"`. The filter buttons carry
-a matching `data-skf`. Non-matching cards get `.is-dim` rather than being hidden, so the grid never
-reflows mid-filter and every tool stays readable.
-
-- **Adding a card:** copy an `<article class="skcard rv">`, give it a `data-skg`, and renumber the
-  `.skcard__n`. The tool count in the intro and the "Showing N areas" line are both counted from the
-  DOM at runtime, so they can never drift from the markup.
-- **Marking a core tool:** add `is-core` to a `.skchip`. That draws the filled dot and darkens the
-  label. These are an editorial judgement about what you lead with — change them freely.
-- **Group colour:** set in `styles.css` via `.skcard[data-skg="..."]{ --sk: ... }`. All three clear
-  4.5:1 on the card background; check any replacement before using it.
-
-**Change the metrics** — search `data-count`. `data-count` is the target, `data-suffix` is appended
-when it finishes.
-
-### Adding the CNR Car Zone screenshots
-
-The app sits behind a login, so there is no live link. The phone in the CNR section shows a CSS
-recreation by default; drop real screenshots in and it upgrades itself automatically.
-
-Create a `cnr/` folder beside `index.html` and save exactly these four names:
-
-```
-cnr/1-dashboard.png     -> the home dashboard with the stat tiles
-cnr/2-opportunity.png   -> an opportunity / vehicle record
-cnr/3-documents.png     -> the document checklist
-cnr/4-exports.png       -> Data & backup, the CSV export list
-```
-
-`script.js` probes `cnr/1-dashboard.png`. If it loads, all four are swapped in and the app's own
-header and tab bar are hidden (the screenshot already contains them). If it is missing, the CSS
-mockup stays and nothing looks broken, so a half-finished set never ships a blank phone.
-
-**Scrub the data first.** These go on a public page. Registration numbers, seller names, phone
-numbers and payment figures are a real person's information. Either seed the staging environment
-with fake records and screenshot that, or blur those fields before saving. Portrait phone
-screenshots around 1200x2600 work best; keep each under ~300 KB.
-
-**Add a project phase** — add a matching `.slide`, `.scr` and rail `<i>`, then add an entry to the
-`CHROME` array in `script.js` §6 (it sets the phone's header label and which tab bar item lights up).
-JS counts the slides automatically. Past four panels, raise `height:420vh` on `.showcase` or each one
-gets too short a turn.
-
----
+**Refresh the screenshots.** The images in `assets/work/` were captured from the live sites in
+October 2026. Keep the same file names and 1280×800 / 640×400 sizes.
 
 ## 7. Put it online
 
-**Fastest:** drag the folder onto [app.netlify.com/drop](https://app.netlify.com/drop). Live in
-20 seconds. Rename under **Site settings → Change site name**.
+Commit and push from GitHub Desktop. GitHub Pages rebuilds in about a minute, but browsers may keep
+the old files for up to ten minutes (`cache-control: max-age=600`). Use **Cmd+Option+R** to see
+changes immediately.
 
-**Better:** publish as a GitHub repo, then Netlify → **Add new site → Import an existing project**.
-Leave the build command blank, publish directory `.`. Every push auto-deploys.
+If the repository is ever renamed, update the absolute URLs in every page's `<head>` (canonical,
+`og:url`, `og:image`, JSON-LD), in `sitemap.xml`, in `robots.txt`, and the `/Rakesh_Portfolio/`
+paths in `404.html`.
 
-A custom domain like `rakeshyeduru.com` reads better on a résumé than `.netlify.app`.
+## 8. What is deliberately not here
 
----
-
-## 8. Before you send it to recruiters
-
-- [ ] Click all four live-work links — they're the strongest thing on the page
-- [ ] **Re-read the four "Worked on…" descriptions.** They're deliberately scoped, but you know
-      exactly what you did on each — make them precise. A recruiter can open these pages.
-- [ ] Check the paired job titles match what your LinkedIn says
-- [ ] Read it on your phone, not just your laptop
-- [ ] Check the Unity end date (Jul 2026) is how you want to present it
-- [ ] Add the URL to your LinkedIn header and the top of your résumé PDF
-
----
-
-## 9. If something breaks
-
-Right-click → **Inspect** → **Console**. Errors show in red with a file and line number.
-
-Unstyled page = `styles.css` isn't beside `index.html`. Nothing animates = same for `script.js`.
-Something laid out strangely = run the collision check in §5 first.
+- **No invented numbers.** Every figure traces to the résumé, the NFL Season Hub README, or a
+  measured build. Unity and University of Dayton traffic figures are not public, so they are not shown.
+- **No Lessons section on the team builds.** Those would be guesses at Rakesh's own reflections,
+  so Rakesh should write them.
+- **No live link to CNR Car Zone.** The app sits behind a login and holds a real business's private
+  data, so a link would only reach a sign-in page.
+- **No résumé download, no photography.**
