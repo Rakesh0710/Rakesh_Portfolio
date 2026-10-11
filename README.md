@@ -227,31 +227,23 @@ Only October, November and December have themes. The other nine months fall thro
 which is the original blue. Four good themes beat twelve mediocre ones; add more by extending the
 `SEASONS`, `CODE` and `SPEC` maps in §8c and the two token blocks in `styles.css`.
 
-**The code window has no border, no box-shadow and no backdrop-filter.** All three were removed
-deliberately, and adding any of them back brings the bug straight back.
+**The code window fits inside the hero, and is never clipped or faded.**
 
-The window is taller than the hero, so `overflow:hidden` clips it and it has to dissolve before
-that line. Each of those three properties **traces the window's outline for its full height** and
-survives any attempt to fade the fill, leaving a visible tile hanging over the next section. A
-`mask-image` on `.ide` does not help either: it carries `preserve-3d` and a 3D transform, so
-Safari promotes it to its own compositing layer and ignores both masks on it and overlays above it.
+It used to render taller than the hero, so `overflow:hidden` cut it on a hard line. Every attempt
+to hide that by fading the window itself traded one problem for another: the border, box-shadow
+and backdrop-filter each traced its outline for the full height, and fading hard enough to kill
+them also hid half the code.
 
-What works, because none of it depends on compositing:
+The fix was to make it **fit** instead. `line-height` is 1.5 and `.ide__body` padding is tight, so
+the window is ~517px against a 1290-1430px hero, clearing the bottom by 53-88px at every viewport
+tested (390x844 through 1710x1073). It is a finished card again: full `border-radius`, a real
+border, a solid fill.
 
-| Part | How it fades |
-|---|---|
-| Fill | `background-image` gradient on `.ide`, transparent by 78% |
-| Code text | `mask-image` on `.ide__body`, a plain div with no compositing triggers |
-| Everything around it (grid, glow, particles) | the `.hero::after` gradient |
+`.hero__in` and `.ide-hold` sit at `z-index:2`, **above** `.hero::after`. That matters: the bottom
+gradient should dim the grid, glow and particles, never the content. Drop that z-index and the
+last few code lines go grey again.
 
-Measured by rendering twice, once with `.ide` hidden, and diffing: the window stops contributing
-at **62% of its height**, leaving ~240px of clean black before the boundary.
-
-> Measuring this is harder than it looks. Comparing the window's centre against the page margin
-> measures the `--g3` glow, which is centred at 52% across. Scanning for luminance steps near the
-> border picks up the hero grid lines and individual particles instead. **Diff two renders.**
-
-**The hero fades into the next section on purpose.** The code window is taller than the hero, so
+**The hero fades into the next section on purpose.****The hero fades into the next section on purpose.** The code window is taller than the hero, so
 `overflow:hidden` used to slice it off on a hard horizontal line. `.hero::after` lays a
 transparent-to-black gradient over the last ~26vh, dissolving the window, grid, glow and particles
 into the solid black the next section opens with. It sits at `z-index:1` so it covers the code

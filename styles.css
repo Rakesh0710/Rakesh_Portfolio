@@ -270,7 +270,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
    is exactly the colour the next section starts with. */
 .hero::after{
   content:""; position:absolute; left:0; right:0; bottom:0;
-  height:clamp(170px,26vh,320px);
+  height:clamp(130px,18vh,230px);
   background:linear-gradient(to bottom, rgba(0,0,0,0) 0%, #000 86%);
   pointer-events:none;
   z-index:1;            /* above the code window, below nothing that matters */
@@ -311,7 +311,7 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='.06'/></svg>");
 }
 
-.hero__in{ width:100%; text-align:center; }
+.hero__in{ width:100%; text-align:center; position:relative; z-index:2; }
 
 [data-lift]{ opacity:0; transform:translateY(22px); animation:lift .95s var(--ease-out) forwards; }
 [data-lift="1"]{ animation-delay:.08s; }
@@ -416,28 +416,25 @@ ul,ol{ margin:0; padding:0; list-style:none; }
   margin-top:clamp(38px,6vh,70px);
   padding-inline:var(--pad);
   perspective:1600px;
-  flex:1; display:flex; align-items:flex-end; justify-content:center;
+  flex:1; display:flex; align-items:center; justify-content:center;
+  padding-bottom:clamp(40px,7vh,90px);   /* keep it clear of the hero's edge */
+  position:relative; z-index:2;          /* sits above .hero::after, so the
+                                            bottom fade darkens the grid, glow
+                                            and particles but never the code */
 }
 .ide{
   width:100%; max-width:780px;
-  /* Everything that could outline this window is gone: no border, no
-     box-shadow, no backdrop-filter. Each of those traced the silhouette
-     for the window's full height and survived every attempt to fade it.
-     The fill is a gradient, which needs no compositing support, so it
-     fades identically in every browser. Safari would not honour a mask
-     here (backdrop-filter + preserve-3d + a 3D transform promote this to
-     its own layer), which is why the fade lives in the paint itself. */
-  background-image:linear-gradient(to bottom,
-      rgba(28,28,34,.97) 0%,
-      rgba(24,24,29,.94) 30%,
-      rgba(19,19,24,.55) 50%,
-      rgba(11,11,14,.16) 64%,
-      rgba(0,0,0,0)      78%);
-  border:0;
-  border-radius:16px 16px 0 0;
+  /* The whole window fits inside the hero now, so nothing is clipped and
+     nothing has to be faded away. It is a finished card: full radius, a
+     real border, and a solid fill. backdrop-filter stays off, since it
+     lightened the fill without adding much. */
+  background:#15151a;
+  border:1px solid var(--hair-dark);
+  border-radius:16px;
   overflow:hidden;
   transform-style:preserve-3d;
   will-change:transform;
+  box-shadow:0 24px 70px rgba(0,0,0,.55), 0 0 60px rgba(41,151,255,.10);
 }
 
 .ide__bar{
@@ -458,17 +455,11 @@ ul,ol{ margin:0; padding:0; list-style:none; }
 .tab.is-on{ color:var(--on-dark); background:rgba(255,255,255,.07); }
 @media (max-width:640px){ .tab:not(.is-on){ display:none; } }
 
-.ide__body{
-  padding:18px 4px 26px;
-  /* fades the code itself; the fill gradient above only fades the
-     background behind it. Plain div, so the mask is honoured everywhere. */
-  -webkit-mask-image:linear-gradient(to bottom, #000 22%, transparent 62%);
-          mask-image:linear-gradient(to bottom, #000 22%, transparent 62%);
-}
+.ide__body{ padding:14px 4px 16px; }
 .ide__code{
   margin:0; overflow-x:auto;
   font-family:var(--mono); font-size:clamp(.62rem,1.35vw,.8rem);
-  line-height:1.85; color:#c9d1d9;
+  line-height:1.5; color:#c9d1d9;
   counter-reset:l; padding-inline:18px;
 }
 .ide__code code{ font:inherit; display:block; }
