@@ -214,7 +214,10 @@
 
     function show(i) {
       current = i;
-      screens.forEach(function (s, n) { s.classList.toggle("is-on", n === i); });
+      screens.forEach(function (s, n) {
+        s.classList.toggle("is-on", n === i);
+        s.classList.toggle("is-before", n < i);
+      });
       shots.forEach(function (s, n) { s.classList.toggle("is-on", n === i); });
       var c = CHROME[i] || CHROME[0];
       if (ctx) ctx.textContent = c.label;
@@ -247,13 +250,21 @@
   document.querySelectorAll("[data-cnr]").forEach(function (root) {
     var phone = phoneController(root);
     var tabs = [].slice.call(root.querySelectorAll("[data-cnr-tab]"));
+    var panel = root.querySelector('[role="tabpanel"]');
     function select(tab, focus) {
       tabs.forEach(function (t) {
         var on = t === tab;
         t.setAttribute("aria-selected", String(on));
         t.tabIndex = on ? 0 : -1;
       });
-      phone.show(Number(tab.getAttribute("data-cnr-tab")));
+      var idx = Number(tab.getAttribute("data-cnr-tab"));
+      phone.show(idx);
+      if (panel) {
+        panel.setAttribute("aria-labelledby", tab.id);
+        panel.querySelectorAll("[data-cnr-desc]").forEach(function (p) {
+          p.hidden = Number(p.getAttribute("data-cnr-desc")) !== idx;
+        });
+      }
       if (focus) tab.focus();
     }
     tabs.forEach(function (tab, i) {
@@ -342,6 +353,54 @@
       else running = false;
     }
     function start() { if (!running) { running = true; requestAnimationFrame(paint); } }
+  })();
+
+
+  /* ═══ 7b · RELEASE PIPELINE ══════════════════════════════════
+     Steps Plan → Build → QA → Release → Monitor and lights the line of
+     ship() that matches, then holds on "checks passed" and starts over.
+     Runs only while the hero is on screen and the tab is visible. */
+  (function () {
+    var root = document.querySelector("[data-pipeline]");
+    if (!root) return;
+    var stages = [].slice.call(root.querySelectorAll("[data-stage]"));
+    var lines  = [].slice.call(root.querySelectorAll("[data-stage-line]"));
+    var checks = root.querySelector("[data-checks]");
+    var n = stages.length;
+
+    function paint(k) {          /* k = active stage, n = all done */
+      stages.forEach(function (li, i) {
+        li.classList.toggle("is-done", i < k);
+        li.classList.toggle("is-active", i === k);
+      });
+      lines.forEach(function (ln) {
+        ln.classList.toggle("is-active", Number(ln.getAttribute("data-stage-line")) === k);
+      });
+      if (checks) {
+        var done = k >= n;
+        checks.textContent = done ? "\u2713 " + n + " checks passed" : "running " + stages[k].textContent.toLowerCase();
+        checks.classList.toggle("is-ok", done);
+      }
+    }
+
+    if (reduce) { paint(n); return; }
+
+    var k = -1, timer = null, visible = true;
+    function tick() {
+      k = k >= n ? 0 : k + 1;
+      paint(k);
+      timer = setTimeout(tick, k >= n ? 2600 : 1250);
+    }
+    function start() { if (!timer && visible && !document.hidden) timer = setTimeout(tick, 400); }
+    function stop()  { clearTimeout(timer); timer = null; }
+
+    setTimeout(start, 1400);            /* after the code lines have drawn in */
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) {
+        visible = e[0].isIntersecting; visible ? start() : stop();
+      }).observe(root);
+    }
+    document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
   })();
 
 
@@ -874,8 +933,16 @@
     f.className = "appframe";
     f.src = "https://nfl-season-hub.vercel.app";
     f.title = "NFL Season Hub, the live deployed application";
-    f.loading = "lazy";
-    fac.replaceWith(f);
+    var wrap = document.createElement("div");
+    wrap.className = "appwrap is-loading";
+    wrap.setAttribute("aria-busy", "true");
+    wrap.innerHTML = '<span class="appwrap__msg" role="status">Loading the live app…</span>';
+    f.addEventListener("load", function () {
+      wrap.classList.remove("is-loading");
+      wrap.removeAttribute("aria-busy");
+    });
+    wrap.appendChild(f);
+    fac.replaceWith(wrap);
     f.focus();
   });
 

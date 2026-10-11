@@ -32,9 +32,9 @@ sitemap.xml, robots.txt    search
 
 ## 3. Home page order
 
-1. **Hero:** name, headline, both titles, the code window with the release pipeline, seasonal particles
+1. **Hero:** titles, name, the headline, the code window. Its release pipeline steps Plan → Build → QA → Release → Monitor and lights the matching line of `ship()`; it pauses off screen and is static under reduced motion
 2. **01 Experience:** timeline, with every role's full responsibilities behind "All responsibilities"
-3. **02 Selected work:** NFL Season Hub (with the live replay demo), CNR Car Zone (phone with screen tabs), Unity and University of Dayton (real screenshots)
+3. **02 Selected work:** four different compositions. NFL Season Hub is an interactive feature (the live replay demo, the real league dashboard, one engineering insight, four metrics); CNR Car Zone is a product demo (phone with screen tabs); Unity is an enterprise spread (two real pages, overlapping); Dayton is a publication spread (the same feature on desktop and phone). Full technical detail sits behind "How it's built"
 4. **03 Expertise:** the BUILD / EXPERIENCE / OPERATE explorer, then the full 80-tool stack in a disclosure
 5. **04 Impact:** six figures, each with its source, plus what has been owned in production
 6. **05 About**
@@ -81,6 +81,12 @@ To check, open the page, paste this into the console, and investigate anything i
   .filter(([, c]) => c.length)
 ```
 
+### In a flex container, give every text run its own element
+
+The hero label was `Frontend Engineer <span>·</span> Website Operations Manager`. On phones the `·` is
+hidden, and the two bare text runs either side of it then merge into one flex item, so the label wrapped
+mid-phrase instead of stacking. Each title is now its own `<span>`.
+
 ### Mobile grid columns are `minmax(0,1fr)`, never `1fr`
 
 A bare `1fr` column cannot shrink below its widest child, so one code block or demo window widened
@@ -107,6 +113,18 @@ decimal destroyed seven logos.
 The longest code line is about 45 characters. Under 1180px and under 360px the window tightens its
 font and padding so nothing scrolls sideways. If you lengthen a line, check 1024px and 320px.
 
+### Explorer panels share one grid cell
+
+All three BUILD / EXPERIENCE / OPERATE panels sit in the same cell of `.xpl__panels`, and hidden ones use
+`visibility:hidden` rather than `display:none`. That keeps the section the height of the tallest panel,
+so switching tabs never moves the page, and still removes hidden panels from the tab order and from
+screen readers. Don't put the panels back into normal flow.
+
+### The hero headline is sized from its column
+
+`.hero__line` uses `cqi` units against `.hero__copy`, so "experiences that" always fits one line on
+desktop. The three lines are written as three `.hl` spans; keep that if you change the wording.
+
 ## 6. Common edits
 
 **Text.** Search for it in `index.html` or the relevant `work/*.html` and change it.
@@ -128,7 +146,8 @@ details first: this is a public page. Without `data-ready` the site never reques
 there is no 404 in the console.
 
 **Refresh the screenshots.** The images in `assets/work/` were captured from the live sites in
-October 2026. Keep the same file names and 1280×800 / 640×400 sizes.
+October 2026 at 1.5× resolution. Each desktop capture exists at 1920, 1280 and 640 wide (`name-1920.webp`,
+`name.webp`, `name-640.webp`); keep all three and the 16:10 shape.
 
 ## 7. Put it online
 

@@ -92,19 +92,16 @@
 
   <div class="shell hero__in">
     <div class="hero__copy">
-      <div class="hero__top" data-lift="1">
-        <p class="badge"><i aria-hidden="true"></i>Open to Frontend &amp; Website Operations roles</p>
-        <p class="greet" data-greet></p>
-      </div>
+      <p class="hero__label" data-lift="1"><span>Frontend Engineer</span><span class="sep" aria-hidden="true">·</span><span>Website Operations Manager</span></p>
 
       <h1 class="hero__h1">
-        <span class="hero__name" data-split>Rakesh Reddy Yeduru</span>
-        <span class="hero__line" data-lift="2">I build digital experiences that <em>work beautifully.</em></span>
+        <span class="hero__name" data-lift="2">Rakesh Reddy Yeduru</span>
+        <span class="hero__line">
+          <span class="hl" style="--h:0"><span>I build digital</span></span>
+          <span class="hl" style="--h:1"><span>experiences that</span></span>
+          <span class="hl" style="--h:2"><span><em>work beautifully.</em></span></span>
+        </span>
       </h1>
-
-      <p class="hero__role" data-lift="3">
-        Frontend Engineer <span aria-hidden="true">·</span> Website Operations Manager
-      </p>
 
       <p class="hero__lede" data-lift="4">
         Frontend engineering, thoughtful interfaces and scalable digital platforms, from concept and
@@ -120,39 +117,47 @@
           <a href="https://www.linkedin.com/in/rakeshyeduru/" target="_blank" rel="noopener" aria-label="LinkedIn profile (opens in a new tab)"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
         </span>
       </div>
+
+      <p class="badge" data-lift="6"><i aria-hidden="true"></i>Open to Frontend &amp; Website Operations roles</p>
     </div>
 
-    <!-- code window: a portrait in code, plus the release pipeline it describes -->
+    <!-- code window: a portrait in code; the release pipeline below it steps
+         through its stages and lights the matching line of ship() -->
     <div class="ide-hold" data-lift="7">
-      <div class="ide" id="ide">
+      <div class="ide" id="ide" data-pipeline>
         <div class="ide__bar">
           <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="ide__tabs" aria-hidden="true">
-            <span class="tab is-on">rakesh.ts</span>
+            <span class="tab is-on"><i class="tab__dot"></i>rakesh.ts</span>
             <span class="tab">release.yml</span>
             <span class="tab">vitals.json</span>
           </span>
         </div>
         <pre class="ide__code" aria-label="A short TypeScript object describing Rakesh: frontend engineer who also runs website operations, building with React, Next.js and TypeScript, and shipping through build, QA and release."><code><span class="ln" style="--l:0"><b class="c-key">export const</b> <b class="c-var">rakesh</b> = {</span>
-<span class="ln" style="--l:1">  role:     <b class="c-str">'Frontend Engineer'</b>,</span>
-<span class="ln" style="--l:2">  alsoRuns: <b class="c-str">'Website Operations'</b>,</span>
+<span class="ln ln--opt" style="--l:1">  role:     <b class="c-str">'Frontend Engineer'</b>,</span>
+<span class="ln ln--opt" style="--l:2">  alsoRuns: <b class="c-str">'Website Operations'</b>,</span>
 <span class="ln" style="--l:3">  builds:   [<b class="c-str">'React'</b>, <b class="c-str">'Next.js'</b>, <b class="c-str">'TypeScript'</b>],</span>
 <span class="ln" style="--l:4">  operates: [<b class="c-str">'Sanity'</b>, <b class="c-str">'AEM'</b>, <b class="c-str">'Cloudflare'</b>],</span>
 <span class="ln" style="--l:5">  season:   <b class="c-str c-season" data-season-code>'default'</b>,<span class="c-com" data-season-note></span></span>
-<span class="ln" style="--l:6">&nbsp;</span>
-<span class="ln" style="--l:7">  <b class="c-key">async</b> <b class="c-fn">ship</b>(site: <b class="c-typ">Site</b>) {</span>
-<span class="ln" style="--l:8">    <b class="c-key">await</b> <b class="c-fn">build</b>(site);</span>
-<span class="ln" style="--l:9">    <b class="c-key">await</b> <b class="c-fn">qa</b>(site);   <span class="c-com">// a11y · CWV · SEO</span></span>
-<span class="ln" style="--l:10">    <b class="c-key">return</b> <b class="c-fn">release</b>(site);</span>
+<span class="ln ln--opt" style="--l:6">&nbsp;</span>
+<span class="ln" style="--l:7" data-stage-line="0">  <b class="c-key">async</b> <b class="c-fn">ship</b>(site: <b class="c-typ">Site</b>) {</span>
+<span class="ln" style="--l:8" data-stage-line="1">    <b class="c-key">await</b> <b class="c-fn">build</b>(site);</span>
+<span class="ln" style="--l:9" data-stage-line="2">    <b class="c-key">await</b> <b class="c-fn">qa</b>(site);   <span class="c-com">// a11y · CWV · SEO</span></span>
+<span class="ln" style="--l:10" data-stage-line="3">    <b class="c-key">return</b> <b class="c-fn">release</b>(site);</span>
 <span class="ln" style="--l:11">  },</span>
-<span class="ln" style="--l:12">};<span class="caret" aria-hidden="true"></span></span></code></pre>
+<span class="ln" style="--l:12" data-stage-line="4">};<span class="caret" aria-hidden="true"></span></span></code></pre>
         <ol class="pipe" aria-label="How a release ships: plan, build, QA, release, monitor">
-          <li style="--s:0">Plan</li>
-          <li style="--s:1">Build</li>
-          <li style="--s:2">QA</li>
-          <li style="--s:3">Release</li>
-          <li style="--s:4">Monitor</li>
+          <li data-stage="0">Plan</li>
+          <li data-stage="1">Build</li>
+          <li data-stage="2">QA</li>
+          <li data-stage="3">Release</li>
+          <li data-stage="4">Monitor</li>
         </ol>
+        <div class="ide__status" aria-hidden="true">
+          <span><i class="st-branch"></i>main</span>
+          <span class="ide__checks" data-checks>checks running</span>
+          <span class="greet" data-greet></span>
+        </div>
       </div>
     </div>
   </div>
@@ -162,7 +167,7 @@
 
 
 <!-- ═══════════════════════ EXPERIENCE ══════════════════════════ -->
-<section class="sec sec--alt" id="experience" aria-labelledby="exp-h">
+<section class="sec sec--exp" id="experience" aria-labelledby="exp-h">
   <div class="shell">
     <div class="head rv">
       <p class="eyebrow"><b>01</b> Experience</p>
@@ -278,11 +283,13 @@
 
 
 <!-- ═══════════════════════ SELECTED WORK ═══════════════════════ -->
-<section class="sec" id="work" aria-labelledby="work-h">
+<section class="sec sec--work" id="work" aria-labelledby="work-h">
   <div class="shell">
-    <div class="head rv">
-      <p class="eyebrow"><b>02</b> Selected work</p>
-      <h2 id="work-h">Products I've built.<br>Platforms I've run.</h2>
+    <div class="head head--split rv">
+      <div>
+        <p class="eyebrow"><b>02</b> Selected work</p>
+        <h2 id="work-h">Products I've built.<br>Platforms I've run.</h2>
+      </div>
       <p class="head__note">
         Two products I designed and engineered on my own, and two enterprise platforms I worked on
         inside larger teams. Every project has a case study that says exactly what I did.
@@ -291,32 +298,26 @@
 
     <div class="projects">
 
-      <!-- ── 01 · NFL Season Hub ── -->
-      <article class="proj" aria-labelledby="p-nfl">
-        <div class="proj__info rv">
-          <p class="proj__meta"><span class="proj__n">01</span><span>Personal product</span><span>Data visualization</span></p>
-          <h3 id="p-nfl">NFL Season Hub</h3>
-          <p class="proj__problem">
-            NFL play-by-play data is public, excellent and almost unreadable. I built a way to see the
-            shape of a game: six seasons, from the league table down to one play, in three clicks.
-          </p>
-          <dl class="spec">
-            <div><dt>Role</dt><dd>Solo build: product, interface, data pipeline and tests</dd></div>
-            <div><dt>Built with</dt><dd>React 19, TypeScript, Vite, Canvas, Python (polars), Vitest, Playwright, Vercel</dd></div>
-            <div><dt>Decisions</dt><dd><ul>
-              <li><b>Static JSON, no backend.</b> A finished season never changes, so it ships as validated files on a CDN.</li>
-              <li><b>Canvas over React state.</b> The replay cursor lives in a ref; React re-renders once per play, not 60 times a second.</li>
-              <li><b>A runtime data contract.</b> Every file is checked field by field before the app sees it.</li>
-            </ul></dd></div>
-          </dl>
-          <div class="proj__acts">
-            <a class="btn btn--primary" href="work/nfl-season-hub.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--ghost" href="https://nfl-season-hub.vercel.app" target="_blank" rel="noopener">Live demo<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a>
+      <!-- ── 01 · NFL Season Hub: the interactive feature ── -->
+      <article class="feat" aria-labelledby="p-nfl">
+        <header class="feat__head rv">
+          <div>
+            <p class="proj__meta"><span class="proj__n">01</span><span>Personal product</span><span>Data visualization</span></p>
+            <h3 id="p-nfl">NFL Season Hub</h3>
           </div>
-        </div>
+          <div class="feat__intro">
+            <p>Six NFL seasons, from the league table down to a single play in three clicks, ending in a replay of how the game actually swung.</p>
+            <div class="chips"><span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Canvas</span><span class="chip">Python ETL</span></div>
+            <div class="proj__acts">
+              <a class="btn btn--primary" href="work/nfl-season-hub.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+              <a class="btn btn--ghost" href="https://nfl-season-hub.vercel.app" target="_blank" rel="noopener">Live demo<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+        </header>
 
-        <div class="proj__stage rv">
-          <div class="win" data-win>
+        <div class="feat__stage feat__stage--nfl rv">
+          <div class="feat__main">
+            <div class="win" data-win>
             <div class="win__bar">
               <span class="lights" aria-hidden="true"><i></i><i></i><i></i></span>
               <div class="win__tabs" role="tablist" aria-label="NFL Season Hub demo">
@@ -377,44 +378,49 @@
               </div>
             </div>
           </div>
-
-          <div class="results" aria-label="NFL Season Hub, measured results">
-            <div><b>1,693</b><span>games, 2020 to 2025</span></div>
-            <div><b>273,325</b><span>plays parsed by the ETL</span></div>
-            <div><b>97-100</b><span>Lighthouse performance, every page</span></div>
-            <div><b>216</b><span>unit and component tests</span></div>
-            <div><b>0 / 239</b><span>dropped frames in playback</span></div>
-            <div><b>6.8 KB</b><span>per game over the wire</span></div>
           </div>
-          <script type="application/json" data-nfl-data>{"g":{"id":"2022_15_IND_MIN","season":2022,"week":15,"date":"2022-12-17","h":{"id":"MIN","n":"Minnesota Vikings","c":"#4F2683","s":39},"a":{"id":"IND","n":"Indianapolis Colts","c":"#002C5F","s":36}},"wp":[567,520,470,497,458,440,443,468,406,418,424,510,512,512,520,527,507,485,293,292,292,353,269,273,268,254,206,208,153,157,157,155,162,150,157,134,108,116,97,99,93,119,95,94,95,76,79,69,74,82,90,46,45,43,42,35,12,16,16,14,15,16,18,21,35,34,36,28,4,4,4,5,5,5,6,6,4,5,6,5,5,5,5,3,4,4,4,7,7,6,4,4,3,2,2,2,2,2,2,2,2,1,1,3,4,3,2,2,2,2,1,2,2,2,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2,5,4,6,6,7,5,20,20,23,20,23,25,31,31,27,37,32,24,36,32,44,29,41,14,17,44,51,65,73,62,58,56,57,57,59,46,41,87,126,110,128,114,90,64,58,36,28,36,38,48,296,434,434,480,485,484,541,610,603,603,549,521,535,535,477,611,622,702,720,760,635,550,450,428,630,633,524,581,647,484,553,682,818,332,316,396,613,450,847],"hs":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,13,14,14,14,14,14,14,14,14,14,14,14,20,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,27,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,34,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,39],"as":[0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,9,10,10,10,10,10,10,10,10,10,10,16,17,17,17,17,17,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20,20,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36],"q":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],"c":[900,892,852,818,779,748,716,675,641,636,599,555,551,551,530,511,504,500,492,492,492,453,440,408,387,355,315,276,235,231,231,226,198,158,121,76,70,35,900,870,834,791,787,782,755,710,666,661,655,652,646,641,637,607,582,546,538,508,468,433,427,423,409,400,389,389,361,357,350,350,350,318,295,288,251,246,240,200,163,120,115,108,103,58,12,8,3,900,897,878,852,845,837,797,777,742,737,692,683,676,641,610,582,549,514,506,502,502,494,456,420,379,339,299,293,293,259,232,199,193,156,124,79,73,73,68,25,20,15,7,900,876,841,809,779,773,773,769,724,684,678,642,626,621,595,589,548,520,496,489,482,477,437,433,426,402,374,368,339,334,330,330,330,288,252,208,205,201,197,192,187,183,177,177,172,165,160,157,148,135,135,131,120,115,82,82,70,65,43,22,13,600,596,560,555,517,497,456,417,374,369,344,298,290,257,229,178,174,143,120,113,109,101,71,48,23,20,7],"key":[{"i":11,"t":"C.McLaughlin 26 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":17,"t":"R.Wright punt is BLOCKED by I.Odenigbo, Center-A.DePaola, RECOVERED by IND-J.Domann at MIN 24.\u2026"},{"i":18,"t":"C.McLaughlin extra point is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":21,"t":"(No Huddle) D.Cook up the middle to IND 31 for 4 yards (Z.Franklin; R.McLeod). FUMBLES\u2026"},{"i":28,"t":"M.Ryan pass short right to D.Jackson for 1 yard, TOUCHDOWN."},{"i":41,"t":"C.McLaughlin 28 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":50,"t":"C.McLaughlin 49 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":67,"t":"(Shotgun) K.Cousins pass short middle intended for J.Reagor INTERCEPTED by J.Blackmon at MIN\u2026"},{"i":84,"t":"(:12) C.McLaughlin 27 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":105,"t":"(Shotgun) K.Cousins pass short left to K.Osborn for 2 yards, TOUCHDOWN."},{"i":113,"t":"C.McLaughlin 52 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":122,"t":"C.Ham up the middle for 1 yard, TOUCHDOWN. PENALTY on MIN-B.O'Neill, Unnecessary Roughness, 15\u2026"},{"i":134,"t":"(Shotgun) K.Cousins pass short left to J.Jefferson for 8 yards, TOUCHDOWN."},{"i":149,"t":"K.Cousins pass deep left intended for J.Reagor INTERCEPTED by R.Thomas at IND 2. R.Thomas ran\u2026"},{"i":159,"t":"K.Cousins pass short right to A.Thielen for 1 yard, TOUCHDOWN."},{"i":165,"t":"D.Jackson right guard to IND 39 for 1 yard (H.Phillips; Z.Smith). PENALTY on MIN-C.Sullivan,\u2026"},{"i":178,"t":"(Shotgun) K.Cousins pass short left to D.Cook for 64 yards, TOUCHDOWN."},{"i":179,"t":"(Pass formation) TWO-POINT CONVERSION ATTEMPT. K.Cousins pass to T.Hockenson is complete.\u2026"},{"i":180,"t":"G.Joseph kicks 71 yards from MIN 35 to IND -6. D.Flowers to IND 25 for 31 yards (L.Vilain)."},{"i":194,"t":"K.Cousins pass short left to D.Cook to MIN 39 for 6 yards (B.Okereke)."},{"i":199,"t":"(Shotgun) K.Cousins pass incomplete short middle to K.Osborn (D.Buckner)."},{"i":201,"t":"(Shotgun) K.Cousins pass short middle to T.Hockenson to IND 39 for 14 yards (Z.Franklin)."},{"i":203,"t":"Z.Moss left tackle to IND 18 for 5 yards (E.Kendricks; J.Hicks)."},{"i":205,"t":"(Shotgun) M.Ryan sacked at IND 28 for -5 yards (sack split by Z.Smith and D.Hunter). FUMBLES\u2026"},{"i":208,"t":"Z.Moss left tackle to IND 44 for 1 yard (H.Phillips)."},{"i":210,"t":"(Shotgun) M.Ryan pass incomplete short left to A.Pierce [D.Hunter]."},{"i":211,"t":"M.Haack punts 38 yards to MIN 18, Center-L.Rhodes, downed by IND-A.Dulin."},{"i":212,"t":"(Shotgun) D.Cook up the middle to MIN 24 for 6 yards (K.Paye)."},{"i":215,"t":"(:23) (No Huddle, Shotgun) K.Cousins pass incomplete short right to T.Hockenson. MIN-C.Darrisaw\u2026"},{"i":216,"t":"(:20) (Shotgun) K.Cousins pass short right to J.Jefferson to IND 27 for 13 yards (I.Odenigbo).\u2026"},{"i":217,"t":"(:07) G.Joseph 40 yard field goal is GOOD, Center-A.DePaola, Holder-R.Wright."}],"teams":[{"id":"BUF","n":"Buffalo Bills","c":"#00338D","p":11.3,"w":13,"l":4},{"id":"LA","n":"Los Angeles Rams","c":"#003594","p":11.2,"w":10,"l":7},{"id":"DEN","n":"Denver Broncos","c":"#002244","p":10.6,"w":10,"l":7},{"id":"SEA","n":"Seattle Seahawks","c":"#002244","p":10.4,"w":10,"l":7},{"id":"PHI","n":"Philadelphia Eagles","c":"#004C54","p":10.4,"w":14,"l":3},{"id":"BAL","n":"Baltimore Ravens","c":"#241773","p":10.3,"w":12,"l":5},{"id":"GB","n":"Green Bay Packers","c":"#203731","p":10.3,"w":11,"l":6},{"id":"DET","n":"Detroit Lions","c":"#0076B6","p":10.2,"w":15,"l":2},{"id":"NE","n":"New England Patriots","c":"#002244","p":10.2,"w":4,"l":13},{"id":"KC","n":"Kansas City Chiefs","c":"#E31837","p":9.9,"w":15,"l":2}]}</script>
+          <aside class="feat__side">
+            <figure class="frame frame--lift">
+              <div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">nfl-season-hub.vercel.app</span></div>
+              <img src="assets/work/nfl-league-640.webp" srcset="assets/work/nfl-league-640.webp 640w, assets/work/nfl-league.webp 1280w" sizes="(max-width:1023px) 90vw, 360px" alt="The live league dashboard: 32 team cards sorted by expected wins, with season, conference and division filters." width="640" height="400" loading="lazy" decoding="async">
+              <figcaption>The live league dashboard</figcaption>
+            </figure>
+            <div class="insight">
+              <p class="insight__k">Engineering insight</p>
+              <p><b>React re-renders 8 times a second, not 60.</b> The replay cursor lives in a ref and repaints the canvas directly; React only hears about it once per play.</p>
+            </div>
+          </aside>
         </div>
+
+        <dl class="metrics rv">
+          <div><dt>Plays parsed</dt><dd>273,325</dd></div>
+          <div><dt>Games, 2020 to 2025</dt><dd>1,693</dd></div>
+          <div><dt>Dropped frames in playback</dt><dd>0<small> / 239</small></dd></div>
+          <div><dt>Lighthouse performance</dt><dd>97-100</dd></div>
+        </dl>
+
+        <details class="disclose rv">
+          <summary>How it's built<span class="disclose__hint">Role, stack and key decisions</span></summary>
+          <div class="disclose__body">
+            <dl class="spec">
+              <div><dt>Role</dt><dd>Solo build: product, interface, data pipeline and tests</dd></div>
+              <div><dt>Built with</dt><dd>React 19, TypeScript, Vite, Canvas, Python (polars), Vitest, Playwright, Vercel</dd></div>
+              <div><dt>Decisions</dt><dd><ul>
+                <li><b>Static JSON, no backend.</b> A finished season never changes, so it ships as validated files on a CDN.</li>
+                <li><b>Canvas over React state.</b> The replay cursor lives in a ref; React re-renders once per play, not 60 times a second.</li>
+                <li><b>A runtime data contract.</b> Every file is checked field by field before the app sees it.</li>
+              </ul></dd></div>
+              <div><dt>Also</dt><dd>216 unit and component tests · 6.8 KB per game over the wire</dd></div>
+            </dl>
+          </div>
+        </details>
+        <script type="application/json" data-nfl-data>{"g":{"id":"2022_15_IND_MIN","season":2022,"week":15,"date":"2022-12-17","h":{"id":"MIN","n":"Minnesota Vikings","c":"#4F2683","s":39},"a":{"id":"IND","n":"Indianapolis Colts","c":"#002C5F","s":36}},"wp":[567,520,470,497,458,440,443,468,406,418,424,510,512,512,520,527,507,485,293,292,292,353,269,273,268,254,206,208,153,157,157,155,162,150,157,134,108,116,97,99,93,119,95,94,95,76,79,69,74,82,90,46,45,43,42,35,12,16,16,14,15,16,18,21,35,34,36,28,4,4,4,5,5,5,6,6,4,5,6,5,5,5,5,3,4,4,4,7,7,6,4,4,3,2,2,2,2,2,2,2,2,1,1,3,4,3,2,2,2,2,1,2,2,2,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2,5,4,6,6,7,5,20,20,23,20,23,25,31,31,27,37,32,24,36,32,44,29,41,14,17,44,51,65,73,62,58,56,57,57,59,46,41,87,126,110,128,114,90,64,58,36,28,36,38,48,296,434,434,480,485,484,541,610,603,603,549,521,535,535,477,611,622,702,720,760,635,550,450,428,630,633,524,581,647,484,553,682,818,332,316,396,613,450,847],"hs":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,13,14,14,14,14,14,14,14,14,14,14,14,20,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,21,27,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,28,34,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,39],"as":[0,0,0,0,0,0,0,0,0,0,0,3,3,3,3,3,3,9,10,10,10,10,10,10,10,10,10,10,16,17,17,17,17,17,17,17,17,17,17,17,17,20,20,20,20,20,20,20,20,20,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,29,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,33,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36,36],"q":[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],"c":[900,892,852,818,779,748,716,675,641,636,599,555,551,551,530,511,504,500,492,492,492,453,440,408,387,355,315,276,235,231,231,226,198,158,121,76,70,35,900,870,834,791,787,782,755,710,666,661,655,652,646,641,637,607,582,546,538,508,468,433,427,423,409,400,389,389,361,357,350,350,350,318,295,288,251,246,240,200,163,120,115,108,103,58,12,8,3,900,897,878,852,845,837,797,777,742,737,692,683,676,641,610,582,549,514,506,502,502,494,456,420,379,339,299,293,293,259,232,199,193,156,124,79,73,73,68,25,20,15,7,900,876,841,809,779,773,773,769,724,684,678,642,626,621,595,589,548,520,496,489,482,477,437,433,426,402,374,368,339,334,330,330,330,288,252,208,205,201,197,192,187,183,177,177,172,165,160,157,148,135,135,131,120,115,82,82,70,65,43,22,13,600,596,560,555,517,497,456,417,374,369,344,298,290,257,229,178,174,143,120,113,109,101,71,48,23,20,7],"key":[{"i":11,"t":"C.McLaughlin 26 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":17,"t":"R.Wright punt is BLOCKED by I.Odenigbo, Center-A.DePaola, RECOVERED by IND-J.Domann at MIN 24.\u2026"},{"i":18,"t":"C.McLaughlin extra point is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":21,"t":"(No Huddle) D.Cook up the middle to IND 31 for 4 yards (Z.Franklin; R.McLeod). FUMBLES\u2026"},{"i":28,"t":"M.Ryan pass short right to D.Jackson for 1 yard, TOUCHDOWN."},{"i":41,"t":"C.McLaughlin 28 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":50,"t":"C.McLaughlin 49 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":67,"t":"(Shotgun) K.Cousins pass short middle intended for J.Reagor INTERCEPTED by J.Blackmon at MIN\u2026"},{"i":84,"t":"(:12) C.McLaughlin 27 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":105,"t":"(Shotgun) K.Cousins pass short left to K.Osborn for 2 yards, TOUCHDOWN."},{"i":113,"t":"C.McLaughlin 52 yard field goal is GOOD, Center-L.Rhodes, Holder-M.Haack."},{"i":122,"t":"C.Ham up the middle for 1 yard, TOUCHDOWN. PENALTY on MIN-B.O'Neill, Unnecessary Roughness, 15\u2026"},{"i":134,"t":"(Shotgun) K.Cousins pass short left to J.Jefferson for 8 yards, TOUCHDOWN."},{"i":149,"t":"K.Cousins pass deep left intended for J.Reagor INTERCEPTED by R.Thomas at IND 2. R.Thomas ran\u2026"},{"i":159,"t":"K.Cousins pass short right to A.Thielen for 1 yard, TOUCHDOWN."},{"i":165,"t":"D.Jackson right guard to IND 39 for 1 yard (H.Phillips; Z.Smith). PENALTY on MIN-C.Sullivan,\u2026"},{"i":178,"t":"(Shotgun) K.Cousins pass short left to D.Cook for 64 yards, TOUCHDOWN."},{"i":179,"t":"(Pass formation) TWO-POINT CONVERSION ATTEMPT. K.Cousins pass to T.Hockenson is complete.\u2026"},{"i":180,"t":"G.Joseph kicks 71 yards from MIN 35 to IND -6. D.Flowers to IND 25 for 31 yards (L.Vilain)."},{"i":194,"t":"K.Cousins pass short left to D.Cook to MIN 39 for 6 yards (B.Okereke)."},{"i":199,"t":"(Shotgun) K.Cousins pass incomplete short middle to K.Osborn (D.Buckner)."},{"i":201,"t":"(Shotgun) K.Cousins pass short middle to T.Hockenson to IND 39 for 14 yards (Z.Franklin)."},{"i":203,"t":"Z.Moss left tackle to IND 18 for 5 yards (E.Kendricks; J.Hicks)."},{"i":205,"t":"(Shotgun) M.Ryan sacked at IND 28 for -5 yards (sack split by Z.Smith and D.Hunter). FUMBLES\u2026"},{"i":208,"t":"Z.Moss left tackle to IND 44 for 1 yard (H.Phillips)."},{"i":210,"t":"(Shotgun) M.Ryan pass incomplete short left to A.Pierce [D.Hunter]."},{"i":211,"t":"M.Haack punts 38 yards to MIN 18, Center-L.Rhodes, downed by IND-A.Dulin."},{"i":212,"t":"(Shotgun) D.Cook up the middle to MIN 24 for 6 yards (K.Paye)."},{"i":215,"t":"(:23) (No Huddle, Shotgun) K.Cousins pass incomplete short right to T.Hockenson. MIN-C.Darrisaw\u2026"},{"i":216,"t":"(:20) (Shotgun) K.Cousins pass short right to J.Jefferson to IND 27 for 13 yards (I.Odenigbo).\u2026"},{"i":217,"t":"(:07) G.Joseph 40 yard field goal is GOOD, Center-A.DePaola, Holder-R.Wright."}],"teams":[{"id":"BUF","n":"Buffalo Bills","c":"#00338D","p":11.3,"w":13,"l":4},{"id":"LA","n":"Los Angeles Rams","c":"#003594","p":11.2,"w":10,"l":7},{"id":"DEN","n":"Denver Broncos","c":"#002244","p":10.6,"w":10,"l":7},{"id":"SEA","n":"Seattle Seahawks","c":"#002244","p":10.4,"w":10,"l":7},{"id":"PHI","n":"Philadelphia Eagles","c":"#004C54","p":10.4,"w":14,"l":3},{"id":"BAL","n":"Baltimore Ravens","c":"#241773","p":10.3,"w":12,"l":5},{"id":"GB","n":"Green Bay Packers","c":"#203731","p":10.3,"w":11,"l":6},{"id":"DET","n":"Detroit Lions","c":"#0076B6","p":10.2,"w":15,"l":2},{"id":"NE","n":"New England Patriots","c":"#002244","p":10.2,"w":4,"l":13},{"id":"KC","n":"Kansas City Chiefs","c":"#E31837","p":9.9,"w":15,"l":2}]}</script>
       </article>
 
-      <!-- ── 02 · CNR Car Zone ── -->
-      <article class="proj proj--flip" aria-labelledby="p-cnr">
-        <div class="proj__info rv">
-          <p class="proj__meta"><span class="proj__n">02</span><span>Product</span><span>Operations platform</span></p>
-          <h3 id="p-cnr">CNR Car Zone</h3>
-          <p class="proj__problem">
-            A pre-owned vehicle business needed one place to track every car, from the first phone call
-            to ready-for-sale. I built it as a mobile-first operations platform, and it is in production today.
-          </p>
-          <dl class="spec">
-            <div><dt>Role</dt><dd>Sole engineer, designer and product owner</dd></div>
-            <div><dt>Built with</dt><dd>Next.js 15, Supabase, Postgres with row-level security, Netlify</dd></div>
-            <div><dt>Decisions</dt><dd><ul>
-              <li><b>Staging split from production.</b> A branch-based release, so nothing untested touches the owner's real data.</li>
-              <li><b>Backwards-compatible documents.</b> Multi-image records shipped without migrating a single existing one by hand.</li>
-              <li><b>Private by design.</b> CSV exports deliberately leave out seller ID and bank details.</li>
-            </ul></dd></div>
-          </dl>
-          <div class="proj__acts">
-            <a class="btn btn--primary" href="work/cnr-car-zone.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          </div>
-        </div>
-
-        <div class="proj__stage rv">
-          <div class="cnr-stage" data-cnr>
+      <!-- ── 02 · CNR Car Zone: the product demo ── -->
+      <article class="feat feat--cnr" aria-labelledby="p-cnr">
+        <div class="cnr-demo rv" data-cnr>
+          <div class="cnr-demo__stage">
             <div class="device">
               <div class="phone">
                 <div class="phone__notch" aria-hidden="true"></div>
@@ -510,71 +516,101 @@
                 </div>
               </div>
             </div>
-            <div class="cnr-tabs" role="tablist" aria-label="CNR Car Zone screens">
-              <button class="cnr-tab" type="button" role="tab" aria-selected="true" data-cnr-tab="0"><b>Dashboard</b><span>Every pending job at a glance, with global search.</span></button>
-              <button class="cnr-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-cnr-tab="1"><b>Opportunity</b><span>From first call to stock number, with one-tap Call and WhatsApp.</span></button>
-              <button class="cnr-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-cnr-tab="2"><b>Documents</b><span>An 18-item checklist and a 22-category photo pipeline.</span></button>
-              <button class="cnr-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-cnr-tab="3"><b>Exports</b><span>CSV exports that leave sensitive data out.</span></button>
-            </div>
-            <p class="cnr-cap">Interface recreated in HTML and CSS, matched to the live app. The real screens hold a business's private records, so they stay private.</p>
           </div>
+          <div class="cnr-demo__ctrl">
+            <div class="cnr-tabs" role="tablist" aria-label="CNR Car Zone screens">
+              <button class="cnr-tab" type="button" role="tab" id="cnr-t0" aria-controls="cnr-panel" aria-selected="true" data-cnr-tab="0"><span>01</span>Dashboard</button>
+              <button class="cnr-tab" type="button" role="tab" id="cnr-t1" aria-controls="cnr-panel" aria-selected="false" tabindex="-1" data-cnr-tab="1"><span>02</span>Opportunity</button>
+              <button class="cnr-tab" type="button" role="tab" id="cnr-t2" aria-controls="cnr-panel" aria-selected="false" tabindex="-1" data-cnr-tab="2"><span>03</span>Documents</button>
+              <button class="cnr-tab" type="button" role="tab" id="cnr-t3" aria-controls="cnr-panel" aria-selected="false" tabindex="-1" data-cnr-tab="3"><span>04</span>Exports</button>
+            </div>
+            <div class="cnr-panel" id="cnr-panel" role="tabpanel" aria-labelledby="cnr-t0" tabindex="0">
+              <p data-cnr-desc="0">Every pending job at a glance: opportunities, inspections, negotiations, purchases, documents and cars ready for sale, with one global search.</p>
+              <p data-cnr-desc="1" hidden>From the first call to a stock number: auto-numbered opportunities, inspection, dated offers, and one-tap Call or WhatsApp.</p>
+              <p data-cnr-desc="2" hidden>An 18-item document checklist with verification rules, and a 22-category photo pipeline.</p>
+              <p data-cnr-desc="3" hidden>CSV exports for every record type, with seller ID and bank details deliberately left out.</p>
+            </div>
+            <p class="cnr-cap">HTML and CSS recreation, matched to the live app. The real screens hold private business records.</p>
+          </div>
+        </div>
+
+        <div class="feat__copy rv">
+          <p class="proj__meta"><span class="proj__n">02</span><span>Product</span><span>Operations platform</span></p>
+          <h3 id="p-cnr">CNR Car Zone</h3>
+          <p class="feat__lede">A mobile-first operations platform that tracks every car for a pre-owned vehicle business, from the first phone call to ready-for-sale. In production today.</p>
+          <div class="chips"><span class="chip">Next.js 15</span><span class="chip">Supabase</span><span class="chip">Postgres</span><span class="chip">Row-level security</span></div>
+          <p class="proof"><b>Sole engineer, designer and product owner.</b> 13 tables with row-level security, staging split from production.</p>
+          <div class="proj__acts">
+            <a class="btn btn--primary" href="work/cnr-car-zone.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <details class="disclose">
+            <summary>How it's built<span class="disclose__hint">Stack and key decisions</span></summary>
+            <div class="disclose__body">
+              <dl class="spec">
+                <div><dt>Built with</dt><dd>Next.js 15, Supabase, Postgres with row-level security, Netlify</dd></div>
+                <div><dt>Decisions</dt><dd><ul>
+                  <li><b>Staging split from production.</b> A branch-based release, so nothing untested touches the owner's real data.</li>
+                  <li><b>Backwards-compatible documents.</b> Multi-image records shipped without migrating a single existing one by hand.</li>
+                  <li><b>Private by design.</b> CSV exports deliberately leave out seller ID and bank details.</li>
+                </ul></dd></div>
+              </dl>
+            </div>
+          </details>
         </div>
       </article>
 
-      <!-- ── 03 + 04 · enterprise ── -->
-      <div class="duo">
-        <article class="ecard rv" aria-labelledby="p-unity">
-          <div class="ecard__stage">
-            <figure class="frame frame--back" aria-hidden="true">
-              <div class="frame__bar"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">unity.com/made-with-unity</span></div>
-              <img src="assets/work/unity-made-640.webp" alt="" width="640" height="400" loading="lazy" decoding="async">
-            </figure>
-            <figure class="frame frame--front">
-              <div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">unity.com</span></div>
-              <img src="assets/work/unity-home-640.webp" srcset="assets/work/unity-home-640.webp 640w, assets/work/unity-home.webp 1280w" sizes="(max-width:760px) 80vw, 40vw" alt="The unity.com home page as it appears live: a large Build great headline beside a game video." width="640" height="400" loading="lazy" decoding="async">
-            </figure>
+      <!-- ── 03 · Unity: enterprise editorial ── -->
+      <article class="ed ed--unity" aria-labelledby="p-unity">
+        <div class="ed__copy rv">
+          <p class="proj__meta"><span class="proj__n">03</span><span>Enterprise web</span><span>Team build</span></p>
+          <h3 id="p-unity">Unity Technologies</h3>
+          <p class="feat__lede">Customer-facing web properties for a global game-technology company. I worked on Next.js front ends, component-based publishing in Sanity, redirects, analytics and release QA.</p>
+          <div class="chips"><span class="chip">Next.js</span><span class="chip">Sanity CMS</span><span class="chip">Storybook</span><span class="chip">GA4</span></div>
+          <p class="proof"><b>100+ pages audited</b> for CTA consistency, linking, navigation and usability.</p>
+          <div class="ed__acts">
+            <a class="link" href="work/unity.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="link" href="https://unity.com" target="_blank" rel="noopener">unity.com<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a>
           </div>
-          <div class="ecard__body">
-            <p class="proj__meta"><span class="proj__n">03</span><span>Enterprise web</span><span>Team build</span></p>
-            <h3 id="p-unity">Unity Technologies</h3>
-            <p class="ecard__desc">
-              Customer-facing web properties for a global game-technology company. I worked on Next.js
-              front ends, component-based publishing in Sanity, redirects, analytics and release QA.
-            </p>
-            <div class="chips"><span class="chip">Sanity CMS</span><span class="chip">Next.js</span><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">GA4</span><span class="chip">Storybook</span></div>
-            <div class="ecard__acts">
-              <a class="link" href="work/unity.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <a class="link" href="https://unity.com" target="_blank" rel="noopener">unity.com<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a>
-            </div>
-          </div>
-        </article>
+          <p class="ed__note">A team build. The case study lists exactly what I did.</p>
+        </div>
+        <div class="ed__visual rv">
+          <figure class="frame frame--main">
+            <div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">unity.com</span></div>
+            <img src="assets/work/unity-home.webp" srcset="assets/work/unity-home-640.webp 640w, assets/work/unity-home.webp 1280w, assets/work/unity-home-1920.webp 1920w" sizes="(max-width:1023px) 92vw, 760px" alt="The unity.com home page as it appears live: a large Build great headline beside a game video." width="1280" height="800" loading="lazy" decoding="async">
+          </figure>
+          <figure class="frame frame--inset">
+            <div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">unity.com/made-with-unity</span></div>
+            <img src="assets/work/unity-made-640.webp" alt="The Made with Unity showcase page as it appears live." width="640" height="400" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </article>
 
-        <article class="ecard rv" aria-labelledby="p-ud">
-          <div class="ecard__stage">
-            <figure class="frame frame--back" aria-hidden="true">
-              <div class="frame__bar"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">udayton.edu/magazine</span></div>
-              <img src="assets/work/ud-big-time-640.webp" alt="" width="640" height="400" loading="lazy" decoding="async">
-            </figure>
-            <figure class="frame frame--front">
-              <div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">udayton.edu/magazine</span></div>
-              <img src="assets/work/ud-global-goals-640.webp" srcset="assets/work/ud-global-goals-640.webp 640w, assets/work/ud-global-goals.webp 1280w" sizes="(max-width:760px) 80vw, 40vw" alt="University of Dayton Magazine feature, Flyer with global goals, as it appears live." width="640" height="400" loading="lazy" decoding="async">
-            </figure>
-          </div>
-          <div class="ecard__body">
+      <!-- ── 04 · University of Dayton: editorial publication ── -->
+      <article class="ed ed--ud" aria-labelledby="p-ud">
+        <div class="ud-visual rv">
+          <figure class="frame frame--main">
+            <div class="frame__bar" aria-hidden="true"><span class="lights"><i></i><i></i><i></i></span><span class="frame__url">udayton.edu/magazine</span></div>
+            <img src="assets/work/ud-global-goals.webp" srcset="assets/work/ud-global-goals-640.webp 640w, assets/work/ud-global-goals.webp 1280w, assets/work/ud-global-goals-1920.webp 1920w" sizes="(max-width:1023px) 92vw, 900px" alt="UD Magazine feature Flyer with global goals on desktop, as it appears live." width="1280" height="800" loading="lazy" decoding="async">
+          </figure>
+          <figure class="ud-phone">
+            <img src="assets/work/ud-mobile.webp" alt="The same feature on a phone, with the headline and photo stacked." width="585" height="1266" loading="lazy" decoding="async">
+          </figure>
+        </div>
+        <div class="ud-copy rv">
+          <div>
             <p class="proj__meta"><span class="proj__n">04</span><span>Digital publication</span><span>Team build</span></p>
             <h3 id="p-ud">University of Dayton</h3>
-            <p class="ecard__desc">
-              Institutional websites and UD Magazine features. I built responsive pages and CMS templates,
-              and ran the accessibility, SEO and analytics work behind each launch.
-            </p>
-            <div class="chips"><span class="chip">CMS templates</span><span class="chip">HTML / CSS / JS</span><span class="chip">Accessibility</span><span class="chip">Schema</span><span class="chip">GA4</span><span class="chip">Search Console</span></div>
-            <div class="ecard__acts">
+          </div>
+          <div>
+            <p class="feat__lede">Institutional websites and UD Magazine features. I built responsive pages and CMS templates, and ran the accessibility, SEO and analytics work behind each launch.</p>
+            <p class="proof"><b>175+ digital initiatives</b> delivered across institutional websites.</p>
+            <div class="ed__acts">
               <a class="link" href="work/university-of-dayton.html">Read the case study<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-              <a class="link" href="https://udayton.edu/magazine/2025/09/htike-global-goals.php" target="_blank" rel="noopener">Read a feature<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a>
+              <a class="link" href="https://udayton.edu/magazine/2025/09/htike-global-goals.php" target="_blank" rel="noopener">Read the feature<svg class="i" aria-hidden="true"><use href="#i-ext"/></svg><span class="vh"> (opens in a new tab)</span></a>
             </div>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
 
     </div>
   </div>
@@ -582,7 +618,7 @@
 
 
 <!-- ═══════════════════ EXPERTISE EXPLORER ══════════════════════ -->
-<section class="sec sec--alt" id="expertise" aria-labelledby="xpl-h">
+<section class="sec" id="expertise" aria-labelledby="xpl-h">
   <div class="shell">
     <div class="head rv">
       <p class="eyebrow"><b>03</b> Expertise</p>
@@ -601,6 +637,7 @@
         <span class="xpl__ink" aria-hidden="true"></span>
       </div>
 
+      <div class="xpl__panels">
       <!-- BUILD -->
       <div class="xpl__panel" id="xp-build" role="tabpanel" aria-labelledby="xt-build" tabindex="0">
         <div>
@@ -701,6 +738,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
 
