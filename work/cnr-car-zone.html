@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <script>document.documentElement.className="js";</script>
 <title>CNR Car Zone case study | Rakesh Reddy Yeduru</title>
-<meta name="description" content="How I designed and built CNR Car Zone, a mobile-first operations platform that runs a pre-owned vehicle business, on Next.js 15 and Supabase." />
+<meta name="description" content="How I replaced a family car business's handwritten register with CNR Car Zone, a mobile-first operations platform built on Next.js 15 and Supabase." />
 <link rel="canonical" href="https://rakesh0710.github.io/Rakesh_Portfolio/work/cnr-car-zone.html" />
 <meta name="theme-color" content="#0c111b" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='15' fill='%2377c8ff'/><text x='32' y='43' font-family='Helvetica,Arial,sans-serif' font-size='28' font-weight='bold' fill='%230c111b' text-anchor='middle'>RY</text></svg>" />
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Rakesh Reddy Yeduru" />
 <meta property="og:url" content="https://rakesh0710.github.io/Rakesh_Portfolio/work/cnr-car-zone.html" />
 <meta property="og:title" content="CNR Car Zone | Case study by Rakesh Reddy Yeduru" />
-<meta property="og:description" content="How I designed and built CNR Car Zone, a mobile-first operations platform that runs a pre-owned vehicle business, on Next.js 15 and Supabase." />
+<meta property="og:description" content="How I replaced a family car business's handwritten register with CNR Car Zone, a mobile-first operations platform built on Next.js 15 and Supabase." />
 <meta property="og:image" content="https://rakesh0710.github.io/Rakesh_Portfolio/og.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
@@ -27,7 +27,7 @@
   "@context": "https://schema.org",
   "@type": "CreativeWork",
   "name": "CNR Car Zone",
-  "description": "How I designed and built CNR Car Zone, a mobile-first operations platform that runs a pre-owned vehicle business, on Next.js 15 and Supabase.",
+  "description": "How I replaced a family car business's handwritten register with CNR Car Zone, a mobile-first operations platform built on Next.js 15 and Supabase.",
   "url": "https://rakesh0710.github.io/Rakesh_Portfolio/work/cnr-car-zone.html",
   "author": {
     "@type": "Person",
@@ -82,10 +82,10 @@
     <nav class="crumb" aria-label="Breadcrumb">
       <a href="../index.html#work"><svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg>All work</a>
     </nav>
-    <p class="eyebrow">Case study · Product</p>
+    <p class="eyebrow">Case study · Family business</p>
     <h1 id="case-title">CNR Car Zone</h1>
-    <p class="case-hero__lede">A mobile-first operations platform for a real pre-owned vehicle business. Every car is tracked from the first phone call to ready-for-sale, with a full audit trail.</p>
-    <div class="proj__acts"><p class="note-honest" style="margin:0">The app is private: it holds a real business's seller records, payments and bank details, so there is no public demo. A live walkthrough is available on request.</p></div>
+    <p class="case-hero__lede">A family pre-owned car business ran on a handwritten register. I built the mobile-first platform that replaced it: every car tracked from the first phone call to ready-for-sale, with a full audit trail.</p>
+    <div class="proj__acts"><p class="note-honest" style="margin:0">The app is private: it holds the family business's seller records, payments and bank details, so there is no public demo. A live walkthrough is available on request.</p></div>
   </div>
 </section>
 
@@ -98,7 +98,7 @@
       <div><dt>Role</dt><dd>Sole engineer, designer and product owner</dd></div>
       <div><dt>Stack</dt><dd>Next.js 15, Supabase, Postgres, Netlify</dd></div>
       <div><dt>Data</dt><dd>13 tables with row-level security</dd></div>
-      <div><dt>Status</dt><dd>In production, single-owner business</dd></div>
+      <div><dt>Status</dt><dd>In production; the register is retired</dd></div>
     </dl>
   </div>
 </div>
@@ -120,11 +120,34 @@
   <div class="prose">
         <section id="overview" aria-labelledby="overview-h">
           <p class="k">Overview</p>
-          <h2 id="overview-h">One system for every car</h2>
-          <p>CNR Car Zone (formerly RKS Motors, rebranded in 2026) runs the day-to-day operations of a
-          pre-owned vehicle business. It follows each car through <b>sourcing, mechanic inspection,
-          negotiation, purchase, payments, photos and documents</b>, through to ready-for-sale.</p>
-          <p>It is built for one owner, used on a phone, and in production today.</p>
+          <h2 id="overview-h">From a paper register to one system</h2>
+          <p>CNR Car Zone (formerly RKS Motors, rebranded in 2026) is a family pre-owned vehicle business.
+          Until this app, it ran on <b>a handwritten register</b>. Every entry was written by hand, while the
+          vehicle photos and documents lived somewhere else entirely: buried in a phone's gallery and in
+          WhatsApp chats.</p>
+          <p>Today each car has one record that follows it through <b>sourcing, mechanic inspection,
+          negotiation, purchase, payments, photos and documents</b>, to ready-for-sale. It runs on a phone,
+          and the register has been retired.</p>
+          <div class="ba">
+            <div class="ba__col ba__col--before">
+              <p class="ba__k">Before</p>
+              <ul>
+                <li>Every entry written by hand in a register</li>
+                <li>Vehicle photos buried in a phone's gallery</li>
+                <li>Documents scattered across WhatsApp chats</li>
+                <li>Three places to check, none of them connected</li>
+              </ul>
+            </div>
+            <div class="ba__col ba__col--after">
+              <p class="ba__k">After</p>
+              <ul>
+                <li>One record per car, from first call to ready-for-sale</li>
+                <li>Photos filed into 22 categories on the car itself</li>
+                <li>An 18-item document checklist with verification rules</li>
+                <li>One search across cars, sellers, numbers and documents</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <section id="role" aria-labelledby="role-h">
@@ -134,7 +157,7 @@
           process.</p>
           <ul class="dots">
             <li><b>Product owner:</b> what each phase ships, and what waits for the next one.</li>
-            <li><b>Designer:</b> a mobile-first interface built around the jobs waiting to be done.</li>
+            <li><b>Designer:</b> a mobile-first interface built around the jobs waiting to be done, on the phone where the photos and messages already lived.</li>
             <li><b>Engineer:</b> Next.js 15 on Supabase and Postgres, 13 tables protected by row-level security.</li>
             <li><b>Release manager:</b> separate staging and production environments with a branch-based release.</li>
           </ul>
@@ -142,11 +165,12 @@
 
         <section id="challenge" aria-labelledby="challenge-h">
           <p class="k">Challenge</p>
-          <h2 id="challenge-h">A long process, real money, private data</h2>
+          <h2 id="challenge-h">Three places, none of them connected</h2>
           <ul class="dots">
+            <li><b>Information split three ways.</b> The register held the entries, the gallery held the photos and WhatsApp held the documents. Nothing tied a car to its own paperwork.</li>
             <li><b>A multi-step process</b> with inspections, offers, payments, photos and paperwork for every vehicle, which all has to be visible at a glance.</li>
             <li><b>Sensitive records.</b> Seller IDs and bank details live in the system and must never leak through an export.</li>
-            <li><b>A live business.</b> Changes cannot risk the owner's real data, and the schema has to evolve without breaking records that already exist.</li>
+            <li><b>A live business.</b> Changes could never risk the business's real data, and the schema had to evolve without breaking records that already existed.</li>
           </ul>
         </section>
 
@@ -303,17 +327,18 @@
 
         <section id="outcome" aria-labelledby="outcome-h">
           <p class="k">Outcome</p>
-          <h2 id="outcome-h">Running a real business</h2>
-          <p>CNR Car Zone is in production for a single-owner business. Phases 1A and 2 have
-          shipped; sales and profit reporting is next.</p>
-          <p>There are no traffic or revenue numbers here, because this is an internal tool for one owner,
-          and I would rather show what it does than invent a metric for it.</p>
+          <h2 id="outcome-h">The register is retired</h2>
+          <p>The app has replaced the paper register. CNR Car Zone is in production for the family
+          business; Phases 1A and 2 have shipped, and sales and profit reporting is next.</p>
+          <p>There are no traffic or revenue numbers here, because this is an internal tool for a family
+          business, and I would rather show what it does than invent a metric for it.</p>
         </section>
 
         <section id="lessons" aria-labelledby="lessons-h">
           <p class="k">Lessons</p>
           <h2 id="lessons-h">What building it solo taught me</h2>
           <ul class="dots">
+            <li><b>Start from where the information already lives.</b> The register, the gallery and WhatsApp told me what the app had to hold: entries, photos and documents, attached to the same car.</li>
             <li><b>Phase the work by what the business needs next.</b> The core loop came first; reporting waits until there is data worth reporting on.</li>
             <li><b>Plan for the schema you will have later.</b> Keeping old records valid is what let multi-image documents ship without a migration headache.</li>
             <li><b>Treat privacy as a feature.</b> Deciding what an export leaves out is as much a design decision as what it includes.</li>

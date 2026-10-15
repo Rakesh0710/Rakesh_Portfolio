@@ -1253,6 +1253,23 @@ button{ font:inherit; color:inherit; }
 .case-shot .case-meta{ margin-top:clamp(28px,4vw,44px); }
 
 
+/* before / after comparison, used to open the CNR story */
+.ba{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin:28px 0 8px; }
+.ba__col{ padding:22px 22px 24px; border-radius:18px; }
+.ba__col--before{ border:1px dashed var(--line); background:rgba(163,180,201,.03); }
+.ba__col--after{ border:1px solid var(--case,var(--accent)); background:rgba(163,180,201,.05); }
+.ba__k{ font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; margin-bottom:14px; color:var(--text-3); }
+.ba__col--after .ba__k{ color:var(--case,var(--accent)); }
+.ba ul{ display:grid; gap:10px; }
+.ba li{ position:relative; padding-left:24px; font-size:.94rem; line-height:1.5; color:var(--text-2); }
+.ba__col--after li{ color:var(--text); }
+.ba__col--before li::before{ content:""; position:absolute; left:2px; top:.72em; width:10px; height:1.5px; background:var(--text-3); }
+.ba__col--after li::before{
+  content:""; position:absolute; left:2px; top:.32em; width:5px; height:10px;
+  border:solid var(--case,var(--accent)); border-width:0 2px 2px 0; transform:rotate(42deg);
+}
+@media (max-width:640px){ .ba{ grid-template-columns:minmax(0,1fr); } }
+
 /* ═══ 15 · NFL SEASON HUB · interactive demo window ═════════════ */
 .win{
   background:#0e1522;
