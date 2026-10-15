@@ -1,6 +1,6 @@
 # Portfolio · Rakesh Reddy Yeduru
 
-Frontend Engineer · Website Operations Manager
+Frontend Engineer · Website Operations Manager · UI/UX Designer
 Live at **https://rakesh0710.github.io/Rakesh_Portfolio/**
 
 Plain HTML, CSS and JavaScript. No framework, no build step, no npm. Open a file, edit it,

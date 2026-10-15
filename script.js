@@ -404,6 +404,27 @@
   })();
 
 
+  /* ═══ 7c · TITLE SEPARATORS ══════════════════════════════════
+     The hero label is three titles separated by "·". When the row
+     wraps, a separator can end up dangling at the end of a line, so
+     hide any separator whose next title starts on a new line. */
+  (function () {
+    var label = document.querySelector(".hero__label");
+    if (!label) return;
+    var seps = [].slice.call(label.querySelectorAll(".sep"));
+    function check() {
+      seps.forEach(function (sep) { sep.style.visibility = ""; });
+      seps.forEach(function (sep) {
+        var next = sep.nextElementSibling;
+        if (next && next.offsetTop > sep.offsetTop + 2) sep.style.visibility = "hidden";
+      });
+    }
+    check();
+    window.addEventListener("resize", check);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(check);
+  })();
+
+
   /* ═══ 8 · EXPERTISE EXPLORER ══════════════════════════════════
      A real tablist: one tab stop, arrows/Home/End to move, and the
      panel re-plays its entrance each time so the change is felt. The
