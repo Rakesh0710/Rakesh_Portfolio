@@ -167,4 +167,4 @@ paths in `404.html`.
   so Rakesh should write them.
 - **No live link to CNR Car Zone.** The app sits behind a login and holds a real business's private
   data, so a link would only reach a sign-in page.
-- **No résumé download, no photography.**
+- **No résumé download, no photography, no GitHub links.** Contact routes are email, LinkedIn and phone.
