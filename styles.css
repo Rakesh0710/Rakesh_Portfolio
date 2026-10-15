@@ -277,7 +277,8 @@ button{ font:inherit; color:inherit; }
    Reading order: titles, name, statement, lede, actions, status.
    The statement is the dominant element; it is sized from its own
    column (cqi) so "experiences that" always fits on one line on
-   desktop, whatever the viewport does. */
+   desktop, whatever the viewport does. The longest line is
+   "keep them running." (18 characters); re-measure if it changes. */
 .hero{
   position:relative; isolation:isolate; overflow:hidden;
   min-height:100svh;
@@ -352,11 +353,12 @@ button{ font:inherit; color:inherit; }
 .hero__line{
   display:block;
   font-size:clamp(2.35rem,5vw,4.75rem);
-  font-size:clamp(2.35rem,10.4cqi,5.25rem);
+  font-size:clamp(2.3rem,9.4cqi,4.9rem);
   font-weight:600; letter-spacing:-.045em; line-height:1.0;
   color:var(--text);
 }
 /* each line slides up out of its own mask */
+@media (max-width:359px){ .hero__line{ font-size:1.8rem; } }
 .hl{ display:block; overflow:hidden; padding-bottom:.1em; margin-bottom:-.1em; }
 .hl > span{
   display:inline-block; transform:translateY(108%);
@@ -950,14 +952,14 @@ button{ font:inherit; color:inherit; }
 
 
 /* ═══ 10 · IMPACT ═══════════════════════════════════════════════ */
-.impact{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(12,17,27,.12); border:1px solid rgba(12,17,27,.12); border-radius:var(--r-lg); overflow:hidden; }
+.impact{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1px; background:rgba(12,17,27,.12); border:1px solid rgba(12,17,27,.12); border-radius:var(--r-lg); overflow:hidden; }
 .imp{ background:var(--paper); padding:clamp(24px,3vw,36px); display:flex; flex-direction:column; gap:10px; min-height:220px; }
 .imp__v{ font-family:var(--display); font-size:clamp(2.6rem,5vw,3.8rem); font-weight:600; letter-spacing:-.05em; line-height:.95; font-variant-numeric:tabular-nums; }
 .imp__v small{ font-size:.5em; letter-spacing:-.02em; color:var(--accent-ink); margin-left:2px; }
 .imp p{ color:var(--ink); font-size:.98rem; line-height:1.5; max-width:34ch; }
 .imp cite{ margin-top:auto; padding-top:10px; font-style:normal; font-family:var(--mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-2); }
 .imp--wide{ grid-column:span 3; flex-direction:row; flex-wrap:wrap; align-items:center; gap:14px 40px; min-height:0; background:var(--paper-2); }
-.imp--wide h3{ font-size:clamp(1.15rem,2vw,1.4rem); max-width:22ch; }
+.imp--wide h3, .imp--wide h4{ font-size:clamp(1.15rem,2vw,1.4rem); max-width:22ch; }
 .imp--wide ul{ display:flex; flex-wrap:wrap; gap:8px; flex:1; }
 .imp--wide li{ font-size:.86rem; color:var(--ink); background:var(--paper); border:1px solid rgba(12,17,27,.12); padding:8px 13px; border-radius:999px; }
 @media (max-width:900px){
@@ -968,6 +970,26 @@ button{ font:inherit; color:inherit; }
   .impact{ grid-template-columns:minmax(0,1fr); }
   .imp--wide{ grid-column:auto; }
   .imp{ min-height:0; }
+}
+
+
+
+/* two groups, so professional figures and project engineering
+   measurements are never read as the same kind of number */
+.impact__k{
+  font-family:var(--mono); font-size:.74rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-2); margin:0 0 16px;
+}
+.impact__k ~ .impact__k{ margin-top:clamp(40px,5vw,64px); }
+.impact--work{ grid-template-columns:repeat(4,minmax(0,1fr)); }
+.impact--work .imp--wide{ grid-column:1 / -1; }
+.impact--proj{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+.impact--proj .imp{ min-height:0; }
+@media (max-width:900px){
+  .impact--work{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:560px){
+  .impact--work, .impact--proj{ grid-template-columns:minmax(0,1fr); }
 }
 
 
@@ -1058,8 +1080,9 @@ button{ font:inherit; color:inherit; }
 /* ═══ 13 · CONTACT + FOOTER ═════════════════════════════════════ */
 .contact{ position:relative; overflow:hidden; isolation:isolate; text-align:center; }
 .contact .hero__glow{ inset:auto -20% -50% -20%; height:110%; opacity:.9; }
-.contact__h{ font-size:clamp(2.4rem,7vw,5.6rem); letter-spacing:-.045em; line-height:.98; max-width:14ch; margin:0 auto 22px; }
-.contact__lede{ max-width:52ch; margin:0 auto clamp(34px,5vw,48px); color:var(--text-2); font-size:1.08rem; }
+.contact__h{ font-size:clamp(2.3rem,6vw,4.8rem); letter-spacing:-.045em; line-height:1; max-width:15ch; margin:0 auto 22px; }
+.contact__lede{ max-width:56ch; margin:0 auto 22px; color:var(--text-2); font-size:1.08rem; }
+.contact__badge{ display:flex; width:fit-content; margin:0 auto clamp(30px,4.5vw,44px); }
 .mail{
   display:inline-flex; align-items:center; gap:14px; max-width:100%;
   font-family:var(--display); font-size:clamp(1.15rem,3.4vw,2.2rem); font-weight:500; letter-spacing:-.025em;
@@ -1081,6 +1104,9 @@ button{ font:inherit; color:inherit; }
 }
 .reach a:hover{ border-color:var(--accent); background:var(--surface-2); }
 .reach .i{ width:17px; height:17px; color:var(--text-2); }
+/* LinkedIn is the second route after email, so it gets more weight than the phone numbers */
+.reach .reach__primary{ border-color:var(--line); background:var(--surface-2); font-weight:600; }
+.reach .reach__primary .i{ color:var(--accent); }
 
 .foot{ border-top:1px solid var(--line-2); padding-block:28px 36px; }
 .foot__in{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px 24px; font-size:.82rem; color:var(--text-3); }

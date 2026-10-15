@@ -173,7 +173,7 @@
             <li><b>Prove the data with a library.</b> The win-probability chart was first built in Recharts to validate the numbers. It did that job and was then deleted.</li>
             <li><b>Then build the flagship.</b> A custom canvas renderer, because no charting library gives per-frame control of a 218-point animated reveal.</li>
             <li><b>Check the contract from both sides.</b> <code>validate.py</code> on the producing side; a runtime check in the browser on the consuming side.</li>
-            <li><b>Test what could break.</b> Every test targets behaviour that could plausibly fail. Two exist because the bug happened first.</li>
+            <li><b>Test what could break.</b> Every test targets behavior that could plausibly fail. Two exist because the bug happened first.</li>
             <li><b>Audit by hand.</b> Keyboard only, contrast read from the rendered page, Lighthouse as a floor rather than the audit.</li>
           </ul>
           <div class="callout"><b>The validator earned its keep.</b> It caught four real defects: non-chronological
@@ -282,7 +282,7 @@
           <ul class="dots">
             <li><b>Lazy loading verified from the network log.</b> The replay engine downloads only when someone opens a game.</li>
             <li><b>Every control reachable by keyboard.</b> The 41-marker key-play rail is one tab stop, with arrow, Home and End keys.</li>
-            <li><b>Contrast measured on the real surface.</b> All 88 text styles clear 4.5:1, and team colours are lifted until their curve clears 3:1.</li>
+            <li><b>Contrast measured on the real surface.</b> All 88 text styles clear 4.5:1, and team colors are lifted until their curve clears 3:1.</li>
           </ul>
         </section>
 
@@ -291,7 +291,7 @@
           <h2 id="lessons-h">What I'd take to the next project</h2>
           <ul class="dots">
             <li><b>Validate with the cheap tool, then replace it.</b> Recharts proved the data before I invested in the canvas. That is cheaper than guessing, and cheaper than building the hard thing twice.</li>
-            <li><b>Measure before optimising.</b> Caching the static chart background to an offscreen bitmap was the obvious optimisation. Measured, it cost more in blitting than it saved, so it was not done.</li>
+            <li><b>Measure before optimizing.</b> Caching the static chart background to an offscreen bitmap was the obvious optimization. Measured, it cost more in blitting than it saved, so it was not done.</li>
             <li><b>A disabled button can steal focus.</b> Disabling Restart at play 0, which pressing it causes, moved focus to the page body. Restart is never disabled now, and a test says so.</li>
           </ul>
           <h3>What I'd build next</h3>
